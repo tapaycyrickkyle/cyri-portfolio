@@ -1,0 +1,68 @@
+Cyrick Kyle B. Tapay
+Dolores, Eastern Samar, Philippines
+
+OBJECTIVE
+IT student focused on front-end development, UI implementation, and practical AI-assisted workflows. Interested in internships, junior roles, and project-based opportunities where I can keep learning while contributing useful digital work.
+
+PROFILE
+- Focused on front-end development, interface structure, and practical usability
+- Interested in building useful, understandable, and well-structured digital experiences
+- Learning through project work, iteration, and continuous improvement
+- Motto: We never stop learning
+
+CORE INTERESTS
+- Front-End Development
+- UI Implementation
+- Web Interfaces
+- Practical AI Workflows
+- UI/UX Design
+- Systems Thinking
+
+SKILLS
+- HTML5
+- CSS3
+- Tailwind CSS
+- JavaScript
+- Next.js
+- Node.js
+- React
+- Figma
+- UI Hierarchy
+- Wireframing
+- SQL Basics
+- Supabase
+- REST APIs
+- Git
+- Documentation
+- Git / GitHub
+- Photoshop
+- Filmora
+- CapCut
+
+PROJECTS
+1. TESDA E-Forms
+   - Built a student system prototype for digital government service enrollment forms
+   - Focused on form UX, data structure, and workflow clarity
+
+2. Learning App Interface
+   - Designed a peer-to-peer tutoring interface concept for mobile learning flows
+   - Focused on mobile responsiveness and visual hierarchy
+
+3. Admin Dashboard
+   - Created a dashboard workflow prototype for admin-side task and data organization
+   - Focused on information density and workflow clarity
+
+4. Personal Portfolio
+   - Built a portfolio practice project using semantic HTML and custom CSS layout foundations
+
+EDUCATION
+Bachelor of Science in Information Technology
+
+LOCATION
+Dolores, E. Samar
+
+CONTACT
+Email: tapaycyrickkyle@gmail.com
+GitHub: https://github.com/tapaycyrickkyle
+LinkedIn: https://www.linkedin.com/in/tapay-cyrick-3593b032b/
+Portfolio: CY.DEV
