@@ -1,0 +1,10 @@
+Project Title: TESDA E-Assess  
+Role: Frontend Developer  
+Project Type: Student Project  
+Year: 2026  
+Status: Completed  
+Overview: A web-based assessment application and workflow management system for the TESDA Eastern Samar Provincial Office, built to support applicants, teachers, admins, and assessment centers through submission, review, assignment, and record-tracking flows.  
+Technologies: Next.js, React, TypeScript, Supabase, Tailwind CSS  
+Results: Strengthened my frontend development skills by building role-based interfaces, structured form workflows, dashboard pages, and connected data flows for assessment records and application tracking.  
+GitHub Link: https://github.com/tapaycyrickkyle/tesda-e-assess  
+Image Alt: TESDA E-Assess web portal login and assessment workflow dashboard for applicants, teachers, admins, and assessment centers.

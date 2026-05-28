@@ -1,0 +1,10 @@
+<svg role="img" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
+  <title>Tauri</title>
+  <g fill="#000" stroke="#000" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="64" cy="64" r="13" stroke="none"/>
+    <path d="M23 70C28 37 55 18 87 22C95 23 102 26 108 30" stroke-width="9" fill="none"/>
+    <path d="M104 58C99 91 72 110 40 106C32 105 25 102 19 98" stroke-width="9" fill="none"/>
+    <circle cx="104" cy="36" r="8" stroke="none"/>
+    <circle cx="24" cy="92" r="8" stroke="none"/>
+  </g>
+</svg>

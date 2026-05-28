@@ -117,15 +117,15 @@ export default function SectionNav({
         />
       </div>
       <div className="nav-shell border-b border-outline/60">
-        <div className="mx-auto grid h-[68px] max-w-7xl grid-cols-[auto_1fr_auto] items-center gap-4 px-[var(--page-gutter)] md:h-[72px] md:grid-cols-[1fr_auto_1fr]">
+        <div className="mx-auto grid h-[68px] max-w-[86rem] grid-cols-[auto_1fr_auto] items-center gap-2 px-[var(--page-gutter)] sm:gap-4 md:h-[72px] md:grid-cols-[1fr_auto_1fr]">
           <a
             href="#top"
             className="nav-brand text-lg font-semibold tracking-[-0.12em] text-foreground md:text-xl"
           >
-            CY.DEV
+            Cyrick.Tapay
           </a>
 
-          <nav className="nav-row hidden items-center gap-1.5 md:flex">
+          <nav className="nav-row hidden items-center gap-1 md:flex lg:gap-1.5">
             {navigation.map((item) => {
               const isActive = activeId === getIdFromHref(item.href);
 
@@ -170,7 +170,7 @@ export default function SectionNav({
           onClick={() => setMenuOpen(false)}
         />
         <div
-          className={`mobile-nav-sheet absolute inset-x-[var(--page-gutter)] top-[80px] border border-outline p-3 shadow-[var(--shadow-panel)] transition-all duration-300 sm:top-[84px] sm:p-4 ${
+          className={`mobile-nav-sheet fixed inset-x-[var(--page-gutter)] top-[80px] z-50 border border-outline p-3 shadow-[var(--shadow-panel)] transition-all duration-300 sm:top-[84px] sm:p-4 ${
             menuOpen
               ? "translate-y-0 opacity-100"
               : "-translate-y-4 opacity-0"

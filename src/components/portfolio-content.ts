@@ -17,10 +17,15 @@ export type ProjectItem = {
   summary: string;
   tags: string[];
   image: string;
+  images?: string[];
   alt: string;
   status: string;
+  role?: string;
+  projectType?: string;
+  year?: string;
   focus: string[];
   outcomes: string[];
+  githubLink?: string;
 };
 
 export type LearningStep = {
@@ -128,7 +133,7 @@ export const introCards: IntroCard[] = [
   },
 ];
 
-export const projects: ProjectItem[] = [
+export const fallbackProjects: ProjectItem[] = [
   {
     title: "TESDA E-Forms",
     description:
@@ -284,12 +289,21 @@ export const techStackItems: TechStackItem[] = [
     invertInDark: true,
   },
   {
+    label: "Tauri",
+    logoSrc: "/brand-icons/tauri-monochrome.svg",
+    invertInDark: true,
+  },
+  {
     icon: "terminal",
     label: "AI Tools",
   },
   {
     icon: "camera",
     label: "Editing",
+  },
+  {
+    icon: "brush",
+    label: "Drawing",
   },
   {
     label: "Photoshop",
@@ -316,19 +330,9 @@ export const futureAreas: FutureArea[] = [
     description: "Creating responsive, fast-loading web apps.",
   },
   {
-    icon: "brush",
-    title: "Front-End",
-    description: "Bridging the gap between design and code.",
-  },
-  {
     icon: "figma",
     title: "UI/UX",
     description: "Designing clearer interfaces and smoother user experiences.",
-  },
-  {
-    icon: "lifebuoy",
-    title: "System Support",
-    description: "Troubleshooting and maintaining IT infrastructure.",
   },
   {
     icon: "database",
@@ -349,98 +353,16 @@ export const futureAreas: FutureArea[] = [
   },
 ];
 
-export const mediaEdits: MediaEditItem[] = [
-  {
-    title: "Portrait Retouch Study",
-    label: "Photo Editing",
-    description:
-      "I enjoy refining portraits through cleaner tone balance, contrast control, and a more polished final presentation.",
-    image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuDzkDu6EAuwiL4CvbvnEET9maquMsah0xt34Hdz6tpj3vlAK5aSI2mMnl3glw6ebY4HpKbXlvvvqtRauGg3RELnWt-koHZTGKHIzFpxXSAAaKJiWgcaBXd_Np6j3g9cwVIptAQYOLmEHfJCEqadc9S0stjg0yhKmTqKLinlaNLgZseWd__Go3WUeT1vWE7OopnR3wJyOfd352WE_6LCVcB34CwQQumhOnrNxq2Jn2BYNxhbO9L5H2wdbS1zZuGCAdiNOFL3FUeMcls",
-    alt: "A portrait editing study with polished tones and a clean editorial feel.",
-  },
-  {
-    title: "Visual Layout Polish",
-    label: "Picture Editing",
-    description:
-      "I also work on presentation-focused edits where composition, clarity, and cleaner details help visuals feel stronger.",
-    image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuColpyjhZdhX-RTLoHRuJsgmp7GksMBrW2gbkDXr0ftNe64eZgtJAJFf-15YZMfJwAXAWnwRpOYieZsM0ss6KfSHBT2LUk_C_yW-PIA9LJ4Y4bFDXH7nQpj5HTrbJ00PYRY_NuLjh0nyeAO0ae2Gg9NnekrSM9aCBplaC-ZZHbvSU1KNbTGaiTBtI9foY5Zin44TVNM7dvPCjeVhf5fRNK9CzIffMnknct-PqRibXxUF1TWvIz5eS4fXTs9_A2Evjbdx2MlWaT5feU",
-    alt: "A polished visual editing study shown on a laptop display.",
-  },
-  {
-    title: "Short-form Video Frames",
-    label: "Video Editing",
-    description:
-      "For video work, I like shaping simple cuts, cleaner pacing, and stronger visual flow so the final edit feels more engaging.",
-    image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuBIICtikNjKA2eTYibfRmS7H2-wETV8eeBylp3j_q-qmZAtFDS6yqLJhsHRk0gVe86k_tCM2LdUTX-uyXpc27h_34HRmhaH607vlVJv9lH-Fv3dgW3AU7LIwrrH-F2iyWx_8tM32z-n5zn1qDWqbmIRFEgphsO52VOqfcVG6hycYuQqHj4D6XuTKB_jfZEpRfAMNULt544qmB7UAgUCYR0hVDQ11ixZetQGc6Usk1_cNsET8mACi7uyy3PfEYkcgezv_yjyI3mJIO0",
-    alt: "A visual study representing short-form video editing and polished presentation frames.",
-  },
-  {
-    title: "Portrait Tone Cleanup",
-    label: "Photo Editing",
-    description:
-      "A portrait-focused study where I refine tonal balance, edge cleanup, and overall presentation for a more polished result.",
-    image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuDzkDu6EAuwiL4CvbvnEET9maquMsah0xt34Hdz6tpj3vlAK5aSI2mMnl3glw6ebY4HpKbXlvvvqtRauGg3RELnWt-koHZTGKHIzFpxXSAAaKJiWgcaBXd_Np6j3g9cwVIptAQYOLmEHfJCEqadc9S0stjg0yhKmTqKLinlaNLgZseWd__Go3WUeT1vWE7OopnR3wJyOfd352WE_6LCVcB34CwQQumhOnrNxq2Jn2BYNxhbO9L5H2wdbS1zZuGCAdiNOFL3FUeMcls",
-    alt: "A portrait retouching study with balanced tones and a cleaner editorial finish.",
-  },
-  {
-    title: "Interface Poster Treatment",
-    label: "Picture Editing",
-    description:
-      "A presentation-oriented visual where composition, contrast, and framing are adjusted to make the interface feel more intentional.",
-    image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuColpyjhZdhX-RTLoHRuJsgmp7GksMBrW2gbkDXr0ftNe64eZgtJAJFf-15YZMfJwAXAWnwRpOYieZsM0ss6KfSHBT2LUk_C_yW-PIA9LJ4Y4bFDXH7nQpj5HTrbJ00PYRY_NuLjh0nyeAO0ae2Gg9NnekrSM9aCBplaC-ZZHbvSU1KNbTGaiTBtI9foY5Zin44TVNM7dvPCjeVhf5fRNK9CzIffMnknct-PqRibXxUF1TWvIz5eS4fXTs9_A2Evjbdx2MlWaT5feU",
-    alt: "An interface-focused visual edit with stronger framing and cleaner presentation.",
-  },
-  {
-    title: "Motion Frame Polish",
-    label: "Video Editing",
-    description:
-      "A short-form frame study where I shape visual pacing and more engaging composition for a cleaner final cut.",
-    image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuBIICtikNjKA2eTYibfRmS7H2-wETV8eeBylp3j_q-qmZAtFDS6yqLJhsHRk0gVe86k_tCM2LdUTX-uyXpc27h_34HRmhaH607vlVJv9lH-Fv3dgW3AU7LIwrrH-F2iyWx_8tM32z-n5zn1qDWqbmIRFEgphsO52VOqfcVG6hycYuQqHj4D6XuTKB_jfZEpRfAMNULt544qmB7UAgUCYR0hVDQ11ixZetQGc6Usk1_cNsET8mACi7uyy3PfEYkcgezv_yjyI3mJIO0",
-    alt: "A refined short-form video frame with polished composition and stronger visual rhythm.",
-  },
-  {
-    title: "Editorial Portrait Pass",
-    label: "Photo Editing",
-    description:
-      "A portrait edit where I focus on consistency, clarity, and small refinements that make the final visual feel more complete.",
-    image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuDzkDu6EAuwiL4CvbvnEET9maquMsah0xt34Hdz6tpj3vlAK5aSI2mMnl3glw6ebY4HpKbXlvvvqtRauGg3RELnWt-koHZTGKHIzFpxXSAAaKJiWgcaBXd_Np6j3g9cwVIptAQYOLmEHfJCEqadc9S0stjg0yhKmTqKLinlaNLgZseWd__Go3WUeT1vWE7OopnR3wJyOfd352WE_6LCVcB34CwQQumhOnrNxq2Jn2BYNxhbO9L5H2wdbS1zZuGCAdiNOFL3FUeMcls",
-    alt: "An editorial-style portrait edit with a polished and consistent visual finish.",
-  },
-  {
-    title: "Layout Presentation Study",
-    label: "Picture Editing",
-    description:
-      "A visual polish exercise centered on stronger composition, spacing, and cleaner presentation for a more refined image.",
-    image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuColpyjhZdhX-RTLoHRuJsgmp7GksMBrW2gbkDXr0ftNe64eZgtJAJFf-15YZMfJwAXAWnwRpOYieZsM0ss6KfSHBT2LUk_C_yW-PIA9LJ4Y4bFDXH7nQpj5HTrbJ00PYRY_NuLjh0nyeAO0ae2Gg9NnekrSM9aCBplaC-ZZHbvSU1KNbTGaiTBtI9foY5Zin44TVNM7dvPCjeVhf5fRNK9CzIffMnknct-PqRibXxUF1TWvIz5eS4fXTs9_A2Evjbdx2MlWaT5feU",
-    alt: "A clean layout presentation study with stronger spacing and composition.",
-  },
-  {
-    title: "Sequence Flow Refinement",
-    label: "Video Editing",
-    description:
-      "A pacing-focused edit study where I improve frame flow, cut clarity, and the overall rhythm of the sequence.",
-    image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuBIICtikNjKA2eTYibfRmS7H2-wETV8eeBylp3j_q-qmZAtFDS6yqLJhsHRk0gVe86k_tCM2LdUTX-uyXpc27h_34HRmhaH607vlVJv9lH-Fv3dgW3AU7LIwrrH-F2iyWx_8tM32z-n5zn1qDWqbmIRFEgphsO52VOqfcVG6hycYuQqHj4D6XuTKB_jfZEpRfAMNULt544qmB7UAgUCYR0hVDQ11ixZetQGc6Usk1_cNsET8mACi7uyy3PfEYkcgezv_yjyI3mJIO0",
-    alt: "A sequence refinement study with smoother pacing and clearer visual transitions.",
-  },
-  {
-    title: "Creative Display Mockup",
-    label: "Picture Editing",
-    description:
-      "A presentation-driven visual where I explore stronger contrast, hierarchy, and cleaner layout framing.",
-    image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuColpyjhZdhX-RTLoHRuJsgmp7GksMBrW2gbkDXr0ftNe64eZgtJAJFf-15YZMfJwAXAWnwRpOYieZsM0ss6KfSHBT2LUk_C_yW-PIA9LJ4Y4bFDXH7nQpj5HTrbJ00PYRY_NuLjh0nyeAO0ae2Gg9NnekrSM9aCBplaC-ZZHbvSU1KNbTGaiTBtI9foY5Zin44TVNM7dvPCjeVhf5fRNK9CzIffMnknct-PqRibXxUF1TWvIz5eS4fXTs9_A2Evjbdx2MlWaT5feU",
-    alt: "A creative display mockup with cleaner contrast and more intentional framing.",
-  },
-];
+export function formatEditedVisualTitle(imagePath: string) {
+  const fileName = imagePath.split("/").pop() ?? imagePath;
+  const baseName = fileName.replace(/\.[^.]+$/, "");
+
+  return baseName
+    .replace(/[._-]+/g, " ")
+    .replace(/\s+/g, " ")
+    .trim()
+    .replace(/\b\w/g, (char) => char.toUpperCase());
+}
 
 export const contactLinks: SocialLink[] = [
   {

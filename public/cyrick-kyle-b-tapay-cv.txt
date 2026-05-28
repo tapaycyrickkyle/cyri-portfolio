@@ -2,17 +2,18 @@ Cyrick Kyle B. Tapay
 Dolores, Eastern Samar, Philippines
 
 OBJECTIVE
-IT student focused on front-end development, UI implementation, and practical AI-assisted workflows. Interested in internships, junior roles, and project-based opportunities where I can keep learning while contributing useful digital work.
+IT student mainly focused on web development and practical AI-assisted workflows, while also exploring mobile and desktop app development to keep expanding my knowledge across different areas and become more flexible in what I can build. I also make an effort to stay updated with current technologies, especially AI, and I actively explore how they can be used as practical tools in development. Interested in internships, junior roles, and project-based opportunities where I can keep learning while contributing useful digital work.
 
 PROFILE
-- Focused on front-end development, interface structure, and practical usability
-- Interested in building useful, understandable, and well-structured digital experiences
+- Focused mainly on web development while also exploring mobile and desktop app development to become more flexible
+- Interested in building useful, understandable, and well-structured digital solutions across different platforms
 - Learning through project work, iteration, and continuous improvement
 - Motto: We never stop learning
 
 CORE INTERESTS
-- Front-End Development
-- UI Implementation
+- Web Development
+- Mobile App Development
+- Desktop App Development
 - Web Interfaces
 - Practical AI Workflows
 - UI/UX Design
@@ -35,6 +36,7 @@ SKILLS
 - Git
 - Documentation
 - Git / GitHub
+- Drawing
 - Photoshop
 - Filmora
 - CapCut
@@ -58,6 +60,9 @@ PROJECTS
 EDUCATION
 Bachelor of Science in Information Technology
 
+ELIGIBILITY
+Career Service Professional Eligibility
+
 LOCATION
 Dolores, E. Samar
 
@@ -65,4 +70,4 @@ CONTACT
 Email: tapaycyrickkyle@gmail.com
 GitHub: https://github.com/tapaycyrickkyle
 LinkedIn: https://www.linkedin.com/in/tapay-cyrick-3593b032b/
-Portfolio: CY.DEV
+Portfolio: Cyrick.Tapay

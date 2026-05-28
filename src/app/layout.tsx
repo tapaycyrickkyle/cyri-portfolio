@@ -8,9 +8,9 @@ import "./globals.css";
 config.autoAddCss = false;
 
 export const metadata: Metadata = {
-  title: "CY.DEV | IT Student Portfolio",
+  title: "Cyrick.Tapay | Portfolio",
   description:
-    "Portfolio of an IT student building web projects, learning systems design, and growing through thoughtful interfaces.",
+    "Portfolio focused on web development, practical workflows, and growth through real project work across web, mobile, and desktop apps.",
 };
 
 export const viewport: Viewport = {

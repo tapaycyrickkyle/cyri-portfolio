@@ -1,0 +1,10 @@
+Project Title: CrispyChicken Ordering System  
+Role: Full Stack Developer  
+Project Type: Student Project  
+Year: 2025  
+Status: Completed  
+Overview: A web-based food ordering system built as a practice Jollibee-style website, designed to let customers browse menus, add items to cart, place orders, and manage account-related actions, while giving admins tools to manage menus, promos, and orders.  
+Technologies: PHP, MySQL, HTML, CSS, JavaScript, Bootstrap  
+Results: Improved my skills in web development, database integration, CRUD operations, and building customer/admin workflows for an ordering platform.  
+GitHub Link: https://github.com/tapaycyrickkyle/ordering-system  
+Image Alt: CrispyChicken Jollibee-style food ordering website interface with menu, cart, checkout, and admin management pages.

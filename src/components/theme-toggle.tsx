@@ -33,6 +33,10 @@ function subscribe(callback: () => void) {
   };
 }
 
+function subscribeHydration() {
+  return () => {};
+}
+
 function applyTheme(isDark: boolean) {
   document.documentElement.classList.toggle("dark", isDark);
   document.documentElement.style.colorScheme = isDark ? "dark" : "light";
@@ -41,6 +45,11 @@ function applyTheme(isDark: boolean) {
 
 export default function ThemeToggle() {
   const isDark = useSyncExternalStore(subscribe, getThemeSnapshot, () => false);
+  const mounted = useSyncExternalStore(
+    subscribeHydration,
+    () => true,
+    () => false,
+  );
 
   useEffect(() => {
     const storedTheme = window.localStorage.getItem(STORAGE_KEY);
@@ -61,38 +70,44 @@ export default function ThemeToggle() {
     window.localStorage.setItem(STORAGE_KEY, nextTheme ? "dark" : "light");
   }
 
+  const effectiveIsDark = mounted ? isDark : false;
+  const buttonLabel = mounted
+    ? effectiveIsDark
+      ? "Switch to light mode"
+      : "Switch to dark mode"
+    : "Toggle color theme";
+
   return (
     <button
+      suppressHydrationWarning
       type="button"
       onClick={handleToggle}
-      aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
-      aria-pressed={isDark}
+      aria-label={buttonLabel}
+      aria-pressed={effectiveIsDark}
       className="theme-switch group"
     >
       <span className="theme-track">
         <span
-          className={`theme-thumb ${isDark ? "theme-thumb-dark" : "theme-thumb-light"}`}
+          className={`theme-thumb ${effectiveIsDark ? "theme-thumb-dark" : "theme-thumb-light"}`}
         >
           <span className="theme-thumb-glow" />
           <span
-            className={`theme-icon-stack ${isDark ? "theme-icon-stack-dark" : "theme-icon-stack-light"}`}
+            className={`theme-icon-stack ${effectiveIsDark ? "theme-icon-stack-dark" : "theme-icon-stack-light"}`}
           >
             <FontAwesomeIcon
               icon={faMoon}
-              className={`theme-core-icon ${isDark ? "theme-core-icon-visible" : "theme-core-icon-hidden"}`}
+              className={`theme-core-icon ${effectiveIsDark ? "theme-core-icon-visible" : "theme-core-icon-hidden"}`}
             />
             <FontAwesomeIcon
               icon={faSun}
-              className={`theme-core-icon ${isDark ? "theme-core-icon-hidden" : "theme-core-icon-visible"}`}
+              className={`theme-core-icon ${effectiveIsDark ? "theme-core-icon-hidden" : "theme-core-icon-visible"}`}
             />
           </span>
         </span>
       </span>
 
       <span className="theme-switch-label hidden sm:inline-flex">
-        <span className="theme-switch-text">
-          {isDark ? "Dark" : "Light"}
-        </span>
+        <span className="theme-switch-text">{effectiveIsDark ? "Dark" : "Light"}</span>
       </span>
     </button>
   );
