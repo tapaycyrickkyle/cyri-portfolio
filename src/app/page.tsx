@@ -281,7 +281,7 @@ export default async function Home() {
             <Reveal className="space-y-8">
               <SectionHeading
                 title="Who I Am"
-                description="I&apos;m Cyrick Kyle B. Tapay, focused mainly on web development while continuing to grow across mobile and desktop app development."
+                description="I&apos;m Cyrick Kyle B. Tapay, focused on web development while continuing to grow across mobile and desktop application development."
               />
               <div className="space-y-4 text-base leading-7 text-muted sm:text-lg sm:leading-8">
                 <p>
@@ -292,15 +292,17 @@ export default async function Home() {
                 </p>
                 <p>
                   <span className="scan-highlight-soft">Web development</span> is my main focus, but I also explore <span className="scan-highlight-soft">mobile</span>
-                  and <span className="scan-highlight-soft">desktop apps</span> to keep expanding my knowledge and become
-                  more flexible in what I can build. I&apos;m still early in my
-                  career, but I take <span className="scan-highlight-soft">iteration</span> seriously and I like turning
-                  each build into something more disciplined than the last one.
+                  and <span className="scan-highlight-soft">desktop applications</span> to keep expanding my knowledge and stay
+                  flexible across different platforms. I&apos;m still early in my
+                  career, but I take <span className="scan-highlight-soft">iteration</span> seriously and aim to make
+                  each build more disciplined, practical, and polished than the
+                  last one.
                 </p>
                 <p>
-                  I stay updated with current technologies, especially <span className="scan-highlight-soft">AI</span>, and
-                  I explore how they can be used as practical tools to improve
-                  <span className="scan-highlight-soft">workflow</span> and build better solutions.
+                  I stay updated with current technologies, especially <span className="scan-highlight-soft">AI</span> and
+                  <span className="scan-highlight-soft"> automation</span>, and I use them as practical tools to improve
+                  <span className="scan-highlight-soft"> workflows</span>, efficiency, and the way I solve real-world
+                  development problems.
                 </p>
               </div>
               <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
