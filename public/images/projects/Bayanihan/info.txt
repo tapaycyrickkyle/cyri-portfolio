@@ -1,7 +1,7 @@
 Project Title: Bayanihan  
 Role: Full-Stack Developer  
 Project Type: Student Project  
-Year: 2025  
+Year: October 2025  
 Status: Completed  
 Overview: A web-based community issue reporting and monitoring system where residents can post local concerns, upload photos, upvote urgent issues, and interact with admins through comments and status updates.  
 Technologies: PHP, MySQL, JavaScript, Tailwind CSS, DaisyUI  

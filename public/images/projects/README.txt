@@ -16,7 +16,7 @@ If there is no `cover.*`, the site will use the first image file it finds.
 Required `info.txt` format:
 
 Project Title: TESDA E-Assess
-Role: Frontend Developer
+Role: Full-Stack Developer
 Project Type: Student Project
 Year: 2026
 Status: Completed
