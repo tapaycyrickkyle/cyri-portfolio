@@ -48,7 +48,7 @@ export default async function Home() {
     <div id="top" className="page-shell relative isolate overflow-x-clip">
       <SectionNav navigation={navigation} />
 
-      <main className="pt-[4.65rem] sm:pt-20 md:pt-24 xl:pt-24">
+      <main style={{ paddingTop: "var(--nav-offset)" }}>
         <section className="section-shell section-hero grid gap-6 sm:gap-8 lg:grid-cols-[minmax(0,1.04fr)_minmax(17rem,0.96fr)] lg:items-start lg:gap-8 xl:grid-cols-[minmax(0,1.08fr)_minmax(18rem,0.92fr)] xl:gap-10">
           <Reveal className="hero-copy space-y-6 md:space-y-7">
             <div className="space-y-5 md:space-y-6">
