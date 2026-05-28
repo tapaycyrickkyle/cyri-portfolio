@@ -352,7 +352,7 @@ export default async function Home() {
                     <div className="profile-showcase-caption">
                       <span className="profile-showcase-kicker">Cyrick.Tapay</span>
                       <span className="profile-showcase-rule" />
-                      <span className="profile-showcase-role">Web Development</span>
+                      <span className="profile-showcase-role">IT</span>
                     </div>
                   </div>
                 </div>

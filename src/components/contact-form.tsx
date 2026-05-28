@@ -128,7 +128,6 @@ export default function ContactForm({ email }: { email: string }) {
           className="form-field resize-none"
         />
         <div className="flex flex-col items-start gap-2 text-sm text-muted sm:flex-row sm:items-center sm:justify-between sm:gap-3">
-          <span>Best for project ideas, internship inquiries, or introductions.</span>
           <span className="shrink-0 font-mono text-[11px] uppercase tracking-[0.18em] text-muted-soft">
             {form.message.length}/1200
           </span>
