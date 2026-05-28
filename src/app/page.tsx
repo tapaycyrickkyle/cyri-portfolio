@@ -68,12 +68,13 @@ export default async function Home() {
                 Building, learning, and improving through real-world projects.
               </h1>
               <p className="max-w-3xl text-[0.97rem] leading-7 text-muted sm:text-base md:text-[1rem] md:leading-8 lg:max-w-2xl lg:text-[1.02rem] xl:max-w-3xl xl:text-[1.08rem]">
-                I&apos;m mainly focused on <span className="scan-highlight-soft">web development</span>, while also
-                exploring <span className="scan-highlight-soft">mobile</span> and <span className="scan-highlight-soft">desktop apps</span> to stay flexible. I stay
-                updated with current technologies, especially <span className="scan-highlight-soft">AI</span>, and use them
-                as practical tools to improve my <span className="scan-highlight-soft">workflow</span> and development
-                process. I&apos;m looking for opportunities where I can keep
-                learning while <span className="scan-highlight-soft">contributing useful work</span>.
+                I&apos;m focused on <span className="scan-highlight-soft">web development</span>, while also exploring
+                <span className="scan-highlight-soft"> mobile</span> and <span className="scan-highlight-soft">desktop applications</span> to stay flexible across
+                platforms. I stay updated with current technologies, especially
+                <span className="scan-highlight-soft"> AI</span> and <span className="scan-highlight-soft">automation</span>, and use them as practical tools to improve
+                <span className="scan-highlight-soft"> workflows</span>, efficiency, and problem-solving. I&apos;m currently
+                seeking opportunities to <span className="scan-highlight-soft">contribute</span>, learn, and grow through
+                real-world development work.
               </p>
             </div>
 
