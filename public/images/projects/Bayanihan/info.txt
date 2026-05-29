@@ -3,8 +3,8 @@ Role: Full-Stack Developer
 Project Type: Student Project  
 Year: October 2025  
 Status: Completed  
-Overview: A web-based community issue reporting and monitoring system where residents can post local concerns, upload photos, upvote urgent issues, and interact with admins through comments and status updates.  
+Overview: A web-based community issue reporting and monitoring system that allows residents to post local concerns, upload photos, highlight urgent issues through upvotes, and interact with administrators through comments and status updates.  
 Technologies: PHP, MySQL, JavaScript, Tailwind CSS, DaisyUI  
-Results: Improved my skills in building full web app workflows, designing responsive interfaces, handling authentication, and connecting frontend features with database-driven admin and user dashboards.  
+Results: Developed a community reporting platform with responsive interfaces, authentication flows, and database-driven dashboards for both residents and administrators, strengthening my experience in full-stack web development.  
 GitHub Link: https://github.com/tapaycyrickkyle/bayanihan
 Image Alt: Bayanihan community issue reporting dashboard with resident posts, status tracking, and admin moderation tools.

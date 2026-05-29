@@ -3,8 +3,8 @@ Role: Full-Stack Developer
 Project Type: Educational Web and Mobile App  
 Year: February 2026 - April 2026  
 Status: Completed  
-Overview: A mobile learning application supported by a web-based admin portal for managing educational content, images, and audio across multiple learning categories and platform assets.  
+Overview: A mobile learning application supported by a web-based administrative portal for managing educational content, images, and audio across multiple learning categories and platform assets.  
 Technologies: Next.js, React, TypeScript, Supabase, Android Studio  
-Results: Developed a mobile learning application with a web-based content management portal for handling educational media and assets, improving content delivery and maintenance across the platform.  
+Results: Developed a mobile learning application with a web-based content management portal for handling educational media and assets, improving content delivery and platform maintenance.  
 GitHub Link: https://github.com/tapaycyrickkyle/alpha-nova-kids  
-Image Alt: Alpha Nova Kids admin portal and mobile learning app for managing children’s educational content and media.
+Image Alt: Alpha Nova Kids admin portal and mobile learning app for managing children's educational content and media.  

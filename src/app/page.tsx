@@ -83,13 +83,13 @@ export default async function Home() {
                 View My Work
                 <Icon name="arrow" className="size-4" />
               </a>
-              <a
-                href="/cyrick-kyle-b-tapay-cv.txt"
-                download="Cyrick-Kyle-B-Tapay-CV.txt"
-                className="secondary-button w-full sm:w-auto"
+              <span
+                aria-disabled="true"
+                title="CV download coming soon"
+                className="secondary-button w-full cursor-not-allowed opacity-60 sm:w-auto"
               >
                 Download CV
-              </a>
+              </span>
               <a href="#contact" className="secondary-button w-full sm:w-auto">
                 Contact Me
               </a>

@@ -1,10 +1,10 @@
 Project Title: TESDA E-Assess  
 Role: Full-Stack Developer  
 Project Type: Group Capstone Project  
-Year: April 2026 - Present  
+Year: March 2026 - Present  
 Status: Ongoing  
-Overview: A group capstone web-based assessment application and workflow management system for the TESDA Eastern Samar Provincial Office, built to support applicants, teachers, admins, and assessment centers through submission, review, assignment, and record-tracking flows.  
+Overview: A group capstone web-based assessment application and workflow management system for the TESDA Eastern Samar Provincial Office, designed to support applicants, teachers, administrators, and assessment centers through submission, review, assignment, and record-tracking workflows.  
 Technologies: Next.js, React, TypeScript, Supabase, Tailwind CSS  
-Results: Developed role-based interfaces, structured form workflows, and dashboard pages with connected Supabase-backed data flows, improving assessment records management and application tracking within a collaborative capstone project.  
+Results: Developed role-based interfaces, structured form workflows, and dashboard pages with Supabase-connected data flows, improving assessment record management and application tracking within a collaborative capstone project.  
 GitHub Link: https://github.com/tapaycyrickkyle/tesda-e-assess  
 Image Alt: TESDA E-Assess web portal login and assessment workflow dashboard for applicants, teachers, admins, and assessment centers.

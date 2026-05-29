@@ -3,9 +3,8 @@ Role: Full-Stack Developer
 Project Type: Personal Project  
 Year: May 2026  
 Status: Completed  
-Overview: A desktop productivity timer app that switches from work mode to a fullscreen rest screen using a custom green screen video and optional audio.  
+Overview: A desktop productivity timer application that transitions from work mode to a fullscreen rest screen using a custom green screen video and optional audio, and is now available in the Microsoft Store.  
 Technologies: React, TypeScript, Tauri, Vite, IndexedDB  
-Results: Strengthened my full-stack development skills by building desktop app UI flows, local data handling with IndexedDB, media controls, and timer-based interactions in a complete solo productivity tool.  
+Results: Developed a desktop productivity application with timer-based interactions, media controls, and local data handling through IndexedDB, strengthening my experience in desktop application development and shipping a published desktop app through the Microsoft Store.  
 GitHub Link: https://github.com/tapaycyrickkyle/doro  
 Image Alt: Doro desktop timer app with work and rest controls, video upload, and custom audio options.
-Available in the Microsoft Store

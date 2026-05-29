@@ -1,11 +1,11 @@
 Project Title: Business Chatbot  
 Role: Full-Stack Developer  
 Project Type: Web Application  
-Year: April 2026  
-Status: Completed  
-Overview: A full-stack web-based admin dashboard for managing Facebook Page chatbot clients, FAQ content, and AI/keyword-based conversation workflows.  
+Year: April 2026 - Present  
+Status: Ongoing  
+Overview: A full-stack administrative dashboard for managing Facebook Page chatbot clients, FAQ content, and AI- and keyword-based conversation workflows. The core features are already implemented, and the project remains ongoing as additional functionality continues to be developed.  
 Technologies: Next.js, React, TypeScript, Supabase  
-Results: Strengthened my full-stack development skills by building dashboard UI flows, authentication, API-connected chatbot management features, and structured tools for handling FAQ content and conversation workflows.  
+Results: Developed a working administrative dashboard with authentication, API-connected chatbot management features, and structured tools for handling FAQ content and conversation workflows, with ongoing improvements through additional feature development.  
 GitHub Link: https://github.com/tapaycyrickkyle/chatbot-ai  
 Deployed Link: https://chatbot-ai-sw3r.vercel.app/sign-in  
 Image Alt: Business Chatbot admin dashboard for managing connected Facebook Pages, FAQs, and chatbot workflows.
