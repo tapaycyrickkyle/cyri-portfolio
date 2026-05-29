@@ -43,6 +43,7 @@ export default async function Home() {
   const year = new Date().getFullYear();
   const projects = await getProjects();
   const mediaEdits = await getMediaEdits();
+  const formspreeEndpoint = process.env.NEXT_PUBLIC_FORMSPREE_ENDPOINT;
 
   return (
     <div id="top" className="page-shell relative isolate overflow-x-clip">
@@ -394,7 +395,10 @@ export default async function Home() {
             </Reveal>
 
             <Reveal delay={120}>
-              <ContactForm email="tapaycyrickkyle@gmail.com" />
+              <ContactForm
+                email="tapaycyrickkyle@gmail.com"
+                endpoint={formspreeEndpoint}
+              />
             </Reveal>
           </div>
         </section>
