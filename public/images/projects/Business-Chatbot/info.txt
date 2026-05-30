@@ -1,4 +1,4 @@
-Project Title: Business Chatbot  
+Project Title: Business Chatbot AI  
 Role: Full-Stack Developer  
 Project Type: Web Application  
 Year: April 2026 - Present  
