@@ -8,7 +8,7 @@ import "./globals.css";
 config.autoAddCss = false;
 
 export const metadata: Metadata = {
-  title: "Cyrick.Tapay | Portfolio",
+  title: "Cyrick Tapay | Portfolio",
   description:
     "Portfolio focused on web development, practical workflows, and growth through real project work across web, mobile, and desktop apps.",
   icons: {
