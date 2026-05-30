@@ -260,6 +260,7 @@ export const techStackItems: TechStackItem[] = [
   {
     label: "Flutter",
     logoSrc: "/brand-icons/flutter.svg",
+    invertInDark: true,
   },
   {
     label: "Next.js",
