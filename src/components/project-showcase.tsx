@@ -63,6 +63,14 @@ export default function ProjectShowcase({
     setActiveImageIndex((current) => (current + 1) % projectImages.length);
   }
 
+  function handleAskAboutProject() {
+    setSelectedProject(null);
+    window.requestAnimationFrame(() => {
+      document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
+      window.history.replaceState(null, "", "#contact");
+    });
+  }
+
   return (
     <>
       <section id="work" className="section-shell">
@@ -370,9 +378,14 @@ export default function ProjectShowcase({
                 </div>
 
                 <div className="sticky bottom-0 z-10 flex flex-col gap-2.5 border-t border-outline bg-surface/95 px-0 pb-[max(0.5rem,env(safe-area-inset-bottom))] pt-3 backdrop-blur sm:static sm:border-0 sm:bg-transparent sm:px-0 sm:py-2 sm:backdrop-blur-0 sm:flex-row sm:flex-wrap">
-                  <a href="#contact" className="primary-button w-full sm:w-auto">
+                  <button
+                    suppressHydrationWarning
+                    type="button"
+                    onClick={handleAskAboutProject}
+                    className="primary-button w-full sm:w-auto"
+                  >
                     Ask About This Project
-                  </a>
+                  </button>
                   {selectedProject.githubLink ? (
                     <a
                       href={selectedProject.githubLink}

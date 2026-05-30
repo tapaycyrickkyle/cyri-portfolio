@@ -127,13 +127,13 @@ export default async function Home() {
                 <div className="hero-info-icon">
                   <Icon name="terminal" className="size-5" />
                 </div>
-                <div>
-                  <p className="hero-info-kicker">Current Focus</p>
-                  <p className="hero-info-copy">
-                    <span className="scan-highlight-soft">Web development</span> first, while continuing to explore <span className="scan-highlight-soft">mobile</span> and <span className="scan-highlight-soft">desktop apps</span>.
-                  </p>
-                </div>
-              </article>
+                  <div>
+                    <p className="hero-info-kicker">Current Focus</p>
+                    <p className="hero-info-copy">
+                      Web development first, while continuing to explore mobile and desktop apps.
+                    </p>
+                  </div>
+                </article>
 
               <div className="hero-side-grid">
                 <article className="surface-card hero-info-card">
@@ -155,7 +155,7 @@ export default async function Home() {
                   <div>
                     <p className="hero-info-kicker">Available For</p>
                     <p className="hero-info-copy">
-                      <span className="scan-highlight-soft">Internships</span>, <span className="scan-highlight-soft">junior roles</span>, and collaborative projects where I can learn fast and <span className="scan-highlight-soft">contribute useful work</span>.
+                      Internships, junior roles, and collaborative projects where I can learn fast and contribute useful work.
                     </p>
                   </div>
                 </article>
@@ -165,16 +165,13 @@ export default async function Home() {
                 <div className="hero-info-icon">
                   <Icon name="globe" className="size-5" />
                 </div>
-                <div>
-                  <p className="hero-info-kicker">Eligibility</p>
-                  <p className="hero-info-copy">
-                    <span className="scan-highlight-soft">
-                      Career Service Professional Eligibility
-                    </span>
-                    , supporting readiness for formal and public-sector
-                    opportunities.
-                  </p>
-                </div>
+                  <div>
+                    <p className="hero-info-kicker">Eligibility</p>
+                    <p className="hero-info-copy">
+                      Career Service Professional Eligibility, supporting readiness for formal and public-sector
+                      opportunities.
+                    </p>
+                  </div>
               </article>
             </div>
           </Reveal>
