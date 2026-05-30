@@ -84,13 +84,13 @@ export default async function Home() {
                 View My Work
                 <Icon name="arrow" className="size-4" />
               </a>
-              <span
-                aria-disabled="true"
-                title="CV download coming soon"
-                className="secondary-button w-full cursor-not-allowed opacity-60 sm:w-auto"
+              <a
+                href="/resume/Resume-Cyrick%20Kyle%20Tapay.pdf"
+                download="Resume-Cyrick-Kyle-Tapay.pdf"
+                className="secondary-button w-full sm:w-auto"
               >
-                Download CV
-              </span>
+                Download Resume
+              </a>
               <a href="#contact" className="secondary-button w-full sm:w-auto">
                 Contact Me
               </a>
@@ -143,7 +143,7 @@ export default async function Home() {
                   <div>
                     <p className="hero-info-kicker">Building With</p>
                     <p className="hero-info-copy">
-                      Next.js, React, Supabase, Tauri, Git, Figma, and practical modern development tools.
+                      Next.js, React, Flutter, Supabase, Tauri, Git, Figma, and practical modern development tools.
                     </p>
                   </div>
                 </article>
@@ -233,7 +233,7 @@ export default async function Home() {
           <Reveal>
             <SectionHeading
               title="Skills I am Practicing"
-              description="The core tools and platforms I keep using as I grow in web development and continue exploring other kinds of app development."
+              description="The core tools and platforms I keep using as I grow across web development while continuing to build for mobile and desktop too."
             />
           </Reveal>
 
