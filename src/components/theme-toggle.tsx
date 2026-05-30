@@ -43,7 +43,13 @@ function applyTheme(isDark: boolean) {
   window.dispatchEvent(new Event(THEME_EVENT));
 }
 
-export default function ThemeToggle() {
+export default function ThemeToggle({
+  className = "",
+  variant = "default",
+}: {
+  className?: string;
+  variant?: "default" | "drawer";
+}) {
   const isDark = useSyncExternalStore(subscribe, getThemeSnapshot, () => false);
   const mounted = useSyncExternalStore(
     subscribeHydration,
@@ -78,37 +84,58 @@ export default function ThemeToggle() {
     : "Toggle color theme";
 
   return (
-    <button
-      suppressHydrationWarning
-      type="button"
-      onClick={handleToggle}
-      aria-label={buttonLabel}
-      aria-pressed={effectiveIsDark}
-      className="theme-switch group"
-    >
-      <span className="theme-track">
-        <span
-          className={`theme-thumb ${effectiveIsDark ? "theme-thumb-dark" : "theme-thumb-light"}`}
-        >
-          <span className="theme-thumb-glow" />
-          <span
-            className={`theme-icon-stack ${effectiveIsDark ? "theme-icon-stack-dark" : "theme-icon-stack-light"}`}
-          >
-            <FontAwesomeIcon
-              icon={faMoon}
-              className={`theme-core-icon ${effectiveIsDark ? "theme-core-icon-visible" : "theme-core-icon-hidden"}`}
-            />
-            <FontAwesomeIcon
-              icon={faSun}
-              className={`theme-core-icon ${effectiveIsDark ? "theme-core-icon-hidden" : "theme-core-icon-visible"}`}
-            />
+    variant === "drawer" ? (
+      <button
+        suppressHydrationWarning
+        type="button"
+        onClick={handleToggle}
+        aria-label={buttonLabel}
+        aria-pressed={effectiveIsDark}
+        className={`theme-drawer-toggle group ${className}`.trim()}
+      >
+        <span className="theme-drawer-toggle-icon">
+          <FontAwesomeIcon icon={effectiveIsDark ? faMoon : faSun} className="size-3.5" />
+        </span>
+        <span className="theme-drawer-toggle-copy">
+          <span className="theme-drawer-toggle-kicker">Theme</span>
+          <span className="theme-drawer-toggle-value">
+            {effectiveIsDark ? "Dark" : "Light"}
           </span>
         </span>
-      </span>
+      </button>
+    ) : (
+      <button
+        suppressHydrationWarning
+        type="button"
+        onClick={handleToggle}
+        aria-label={buttonLabel}
+        aria-pressed={effectiveIsDark}
+        className={`theme-switch group ${className}`.trim()}
+      >
+        <span className="theme-track">
+          <span
+            className={`theme-thumb ${effectiveIsDark ? "theme-thumb-dark" : "theme-thumb-light"}`}
+          >
+            <span className="theme-thumb-glow" />
+            <span
+              className={`theme-icon-stack ${effectiveIsDark ? "theme-icon-stack-dark" : "theme-icon-stack-light"}`}
+            >
+              <FontAwesomeIcon
+                icon={faMoon}
+                className={`theme-core-icon ${effectiveIsDark ? "theme-core-icon-visible" : "theme-core-icon-hidden"}`}
+              />
+              <FontAwesomeIcon
+                icon={faSun}
+                className={`theme-core-icon ${effectiveIsDark ? "theme-core-icon-hidden" : "theme-core-icon-visible"}`}
+              />
+            </span>
+          </span>
+        </span>
 
-      <span className="theme-switch-label hidden sm:inline-flex">
-        <span className="theme-switch-text">{effectiveIsDark ? "Dark" : "Light"}</span>
-      </span>
-    </button>
+        <span className="theme-switch-label hidden sm:inline-flex">
+          <span className="theme-switch-text">{effectiveIsDark ? "Dark" : "Light"}</span>
+        </span>
+      </button>
+    )
   );
 }

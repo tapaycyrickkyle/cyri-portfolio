@@ -69,13 +69,13 @@ export default async function Home() {
                 Building, learning, and improving through real-world projects.
               </h1>
               <p className="max-w-3xl text-[0.97rem] leading-7 text-muted sm:text-base md:text-[1rem] md:leading-8 lg:max-w-2xl lg:text-[1.02rem] xl:max-w-3xl xl:text-[1.08rem]">
-                I&apos;m focused on <span className="scan-highlight-soft">web development</span>, while also exploring
-                <span className="scan-highlight-soft"> mobile</span> and <span className="scan-highlight-soft">desktop applications</span> to stay flexible across
-                platforms. I stay updated with current technologies, especially
-                <span className="scan-highlight-soft"> AI</span> and <span className="scan-highlight-soft">automation</span>, and use them as practical tools to improve
-                <span className="scan-highlight-soft"> workflows</span>, efficiency, and problem-solving. I&apos;m currently
-                seeking opportunities to <span className="scan-highlight-soft">contribute</span>, learn, and grow through
-                real-world development work.
+                I am a <span className="scan-highlight-soft">motivated</span> and <span className="scan-highlight-soft">adaptable</span> Information Technology
+                student with experience in <span className="scan-highlight-soft">web</span>, <span className="scan-highlight-soft">desktop</span>, and <span className="scan-highlight-soft">mobile development</span>,
+                <span className="scan-highlight-soft"> UI/UX design</span>, and digital creativity. I stay updated with
+                <span className="scan-highlight-soft"> AI</span> and <span className="scan-highlight-soft">automation</span> to improve
+                <span className="scan-highlight-soft"> workflows</span>, efficiency, and problem-solving, and I am currently
+                seeking an <span className="scan-highlight-soft">internship opportunity</span> to contribute, learn, and grow through
+                real-world experience.
               </p>
             </div>
 
@@ -432,7 +432,7 @@ export default async function Home() {
             </div>
           </div>
           <p className="font-mono text-sm text-muted/80">
-            {"\u00A9"} {year} Crafted with precision and humility.
+            {"\u00A9"} {year} Cyrick Kyle Tapay. All rights reserved.
           </p>
         </div>
       </footer>

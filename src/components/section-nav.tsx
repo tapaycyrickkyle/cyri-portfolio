@@ -1,62 +1,19 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 
 import type { NavigationItem } from "./portfolio-content";
 import { Icon } from "./portfolio-icon";
 import ThemeToggle from "./theme-toggle";
 
-function getIdFromHref(href: string) {
-  return href.replace("#", "");
-}
-
 export default function SectionNav({
-  navigation,
+  navigation: _navigation,
 }: {
   navigation: NavigationItem[];
 }) {
-  const [activeId, setActiveId] = useState(getIdFromHref(navigation[0].href));
-  const [menuOpen, setMenuOpen] = useState(false);
   const [progress, setProgress] = useState(0);
-
-  const sectionIds = useMemo(
-    () => navigation.map((item) => getIdFromHref(item.href)),
-    [navigation],
-  );
-
-  useEffect(() => {
-    const updateActiveSection = () => {
-      const activationOffset = window.scrollY + 140;
-      const pageBottom = window.scrollY + window.innerHeight;
-      const documentHeight = document.documentElement.scrollHeight;
-
-      let nextActiveId = sectionIds[0];
-
-      for (const id of sectionIds) {
-        const section = document.getElementById(id);
-
-        if (section && section.offsetTop <= activationOffset) {
-          nextActiveId = id;
-        }
-      }
-
-      if (documentHeight - pageBottom < 24) {
-        nextActiveId = sectionIds[sectionIds.length - 1];
-      }
-
-      setActiveId(nextActiveId);
-    };
-
-    updateActiveSection();
-
-    window.addEventListener("scroll", updateActiveSection, { passive: true });
-    window.addEventListener("resize", updateActiveSection);
-
-    return () => {
-      window.removeEventListener("scroll", updateActiveSection);
-      window.removeEventListener("resize", updateActiveSection);
-    };
-  }, [sectionIds]);
+  const [toggleVisible, setToggleVisible] = useState(true);
+  const [toggleOpen, setToggleOpen] = useState(false);
 
   useEffect(() => {
     const updateProgress = () => {
@@ -77,36 +34,43 @@ export default function SectionNav({
   }, []);
 
   useEffect(() => {
-    const closeMenu = () => {
-      setMenuOpen(false);
-      window.requestAnimationFrame(() => {
-        const activationOffset = window.scrollY + 140;
-        let nextActiveId = sectionIds[0];
+    let lastScrollY = window.scrollY;
 
-        for (const id of sectionIds) {
-          const section = document.getElementById(id);
+    const updateToggleVisibility = () => {
+      const currentScrollY = window.scrollY;
+      const scrollDelta = currentScrollY - lastScrollY;
 
-          if (section && section.offsetTop <= activationOffset) {
-            nextActiveId = id;
-          }
-        }
+      if (Math.abs(scrollDelta) < 8) {
+        return;
+      }
 
-        setActiveId(nextActiveId);
-      });
+      if (currentScrollY <= 24) {
+        setToggleVisible(true);
+      } else if (scrollDelta > 0) {
+        setToggleVisible(false);
+      } else {
+        setToggleVisible(true);
+      }
+
+      lastScrollY = currentScrollY;
     };
 
-    window.addEventListener("hashchange", closeMenu);
+    window.addEventListener("scroll", updateToggleVisibility, { passive: true });
 
-    return () => window.removeEventListener("hashchange", closeMenu);
-  }, [sectionIds]);
+    return () => window.removeEventListener("scroll", updateToggleVisibility);
+  }, []);
 
   useEffect(() => {
-    document.body.style.overflow = menuOpen ? "hidden" : "";
-
-    return () => {
-      document.body.style.overflow = "";
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setToggleOpen(false);
+      }
     };
-  }, [menuOpen]);
+
+    window.addEventListener("keydown", onKeyDown);
+
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, []);
 
   return (
     <header className="fixed inset-x-0 top-0 z-50">
@@ -116,88 +80,40 @@ export default function SectionNav({
           style={{ transform: `scaleX(${progress})` }}
         />
       </div>
-      <div className="nav-shell border-b border-outline/60">
-        <div className="mx-auto grid h-[68px] max-w-[86rem] grid-cols-[auto_1fr_auto] items-center gap-2 px-[var(--page-gutter)] sm:gap-4 md:h-[72px] md:grid-cols-[1fr_auto_1fr]">
-          <a
-            href="#top"
-            className="nav-brand text-lg font-semibold tracking-[-0.12em] text-foreground md:text-xl"
-          >
-            Cyrick.Tapay
-          </a>
-
-          <nav className="nav-row hidden items-center gap-1 md:flex lg:gap-1.5">
-            {navigation.map((item) => {
-              const isActive = activeId === getIdFromHref(item.href);
-
-              return (
-                <a
-                  key={item.label}
-                  href={item.href}
-                  onClick={() => setActiveId(getIdFromHref(item.href))}
-                  className={`nav-link px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] transition-all ${
-                    isActive
-                      ? "nav-link-active bg-accent text-accent-foreground shadow-sm"
-                      : "text-muted hover:text-foreground"
-                  }`}
-                >
-                  {item.label}
-                </a>
-              );
-            })}
-          </nav>
-
-          <div className="flex items-center justify-self-end gap-2 sm:gap-3">
-            <ThemeToggle />
-            <button
-              type="button"
-              aria-label={menuOpen ? "Close menu" : "Open menu"}
-              onClick={() => setMenuOpen((current) => !current)}
-              className="mobile-menu-button inline-flex size-11 items-center justify-center rounded-full border border-outline text-foreground md:hidden"
-            >
-              <Icon name={menuOpen ? "x" : "menu"} className="size-5" />
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <div
-        className={`md:hidden ${menuOpen ? "pointer-events-auto" : "pointer-events-none"}`}
-      >
+      <div className="pointer-events-none fixed right-0 top-4 sm:top-5">
         <div
-          className={`fixed inset-0 bg-black/30 transition-opacity duration-300 ${
-            menuOpen ? "opacity-100" : "opacity-0"
-          }`}
-          onClick={() => setMenuOpen(false)}
-        />
-        <div
-          className={`mobile-nav-sheet fixed inset-x-[var(--page-gutter)] top-[80px] z-50 border border-outline p-3 shadow-[var(--shadow-panel)] transition-all duration-300 sm:top-[84px] sm:p-4 ${
-            menuOpen
+          className={`pointer-events-auto transition-all duration-300 ${
+            toggleVisible
               ? "translate-y-0 opacity-100"
               : "-translate-y-4 opacity-0"
           }`}
         >
-          <div className="grid gap-2">
-            {navigation.map((item) => {
-              const isActive = activeId === getIdFromHref(item.href);
-
-              return (
-                <a
-                  key={item.label}
-                  href={item.href}
-                  onClick={() => {
-                    setActiveId(getIdFromHref(item.href));
-                    setMenuOpen(false);
-                  }}
-                  className={`border px-4 py-3 text-sm font-semibold uppercase tracking-[0.16em] ${
-                    isActive
-                      ? "border-accent bg-accent text-accent-foreground"
-                      : "border-outline bg-surface-soft text-foreground"
-                  }`}
-                >
-                  {item.label}
-                </a>
-              );
-            })}
+          <div className="theme-drawer flex items-center">
+            <button
+              type="button"
+              aria-label={toggleOpen ? "Hide theme toggle" : "Show theme toggle"}
+              aria-expanded={toggleOpen}
+              onClick={() => setToggleOpen((current) => !current)}
+              className={`theme-drawer-trigger inline-flex h-11 items-center justify-center text-foreground transition-all duration-300 ${
+                toggleOpen ? "theme-drawer-trigger-open w-11" : "w-10"
+              }`}
+            >
+              <Icon
+                name="angle-right"
+                className={`size-4 transition-transform duration-300 ${
+                  toggleOpen ? "translate-x-1" : "rotate-180"
+                }`}
+              />
+            </button>
+            <div
+              className={`theme-drawer-panel transition-all duration-300 ${
+                toggleOpen
+                  ? "max-w-[14rem] translate-x-0 opacity-100"
+                  : "max-w-0 translate-x-3 opacity-0"
+              }`}
+            >
+              <ThemeToggle variant="drawer" className="theme-switch-embedded" />
+            </div>
           </div>
         </div>
       </div>

@@ -1,9 +1,11 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import type { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 import {
+  faAngleRight,
   faArrowRight,
   faBars,
   faBookOpen,
+  faBriefcase,
   faCameraRetro,
   faCheck,
   faClapperboard,
@@ -21,6 +23,7 @@ import {
   faTableColumns,
   faTerminal,
   faArrowTrendUp,
+  faUser,
   faWandMagicSparkles,
   faXmark,
 } from "@fortawesome/free-solid-svg-icons";
@@ -40,8 +43,10 @@ import {
 } from "@fortawesome/free-brands-svg-icons";
 
 export type IconName =
+  | "angle-right"
   | "arrow"
   | "book"
+  | "briefcase"
   | "brush"
   | "camera"
   | "check"
@@ -73,11 +78,14 @@ export type IconName =
   | "tiktok"
   | "trending"
   | "twitter"
+  | "user"
   | "x";
 
 const iconMap: Record<IconName, IconDefinition> = {
+  "angle-right": faAngleRight,
   arrow: faArrowRight,
   book: faBookOpen,
+  briefcase: faBriefcase,
   brush: faPalette,
   camera: faCameraRetro,
   check: faCheck,
@@ -109,6 +117,7 @@ const iconMap: Record<IconName, IconDefinition> = {
   tiktok: faTiktok,
   trending: faArrowTrendUp,
   twitter: faXTwitter,
+  user: faUser,
   x: faXmark,
 };
 
