@@ -11,6 +11,11 @@ export const metadata: Metadata = {
   title: "Cyrick.Tapay | Portfolio",
   description:
     "Portfolio focused on web development, practical workflows, and growth through real project work across web, mobile, and desktop apps.",
+  icons: {
+    icon: "/images/profile-picture.jpg",
+    shortcut: "/images/profile-picture.jpg",
+    apple: "/images/profile-picture.jpg",
+  },
 };
 
 export const viewport: Viewport = {

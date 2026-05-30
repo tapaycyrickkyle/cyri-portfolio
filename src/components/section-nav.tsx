@@ -94,9 +94,7 @@ export default function SectionNav({
               aria-label={toggleOpen ? "Hide theme toggle" : "Show theme toggle"}
               aria-expanded={toggleOpen}
               onClick={() => setToggleOpen((current) => !current)}
-              className={`theme-drawer-trigger inline-flex h-11 items-center justify-center text-foreground transition-all duration-300 ${
-                toggleOpen ? "theme-drawer-trigger-open w-11" : "w-10"
-              }`}
+              className="theme-drawer-trigger inline-flex h-11 w-10 items-center justify-center text-foreground transition-all duration-300"
             >
               <Icon
                 name="angle-right"

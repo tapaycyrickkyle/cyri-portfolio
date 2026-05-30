@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useSyncExternalStore } from "react";
+import { useEffect, useState, useSyncExternalStore } from "react";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMoon, faSun } from "@fortawesome/free-solid-svg-icons";
@@ -50,6 +50,7 @@ export default function ThemeToggle({
   className?: string;
   variant?: "default" | "drawer";
 }) {
+  const [drawerSpin, setDrawerSpin] = useState(false);
   const isDark = useSyncExternalStore(subscribe, getThemeSnapshot, () => false);
   const mounted = useSyncExternalStore(
     subscribeHydration,
@@ -72,6 +73,15 @@ export default function ThemeToggle({
   function handleToggle() {
     const nextTheme = !getThemeSnapshot();
 
+    if (variant === "drawer") {
+      setDrawerSpin(false);
+      window.requestAnimationFrame(() => {
+        window.requestAnimationFrame(() => {
+          setDrawerSpin(true);
+        });
+      });
+    }
+
     applyTheme(nextTheme);
     window.localStorage.setItem(STORAGE_KEY, nextTheme ? "dark" : "light");
   }
@@ -93,7 +103,12 @@ export default function ThemeToggle({
         aria-pressed={effectiveIsDark}
         className={`theme-drawer-toggle group ${className}`.trim()}
       >
-        <span className="theme-drawer-toggle-icon">
+        <span
+          className={`theme-drawer-toggle-icon ${
+            drawerSpin ? "theme-drawer-toggle-icon-spin" : ""
+          }`}
+          onAnimationEnd={() => setDrawerSpin(false)}
+        >
           <FontAwesomeIcon icon={effectiveIsDark ? faMoon : faSun} className="size-3.5" />
         </span>
         <span className="theme-drawer-toggle-copy">
