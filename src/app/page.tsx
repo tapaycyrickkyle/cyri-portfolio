@@ -275,7 +275,7 @@ export default async function Home() {
           id="profile"
           className="section-shell"
         >
-          <div className="grid gap-10 md:gap-12 lg:grid-cols-[0.95fr_1.05fr] lg:items-center lg:gap-20 xl:gap-24">
+            <div className="grid gap-6 sm:gap-8 md:gap-12 lg:grid-cols-[0.95fr_1.05fr] lg:items-center lg:gap-20 xl:gap-24">
             <Reveal className="space-y-8">
               <SectionHeading
                 title="Who I Am"
@@ -363,7 +363,7 @@ export default async function Home() {
           id="contact"
           className="section-shell"
         >
-          <div className="surface-card grid gap-8 p-4 sm:p-6 md:gap-10 md:p-8 lg:grid-cols-[0.95fr_1.05fr] lg:gap-14 xl:gap-16 xl:p-12">
+          <div className="surface-card grid gap-5 p-4 sm:gap-8 sm:p-6 md:gap-10 md:p-8 lg:grid-cols-[0.95fr_1.05fr] lg:gap-14 xl:gap-16 xl:p-12">
             <Reveal className="space-y-8">
               <SectionHeading
                 title="Let's Connect"

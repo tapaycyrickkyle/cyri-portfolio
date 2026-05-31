@@ -2014,10 +2014,27 @@ html.dark .project-card-clean:hover .project-detail-link {
     max-width: 62rem;
   }
 
+}
+
+@media (min-width: 1024px) {
+  .media-carousel-canvas {
+    width: min(100%, 82rem);
+    grid-template-columns: minmax(0, 0.8fr) minmax(0, 3.2fr) minmax(0, 0.8fr);
+  }
+
+  .media-carousel-mainframe {
+    max-width: 72rem;
+    aspect-ratio: 16 / 12;
+  }
+
+  .media-carousel-mainstage {
+    grid-column: 2;
+  }
+
   .media-side-panel {
-    display: none;
+    display: block;
+    max-width: 10.5rem;
     width: 100%;
-    max-width: 9.25rem;
     align-self: center;
     border: 1px solid rgba(255, 255, 255, 0.34);
     background: transparent;
@@ -2027,10 +2044,6 @@ html.dark .project-card-clean:hover .project-detail-link {
       transform 0.28s cubic-bezier(0.22, 1, 0.36, 1),
       border-color 0.26s ease,
       box-shadow 0.26s ease;
-  }
-
-  .media-carousel-mainstage {
-    grid-column: 2;
   }
 
   .media-side-panel-left {
@@ -2056,23 +2069,6 @@ html.dark .project-card-clean:hover .project-detail-link {
 
   .media-side-panel-right:hover {
     transform: rotate(2deg) translateX(0.15rem);
-  }
-
-}
-
-@media (min-width: 1024px) {
-  .media-carousel-canvas {
-    width: min(100%, 82rem);
-  }
-
-  .media-carousel-mainframe {
-    max-width: 72rem;
-    aspect-ratio: 16 / 12;
-  }
-
-  .media-side-panel {
-    display: block;
-    max-width: 10.5rem;
   }
 
 }
@@ -2225,16 +2221,15 @@ html.dark .project-card-clean:hover .project-detail-link {
     line-height: 1.35;
   }
 
-  .media-carousel-sidebar,
   .media-carousel-canvas {
     width: 100%;
-    padding: 0.9rem;
+    padding: 0.65rem;
   }
 
   .media-carousel-mainframe {
     max-width: 100%;
     aspect-ratio: 16 / 13;
-    padding: 0.65rem;
+    padding: 0.55rem;
   }
 
 }
