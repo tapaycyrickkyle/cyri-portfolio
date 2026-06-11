@@ -85,11 +85,11 @@ export default async function Home() {
                 <Icon name="arrow" className="size-4" />
               </a>
               <a
-                href="/resume/Resume-Cyrick%20Kyle%20Tapay.pdf"
-                download="Resume-Cyrick-Kyle-Tapay.pdf"
+                href="/CV/CV-Cyrick-Tapay.pdf"
+                download="CV-Cyrick-Tapay.pdf"
                 className="secondary-button w-full sm:w-auto"
               >
-                Download Resume
+                Download CV
               </a>
               <a href="#contact" className="secondary-button w-full sm:w-auto">
                 Contact Me
