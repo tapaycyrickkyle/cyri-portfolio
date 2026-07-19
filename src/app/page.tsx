@@ -16,7 +16,6 @@ import ProjectShowcase from "../components/project-showcase";
 import Reveal from "../components/reveal";
 import ScrollMessage from "../components/scroll-message";
 import SectionNav from "../components/section-nav";
-import TypingText from "../components/typing-text";
 
 function SectionHeading({
   title,
@@ -53,18 +52,6 @@ export default async function Home() {
         <section className="section-shell section-hero grid gap-6 sm:gap-8 lg:grid-cols-[minmax(0,1.04fr)_minmax(17rem,0.96fr)] lg:items-start lg:gap-8 xl:grid-cols-[minmax(0,1.08fr)_minmax(18rem,0.92fr)] xl:gap-10">
           <Reveal className="hero-copy space-y-6 md:space-y-7">
             <div className="space-y-5 md:space-y-6">
-              <p className="typing-line">
-                Currently exploring{" "}
-                <TypingText
-                  phrases={[
-                    "AI workflows.",
-                    "agentic development.",
-                    "automation tools.",
-                    "web interfaces.",
-                    "systems thinking.",
-                  ]}
-                />
-              </p>
               <h1 className="max-w-none text-[clamp(2.15rem,10vw,4.8rem)] font-semibold leading-[0.94] tracking-[-0.075em] text-foreground">
                 Building, learning, and improving through real-world projects.
               </h1>

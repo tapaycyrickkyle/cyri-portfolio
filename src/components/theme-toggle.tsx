@@ -62,11 +62,7 @@ export default function ThemeToggle({
     const storedTheme = window.localStorage.getItem(STORAGE_KEY);
 
     if (!storedTheme) {
-      const prefersDark = window.matchMedia(
-        "(prefers-color-scheme: dark)",
-      ).matches;
-
-      applyTheme(prefersDark);
+      applyTheme(false);
     }
   }, []);
 

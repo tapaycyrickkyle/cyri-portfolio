@@ -28,11 +28,6 @@ export default function ContactForm({ email, endpoint }: ContactFormProps) {
   const [copied, setCopied] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showSuccessModal, setShowSuccessModal] = useState(false);
-  const [isMounted, setIsMounted] = useState(false);
-
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
 
   useEffect(() => {
     if (!showSuccessModal) {
@@ -169,7 +164,9 @@ export default function ContactForm({ email, endpoint }: ContactFormProps) {
 
   return (
     <>
-      {isMounted && successModal ? createPortal(successModal, document.body) : null}
+      {successModal && typeof document !== "undefined"
+        ? createPortal(successModal, document.body)
+        : null}
 
       <form onSubmit={handleSubmit} className="space-y-6">
         <div className="grid gap-5 sm:grid-cols-2">

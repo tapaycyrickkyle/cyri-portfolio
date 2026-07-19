@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import { Inter } from "next/font/google";
 import { config } from "@fortawesome/fontawesome-svg-core";
 
 import "@fortawesome/fontawesome-svg-core/styles.css";
@@ -6,6 +7,11 @@ import "@fortawesome/fontawesome-svg-core/styles.css";
 import "./globals.css";
 
 config.autoAddCss = false;
+
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+});
 
 export const metadata: Metadata = {
   title: "Cyrick Tapay | Portfolio",
@@ -28,8 +34,7 @@ const themeScript = `
   (function () {
     try {
       var storedTheme = window.localStorage.getItem("portfolio-theme");
-      var prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-      var isDark = storedTheme ? storedTheme === "dark" : prefersDark;
+      var isDark = storedTheme === "dark";
       document.documentElement.classList.toggle("dark", isDark);
       document.documentElement.style.colorScheme = isDark ? "dark" : "light";
     } catch (error) {}
@@ -45,7 +50,7 @@ export default function RootLayout({
     <html
       lang="en"
       suppressHydrationWarning
-      className="h-full antialiased"
+      className={`${inter.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col bg-background font-sans text-foreground">
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />

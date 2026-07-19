@@ -1,19 +1,33 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import Image from "next/image";
+import { useEffect, useMemo, useState } from "react";
 
 import type { NavigationItem } from "./portfolio-content";
 import { Icon } from "./portfolio-icon";
-import ThemeToggle from "./theme-toggle";
+import type { IconName } from "./portfolio-icon";
 
 export default function SectionNav({
-  navigation: _navigation,
+  navigation,
 }: {
   navigation: NavigationItem[];
 }) {
   const [progress, setProgress] = useState(0);
-  const [toggleVisible, setToggleVisible] = useState(true);
-  const [toggleOpen, setToggleOpen] = useState(false);
+  const [activeHref, setActiveHref] = useState<`#${string}`>("#top");
+
+  const sidebarItems = useMemo(
+    () => [{ label: "Home", href: "#top" as const }, ...navigation],
+    [navigation],
+  );
+
+  const sidebarIcons: IconName[] = [
+    "dashboard",
+    "briefcase",
+    "book",
+    "terminal",
+    "user",
+    "mail",
+  ];
 
   useEffect(() => {
     const updateProgress = () => {
@@ -34,43 +48,39 @@ export default function SectionNav({
   }, []);
 
   useEffect(() => {
-    let lastScrollY = window.scrollY;
+    const updateActiveSection = () => {
+      const currentY = window.scrollY + window.innerHeight * 0.28;
+      let nextActiveHref: `#${string}` = "#top";
 
-    const updateToggleVisibility = () => {
-      const currentScrollY = window.scrollY;
-      const scrollDelta = currentScrollY - lastScrollY;
+      for (const item of sidebarItems) {
+        const target = document.querySelector(item.href);
 
-      if (Math.abs(scrollDelta) < 8) {
-        return;
+        if (!(target instanceof HTMLElement)) {
+          continue;
+        }
+
+        if (target.offsetTop <= currentY) {
+          nextActiveHref = item.href;
+        }
       }
 
-      if (currentScrollY <= 24) {
-        setToggleVisible(true);
-      } else if (scrollDelta > 0) {
-        setToggleVisible(false);
-      } else {
-        setToggleVisible(true);
+      if (window.scrollY <= 24) {
+        nextActiveHref = "#top";
       }
 
-      lastScrollY = currentScrollY;
+      setActiveHref(nextActiveHref);
     };
 
-    window.addEventListener("scroll", updateToggleVisibility, { passive: true });
+    updateActiveSection();
 
-    return () => window.removeEventListener("scroll", updateToggleVisibility);
-  }, []);
+    window.addEventListener("scroll", updateActiveSection, { passive: true });
+    window.addEventListener("resize", updateActiveSection);
 
-  useEffect(() => {
-    const onKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") {
-        setToggleOpen(false);
-      }
+    return () => {
+      window.removeEventListener("scroll", updateActiveSection);
+      window.removeEventListener("resize", updateActiveSection);
     };
-
-    window.addEventListener("keydown", onKeyDown);
-
-    return () => window.removeEventListener("keydown", onKeyDown);
-  }, []);
+  }, [sidebarItems]);
 
   return (
     <header className="fixed inset-x-0 top-0 z-50">
@@ -80,41 +90,45 @@ export default function SectionNav({
           style={{ transform: `scaleX(${progress})` }}
         />
       </div>
-      <div className="pointer-events-none fixed right-0 top-4 sm:top-5">
-        <div
-          className={`pointer-events-auto transition-all duration-300 ${
-            toggleVisible
-              ? "translate-y-0 opacity-100"
-              : "-translate-y-4 opacity-0"
-          }`}
-        >
-          <div className="theme-drawer flex items-center">
-            <button
-              type="button"
-              aria-label={toggleOpen ? "Hide theme toggle" : "Show theme toggle"}
-              aria-expanded={toggleOpen}
-              onClick={() => setToggleOpen((current) => !current)}
-              className="theme-drawer-trigger inline-flex h-11 w-10 items-center justify-center text-foreground transition-all duration-300"
-            >
-              <Icon
-                name="angle-right"
-                className={`size-4 transition-transform duration-300 ${
-                  toggleOpen ? "translate-x-1" : "rotate-180"
-                }`}
-              />
-            </button>
-            <div
-              className={`theme-drawer-panel transition-all duration-300 ${
-                toggleOpen
-                  ? "max-w-[14rem] translate-x-0 opacity-100"
-                  : "max-w-0 translate-x-3 opacity-0"
+      <aside className="portfolio-sidebar" aria-label="Portfolio menu">
+        <a href="#top" className="portfolio-sidebar-brand" aria-label="Back to top">
+          <span className="portfolio-sidebar-avatar">
+            <Image
+              src="/images/profile-picture.jpg"
+              alt=""
+              width={36}
+              height={36}
+              sizes="36px"
+            />
+            <span className="portfolio-sidebar-status" />
+          </span>
+          <span className="portfolio-sidebar-brand-text">
+            <span className="portfolio-sidebar-name">Cyrick.Tapay</span>
+            <span className="portfolio-sidebar-subtitle">Portfolio</span>
+          </span>
+        </a>
+
+        <nav className="portfolio-sidebar-nav">
+          <p className="portfolio-sidebar-label">Menu</p>
+          {sidebarItems.map((item, index) => (
+            <a
+              key={item.href}
+              href={item.href}
+              aria-current={activeHref === item.href ? "page" : undefined}
+              onClick={() => setActiveHref(item.href)}
+              className={`portfolio-sidebar-link ${
+                activeHref === item.href ? "portfolio-sidebar-link-active" : ""
               }`}
             >
-              <ThemeToggle variant="drawer" className="theme-switch-embedded" />
-            </div>
-          </div>
-        </div>
-      </div>
+              <Icon
+                name={sidebarIcons[index] ?? "link"}
+                className="size-4"
+              />
+              <span>{item.label}</span>
+            </a>
+          ))}
+        </nav>
+      </aside>
     </header>
   );
 }
