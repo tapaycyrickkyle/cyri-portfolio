@@ -14,6 +14,7 @@ export default function SectionNav({
 }) {
   const [progress, setProgress] = useState(0);
   const [activeHref, setActiveHref] = useState<`#${string}`>("#top");
+  const [menuOpen, setMenuOpen] = useState(false);
 
   const sidebarItems = useMemo(
     () => [{ label: "Home", href: "#top" as const }, ...navigation],
@@ -82,6 +83,36 @@ export default function SectionNav({
     };
   }, [sidebarItems]);
 
+  useEffect(() => {
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setMenuOpen(false);
+      }
+    };
+
+    const onResize = () => {
+      if (window.innerWidth >= 1024) {
+        setMenuOpen(false);
+      }
+    };
+
+    window.addEventListener("keydown", onKeyDown);
+    window.addEventListener("resize", onResize);
+
+    return () => {
+      window.removeEventListener("keydown", onKeyDown);
+      window.removeEventListener("resize", onResize);
+    };
+  }, []);
+
+  useEffect(() => {
+    document.body.style.overflow = menuOpen ? "hidden" : "";
+
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [menuOpen]);
+
   return (
     <header className="fixed inset-x-0 top-0 z-50">
       <div className="h-1 w-full bg-transparent">
@@ -90,7 +121,31 @@ export default function SectionNav({
           style={{ transform: `scaleX(${progress})` }}
         />
       </div>
-      <aside className="portfolio-sidebar" aria-label="Portfolio menu">
+      <button
+        type="button"
+        aria-label={menuOpen ? "Close menu" : "Open menu"}
+        aria-expanded={menuOpen}
+        aria-controls="portfolio-sidebar"
+        onClick={() => setMenuOpen((current) => !current)}
+        className="portfolio-mobile-menu-button"
+      >
+        <Icon name={menuOpen ? "x" : "menu"} className="size-4" />
+      </button>
+      <button
+        type="button"
+        aria-label="Close menu"
+        className={`portfolio-sidebar-overlay ${
+          menuOpen ? "portfolio-sidebar-overlay-open" : ""
+        }`}
+        onClick={() => setMenuOpen(false)}
+      />
+      <aside
+        id="portfolio-sidebar"
+        className={`portfolio-sidebar ${
+          menuOpen ? "portfolio-sidebar-open" : ""
+        }`}
+        aria-label="Portfolio menu"
+      >
         <a href="#top" className="portfolio-sidebar-brand" aria-label="Back to top">
           <span className="portfolio-sidebar-avatar">
             <Image
@@ -115,7 +170,10 @@ export default function SectionNav({
               key={item.href}
               href={item.href}
               aria-current={activeHref === item.href ? "page" : undefined}
-              onClick={() => setActiveHref(item.href)}
+              onClick={() => {
+                setActiveHref(item.href);
+                setMenuOpen(false);
+              }}
               className={`portfolio-sidebar-link ${
                 activeHref === item.href ? "portfolio-sidebar-link-active" : ""
               }`}

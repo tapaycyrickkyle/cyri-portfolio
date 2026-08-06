@@ -3465,17 +3465,63 @@ body::after,
 
 .portfolio-sidebar {
   position: fixed;
-  inset: 0 auto 0 0;
-  z-index: 52;
-  display: none;
-  width: var(--sidebar-width);
+  inset: 0 0 0 auto;
+  z-index: 56;
+  display: flex;
+  flex-direction: column;
+  width: min(21rem, calc(100vw - 3rem));
   height: 100dvh;
   overflow-y: auto;
   overflow-x: hidden;
-  border-right: 1px solid #e3e8f0;
+  border-left: 1px solid #e3e8f0;
   background: var(--background);
   color: var(--foreground);
-  box-shadow: none;
+  box-shadow: -18px 0 36px rgba(15, 23, 42, 0.12);
+  transform: translateX(100%);
+  transition: transform 0.24s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+}
+
+.portfolio-sidebar-open {
+  transform: translateX(0);
+}
+
+.portfolio-mobile-menu-button {
+  position: fixed;
+  top: 14px;
+  right: 14px;
+  z-index: 60;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border: 1px solid #d9e0ea;
+  border-radius: 12px;
+  background: #ffffff;
+  color: #0c1220;
+  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.08);
+}
+
+.portfolio-mobile-menu-button:hover {
+  background: #f6f8fb;
+}
+
+.portfolio-sidebar-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 54;
+  display: block;
+  border: 0;
+  background: rgba(12, 18, 32, 0.24);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+
+.portfolio-sidebar-overlay-open {
+  opacity: 1;
+  pointer-events: auto;
 }
 
 .portfolio-sidebar-brand {
@@ -3942,8 +3988,18 @@ html:not(.dark) .primary-button {
 
 @media (min-width: 1024px) {
   .portfolio-sidebar {
-    display: flex;
-    flex-direction: column;
+    inset: 0 auto 0 0;
+    width: var(--sidebar-width);
+    border-right: 1px solid #e3e8f0;
+    border-left: 0;
+    box-shadow: none;
+    transform: none;
+    transition: none;
+  }
+
+  .portfolio-mobile-menu-button,
+  .portfolio-sidebar-overlay {
+    display: none;
   }
 
   .page-shell {

@@ -257,10 +257,7 @@ export default function ContactForm({ email, endpoint }: ContactFormProps) {
         </div>
 
         <p className="min-h-6 text-sm text-muted">
-          {feedback ||
-            (endpoint
-              ? "This form sends directly through Formspree."
-              : "Add your Formspree endpoint to enable direct form submissions.")}
+          {feedback || (!endpoint && "Add your Formspree endpoint to enable direct form submissions.")}
         </p>
       </form>
     </>
