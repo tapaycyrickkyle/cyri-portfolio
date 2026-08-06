@@ -65,7 +65,6 @@ export default function ContactForm({ email, endpoint }: ContactFormProps) {
     }
 
     if (!endpoint) {
-      setFeedback("Add your Formspree endpoint first to enable direct form submissions.");
       return;
     }
 
@@ -256,9 +255,7 @@ export default function ContactForm({ email, endpoint }: ContactFormProps) {
           </button>
         </div>
 
-        <p className="min-h-6 text-sm text-muted">
-          {feedback || (!endpoint && "Add your Formspree endpoint to enable direct form submissions.")}
-        </p>
+        <p className="min-h-6 text-sm text-muted">{feedback}</p>
       </form>
     </>
   );
