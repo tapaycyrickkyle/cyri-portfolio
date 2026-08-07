@@ -5484,7 +5484,7 @@ main {
 :root {
   --page-gutter: clamp(1rem, 4.5vw, 4rem);
   --content-width: 80rem;
-  --nav-offset: clamp(3.5rem, 10vw, 4.25rem);
+  --nav-offset: clamp(2rem, 7vw, 2.75rem);
 }
 
 html,
@@ -5521,7 +5521,7 @@ a[href],
 
 .section-hero {
   min-height: auto !important;
-  padding-top: clamp(1rem, 4vw, 2.5rem) !important;
+  padding-top: clamp(0.25rem, 1.5vw, 0.75rem) !important;
 }
 
 .section-hero h1 {
@@ -5691,7 +5691,7 @@ a[href],
 
 @media (min-width: 768px) {
   :root {
-    --nav-offset: 3.75rem;
+    --nav-offset: 2.25rem;
   }
 
   .section-shell {
@@ -5732,8 +5732,8 @@ a[href],
   }
 
   .section-hero {
-    min-height: min(46rem, calc(100dvh - 1rem)) !important;
-    align-content: center !important;
+    min-height: auto !important;
+    align-content: start !important;
   }
 
   .section-hero h1 {
