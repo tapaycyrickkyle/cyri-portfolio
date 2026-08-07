@@ -5754,3 +5754,38 @@ a[href],
     padding-block: clamp(5.5rem, 7vw, 8rem) !important;
   }
 }
+
+/* Hero-specific top rhythm: roomier on mobile, tighter on desktop. */
+:root {
+  --nav-offset: clamp(2.75rem, 9vw, 3.25rem);
+}
+
+.section-shell.section-hero {
+  padding-top: clamp(1rem, 4vw, 1.5rem) !important;
+}
+
+@media (min-width: 768px) {
+  :root {
+    --nav-offset: 1.75rem;
+  }
+
+  .section-shell.section-hero {
+    padding-top: 1rem !important;
+  }
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --nav-offset: 0rem;
+  }
+
+  .section-shell.section-hero {
+    padding-top: 1.25rem !important;
+  }
+}
+
+@media (min-width: 1440px) {
+  .section-shell.section-hero {
+    padding-top: 1.5rem !important;
+  }
+}
