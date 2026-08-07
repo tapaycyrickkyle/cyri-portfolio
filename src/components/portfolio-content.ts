@@ -1,4 +1,5 @@
 import type { IconName } from "./portfolio-icon";
+import type { SkillBrandName } from "./skill-brand-icon";
 
 export type NavigationItem = {
   label: string;
@@ -37,6 +38,7 @@ export type LearningStep = {
 };
 
 export type TechStackItem = {
+  brandIcon?: SkillBrandName;
   icon?: IconName;
   label: string;
   logoSrc?: string;
@@ -56,6 +58,8 @@ export type MediaEditItem = {
   description: string;
   image: string;
   alt: string;
+  width: number;
+  height: number;
 };
 
 export type SocialLink = {
@@ -242,72 +246,67 @@ export const learningSteps: LearningStep[] = [
 
 export const techStackItems: TechStackItem[] = [
   {
-    icon: "html",
+    brandIcon: "html5",
     label: "HTML5",
   },
   {
-    icon: "css",
+    brandIcon: "css",
     label: "CSS3",
   },
   {
-    icon: "javascript",
+    brandIcon: "javascript",
     label: "JavaScript",
   },
   {
-    icon: "react",
+    brandIcon: "react",
     label: "React",
   },
   {
+    brandIcon: "flutter",
     label: "Flutter",
-    logoSrc: "/brand-icons/flutter.svg",
-    invertInDark: true,
   },
   {
+    brandIcon: "nextjs",
     label: "Next.js",
-    logoSrc: "/brand-icons/nextjs.svg",
-    invertInDark: true,
   },
   {
+    brandIcon: "nodejs",
     label: "Node.js",
-    logoSrc: "/brand-icons/nodejs.svg",
-    invertInDark: true,
   },
   {
-    icon: "figma",
+    brandIcon: "figma",
     label: "Figma",
   },
   {
-    icon: "git",
+    brandIcon: "git",
     label: "Git",
   },
   {
-    icon: "github",
+    brandIcon: "github",
     label: "GitHub",
   },
   {
-    icon: "database",
+    brandIcon: "postgresql",
     label: "SQL",
   },
   {
+    brandIcon: "supabase",
     label: "Supabase",
-    logoSrc: "/brand-icons/supabase.svg",
-    invertInDark: true,
   },
   {
+    brandIcon: "tauri",
     label: "Tauri",
-    logoSrc: "/brand-icons/tauri-monochrome.svg",
-    invertInDark: true,
   },
   {
-    icon: "terminal",
+    brandIcon: "gemini",
     label: "AI Tools",
   },
   {
-    icon: "camera",
+    brandIcon: "davinci-resolve",
     label: "Editing",
   },
   {
-    icon: "brush",
+    brandIcon: "krita",
     label: "Drawing",
   },
   {
@@ -316,9 +315,8 @@ export const techStackItems: TechStackItem[] = [
     invertInDark: true,
   },
   {
+    brandIcon: "filmora",
     label: "Filmora",
-    logoSrc: "/brand-icons/filmora.svg",
-    invertInDark: true,
   },
   {
     label: "CapCut",
@@ -330,7 +328,7 @@ export const techStackItems: TechStackItem[] = [
 
 export const futureAreas: FutureArea[] = [
   {
-    icon: "globe",
+    icon: "code",
     title: "Web Dev",
     description: "Creating responsive, fast-loading web apps.",
   },

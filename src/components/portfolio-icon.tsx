@@ -1,46 +1,44 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import type { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 import {
-  faAngleRight,
-  faArrowRight,
-  faBars,
-  faBookOpen,
-  faBriefcase,
-  faCameraRetro,
-  faCheck,
-  faClapperboard,
-  faCopy,
-  faDatabase,
-  faEnvelope,
-  faFileArrowDown,
-  faGlobe,
-  faHammer,
-  faHeadset,
-  faLink,
-  faMagnifyingGlass,
-  faPalette,
-  faRocket,
-  faTableColumns,
-  faTerminal,
-  faArrowTrendUp,
-  faUser,
-  faWandMagicSparkles,
-  faXmark,
-} from "@fortawesome/free-solid-svg-icons";
-import {
-  faCss3Alt,
-  faFacebook,
-  faFigma,
-  faGitAlt,
-  faGithub,
-  faHtml5,
-  faInstagram,
-  faJs,
-  faLinkedin,
-  faReact,
-  faTiktok,
-  faXTwitter,
-} from "@fortawesome/free-brands-svg-icons";
+  ArrowRight,
+  Atom,
+  BookOpen,
+  Braces,
+  BriefcaseBusiness,
+  Camera,
+  Check,
+  ChevronRight,
+  Clapperboard,
+  Code,
+  Code2,
+  CodeXml,
+  Contact,
+  Copy,
+  Database,
+  Download,
+  FileCode2,
+  GitBranch,
+  Globe,
+  Hammer,
+  Headphones,
+  House,
+  Layers,
+  Link,
+  Mail,
+  Menu,
+  Music2,
+  Paintbrush,
+  PanelTop,
+  Rocket,
+  Search,
+  Send,
+  Share2,
+  Sparkles,
+  Terminal,
+  TrendingUp,
+  User,
+  X as XIcon,
+  type LucideIcon,
+} from "lucide-react";
 
 export type IconName =
   | "angle-right"
@@ -51,6 +49,7 @@ export type IconName =
   | "camera"
   | "check"
   | "clapperboard"
+  | "code"
   | "copy"
   | "css"
   | "dashboard"
@@ -63,6 +62,7 @@ export type IconName =
   | "globe"
   | "hammer"
   | "html"
+  | "home"
   | "instagram"
   | "javascript"
   | "lifebuoy"
@@ -81,44 +81,46 @@ export type IconName =
   | "user"
   | "x";
 
-const iconMap: Record<IconName, IconDefinition> = {
-  "angle-right": faAngleRight,
-  arrow: faArrowRight,
-  book: faBookOpen,
-  briefcase: faBriefcase,
-  brush: faPalette,
-  camera: faCameraRetro,
-  check: faCheck,
-  clapperboard: faClapperboard,
-  copy: faCopy,
-  css: faCss3Alt,
-  dashboard: faTableColumns,
-  database: faDatabase,
-  download: faFileArrowDown,
-  facebook: faFacebook,
-  figma: faFigma,
-  git: faGitAlt,
-  github: faGithub,
-  globe: faGlobe,
-  hammer: faHammer,
-  html: faHtml5,
-  instagram: faInstagram,
-  javascript: faJs,
-  lifebuoy: faHeadset,
-  link: faLink,
-  linkedin: faLinkedin,
-  mail: faEnvelope,
-  menu: faBars,
-  react: faReact,
-  rocket: faRocket,
-  search: faMagnifyingGlass,
-  spark: faWandMagicSparkles,
-  terminal: faTerminal,
-  tiktok: faTiktok,
-  trending: faArrowTrendUp,
-  twitter: faXTwitter,
-  user: faUser,
-  x: faXmark,
+const iconMap: Record<IconName, LucideIcon> = {
+  "angle-right": ChevronRight,
+  arrow: ArrowRight,
+  book: BookOpen,
+  briefcase: BriefcaseBusiness,
+  brush: Paintbrush,
+  camera: Camera,
+  check: Check,
+  clapperboard: Clapperboard,
+  code: Code2,
+  copy: Copy,
+  css: Braces,
+  dashboard: PanelTop,
+  database: Database,
+  download: Download,
+  facebook: Share2,
+  figma: Layers,
+  git: GitBranch,
+  github: Code,
+  globe: Globe,
+  hammer: Hammer,
+  html: FileCode2,
+  home: House,
+  instagram: Camera,
+  javascript: CodeXml,
+  lifebuoy: Headphones,
+  link: Link,
+  linkedin: Contact,
+  mail: Mail,
+  menu: Menu,
+  react: Atom,
+  rocket: Rocket,
+  search: Search,
+  spark: Sparkles,
+  terminal: Terminal,
+  tiktok: Music2,
+  trending: TrendingUp,
+  twitter: Send,
+  user: User,
+  x: XIcon,
 };
 
 export function Icon({
@@ -128,12 +130,14 @@ export function Icon({
   name: IconName;
   className?: string;
 }) {
+  const LucideIcon = iconMap[name];
+
   return (
-    <FontAwesomeIcon
-      icon={iconMap[name]}
+    <LucideIcon
       className={`${className} portfolio-icon`}
       aria-hidden="true"
-      fixedWidth
+      focusable="false"
+      strokeWidth={1.9}
     />
   );
 }

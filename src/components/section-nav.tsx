@@ -22,10 +22,10 @@ export default function SectionNav({
   );
 
   const sidebarIcons: IconName[] = [
-    "dashboard",
+    "home",
     "briefcase",
     "book",
-    "terminal",
+    "code",
     "user",
     "mail",
   ];

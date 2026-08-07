@@ -120,13 +120,11 @@ export default function ProjectShowcase({
                         src={project.image}
                         alt={project.alt}
                         fill
+                        loading={index === 0 ? "eager" : "lazy"}
                         sizes="(min-width: 1280px) 33vw, (min-width: 768px) 50vw, 100vw"
                         className="object-cover transition duration-700 group-hover:scale-[1.04]"
                       />
                       <div className="project-image-wash absolute inset-0" />
-                      <div className="project-status-badge">
-                        {project.status}
-                      </div>
                       <div className="project-index-badge">
                         {String(projects.indexOf(project) + 1).padStart(2, "0")}
                       </div>
@@ -190,14 +188,17 @@ export default function ProjectShowcase({
       </section>
 
       {selectedProject ? (
-        <div className="fixed inset-0 z-[70] flex items-end justify-center overflow-y-auto overscroll-contain p-2 sm:p-4 md:items-center md:p-6 lg:p-8">
-          <button
-            type="button"
-            aria-label="Close project details"
-            onClick={() => setSelectedProject(null)}
-            className="absolute inset-0 bg-black/55 backdrop-blur-sm"
-          />
-          <div className="dialog-panel relative z-10 flex h-[calc(100dvh-1rem)] max-h-[calc(100dvh-1rem)] w-full max-w-[calc(100vw-1rem)] flex-col overflow-hidden border border-outline bg-surface shadow-[var(--shadow-panel)] sm:max-w-[calc(100vw-2rem)] sm:max-h-[calc(100dvh-2rem)] md:h-auto md:max-h-[94vh] md:max-w-6xl">
+        <div
+          className="fixed inset-0 z-[90] flex items-center justify-center overflow-y-auto overscroll-contain bg-black/65 p-2.5 sm:p-4 md:p-6 lg:p-8"
+          role="dialog"
+          aria-modal="true"
+          aria-label={`${selectedProject.title} project details`}
+          onClick={() => setSelectedProject(null)}
+        >
+          <div
+            className="dialog-panel relative flex max-h-[calc(100dvh-1.25rem)] w-full max-w-[calc(100vw-1.25rem)] flex-col overflow-hidden border border-outline bg-surface shadow-[var(--shadow-panel)] sm:max-h-[calc(100dvh-2rem)] sm:max-w-[calc(100vw-2rem)] md:max-h-[92vh] md:max-w-6xl"
+            onClick={(event) => event.stopPropagation()}
+          >
             <button
               type="button"
               onClick={() => setSelectedProject(null)}
@@ -206,7 +207,7 @@ export default function ProjectShowcase({
             >
               <Icon name="x" className="size-5" />
             </button>
-            <div className="grid min-h-0 flex-1 grid-rows-[minmax(0,0.88fr)_minmax(0,1fr)] gap-0 sm:grid-rows-[minmax(0,1fr)_minmax(0,1fr)] lg:grid-cols-[minmax(0,1.2fr)_minmax(20rem,0.8fr)] lg:grid-rows-1 xl:grid-cols-[minmax(0,1.35fr)_minmax(22rem,0.8fr)]">
+            <div className="grid min-h-0 flex-1 grid-rows-[minmax(16rem,0.88fr)_minmax(0,1fr)] gap-0 sm:grid-rows-[minmax(18rem,1fr)_minmax(0,1fr)] lg:grid-cols-[minmax(0,1.2fr)_minmax(20rem,0.8fr)] lg:grid-rows-1 xl:grid-cols-[minmax(0,1.35fr)_minmax(22rem,0.8fr)]">
               <div className="flex min-h-0 flex-col overflow-hidden border-b border-outline bg-[#0d0f12] lg:border-b-0 lg:border-r">
                 <div className="relative flex min-h-0 flex-1 items-center justify-center p-2 sm:p-4">
                   <Image
@@ -279,10 +280,7 @@ export default function ProjectShowcase({
               <div className="min-h-0 space-y-4 overflow-y-auto p-3 sm:p-5 lg:max-h-[92vh] lg:space-y-5 lg:p-7 xl:p-8">
                 <div className="flex items-start justify-between gap-4">
                   <div className="min-w-0">
-                    <p className="font-mono text-[11px] uppercase tracking-[0.24em] text-muted-soft">
-                      {selectedProject.status}
-                    </p>
-                    <h3 className="mt-3 break-words text-[1.45rem] font-semibold tracking-[-0.05em] text-foreground sm:text-3xl">
+                    <h3 className="break-words text-[1.45rem] font-semibold tracking-[-0.05em] text-foreground sm:text-3xl">
                       {selectedProject.title}
                     </h3>
                   </div>

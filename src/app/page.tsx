@@ -16,6 +16,13 @@ import ProjectShowcase from "../components/project-showcase";
 import Reveal from "../components/reveal";
 import ScrollMessage from "../components/scroll-message";
 import SectionNav from "../components/section-nav";
+import { SkillBrandIcon } from "../components/skill-brand-icon";
+import {
+  isSocialBrandName,
+  SocialBrandIcon,
+} from "../components/social-brand-icon";
+
+const FORMSPREE_ENDPOINT = "https://formspree.io/f/xdajjakw";
 
 function SectionHeading({
   title,
@@ -42,14 +49,15 @@ export default async function Home() {
   const year = new Date().getFullYear();
   const projects = await getProjects();
   const mediaEdits = await getMediaEdits();
-  const formspreeEndpoint = process.env.NEXT_PUBLIC_FORMSPREE_ENDPOINT;
+  const formspreeEndpoint =
+    process.env.NEXT_PUBLIC_FORMSPREE_ENDPOINT ?? FORMSPREE_ENDPOINT;
 
   return (
     <div id="top" className="page-shell relative isolate overflow-x-clip">
       <SectionNav navigation={navigation} />
 
       <main style={{ paddingTop: "var(--nav-offset)" }}>
-        <section className="section-shell section-hero grid gap-6 sm:gap-8 lg:grid-cols-[minmax(0,1.04fr)_minmax(17rem,0.96fr)] lg:items-start lg:gap-8 xl:grid-cols-[minmax(0,1.08fr)_minmax(18rem,0.92fr)] xl:gap-10">
+        <section className="section-shell section-hero grid gap-6 sm:gap-8 lg:grid-cols-[minmax(0,1.04fr)_minmax(min(100%,17rem),0.96fr)] lg:items-start lg:gap-8 xl:grid-cols-[minmax(0,1.08fr)_minmax(min(100%,18rem),0.92fr)] xl:gap-10">
           <Reveal className="hero-copy space-y-6 md:space-y-7">
             <div className="space-y-5 md:space-y-6">
               <h1 className="max-w-none text-[clamp(2.15rem,10vw,4.8rem)] font-semibold leading-[0.94] tracking-[-0.075em] text-foreground">
@@ -99,7 +107,7 @@ export default async function Home() {
                       title={link.label}
                       className="hero-social-link"
                     >
-                      <Icon name={link.icon} className="size-5" />
+                      <SocialBrandIcon name={link.icon} className="size-5" />
                     </a>
                   ))}
                 </div>
@@ -112,7 +120,7 @@ export default async function Home() {
             <div className="hero-side-stack">
               <article className="surface-card hero-info-card hero-info-card-featured">
                 <div className="hero-info-icon">
-                  <Icon name="terminal" className="size-5" />
+                  <Icon name="code" className="size-5" />
                 </div>
                   <div>
                     <p className="hero-info-kicker">Current Focus</p>
@@ -233,7 +241,12 @@ export default async function Home() {
               >
                 <article className="surface-card tech-stack-card skill-card p-4 sm:p-5">
                   <div className="tech-stack-icon-shell">
-                    {item.logoSrc ? (
+                    {item.brandIcon ? (
+                      <SkillBrandIcon
+                        name={item.brandIcon}
+                        className="tech-stack-icon"
+                      />
+                    ) : item.logoSrc ? (
                       <Image
                         src={item.logoSrc}
                         alt=""
@@ -262,7 +275,7 @@ export default async function Home() {
           id="profile"
           className="section-shell"
         >
-            <div className="grid gap-6 sm:gap-8 md:gap-12 lg:grid-cols-[0.95fr_1.05fr] lg:items-center lg:gap-20 xl:gap-24">
+            <div className="grid gap-6 sm:gap-8 md:gap-12 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] lg:items-center lg:gap-20 xl:gap-24">
             <Reveal className="space-y-8">
               <SectionHeading
                 title="Who I Am"
@@ -350,7 +363,7 @@ export default async function Home() {
           id="contact"
           className="section-shell"
         >
-          <div className="surface-card grid gap-5 p-4 sm:gap-8 sm:p-6 md:gap-10 md:p-8 lg:grid-cols-[0.95fr_1.05fr] lg:gap-14 xl:gap-16 xl:p-12">
+          <div className="surface-card grid gap-5 p-4 sm:gap-8 sm:p-6 md:gap-10 md:p-8 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] lg:gap-14 xl:gap-16 xl:p-12">
             <Reveal className="space-y-8">
               <SectionHeading
                 title="Let's Connect"
@@ -370,7 +383,11 @@ export default async function Home() {
                     className="contact-link group flex items-center gap-4 text-foreground"
                   >
                     <span className="flex size-11 items-center justify-center rounded-full border border-outline bg-surface-soft transition-colors group-hover:border-outline-strong">
-                      <Icon name={item.icon} className="size-5" />
+                      {isSocialBrandName(item.icon) ? (
+                        <SocialBrandIcon name={item.icon} className="size-5" />
+                      ) : (
+                        <Icon name={item.icon} className="size-5" />
+                      )}
                     </span>
                     <span className="break-all font-mono text-sm sm:break-normal">{item.label}</span>
                   </a>
@@ -409,7 +426,11 @@ export default async function Home() {
                   rel={item.external ? "noreferrer" : undefined}
                   className="inline-flex items-center gap-2 text-sm text-muted transition-colors hover:text-foreground"
                 >
-                  <Icon name={item.icon} className="size-4" />
+                  {isSocialBrandName(item.icon) ? (
+                    <SocialBrandIcon name={item.icon} className="size-4" />
+                  ) : (
+                    <Icon name={item.icon} className="size-4" />
+                  )}
                   <span>{item.label}</span>
                 </a>
               ))}

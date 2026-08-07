@@ -1,140 +1,84 @@
-# Design Direction
+# Client-Ready Enterprise Design System (Anti-AI Template Specification)
+**Version:** 2.0.0  
+**Target:** Bespoke, High-End Client Deliverables  
+**Objective:** Elimination of the "vibe-coded" SaaS aesthetic (purple gradients, bento grids, glassmorphism, emoji overuse) in favor of architecturally disciplined, editorial, and human-centered user interfaces.
 
-Use the uploaded dashboard screenshot only as a visual style reference.
+---
 
-Redesign only the visual skin of the existing website. Do not change the layout.
+## 1. Architectural Layout & Spatial Systems
 
-## Strict Rules
+### 1.1 Layout Philosophy
+* **Structural Intent:** Abandon repetitive grid matrices and box-in-box containment. Use asymmetrical layouts, structural split-screens, and structural whitespace to establish visual hierarchy.
+* **The Anti-Box Rule:** Information must be organized through typographic scale, solid background transitions, or structural borders—never by trapping every content module inside a separate rounded card.
 
-- Do not change the website layout.
-- Do not change section order.
-- Do not move components.
-- Do not add new sections.
-- Do not remove sections.
-- Do not rewrite content.
-- Do not change images.
-- Do not change links.
-- Do not add a sidebar or topbar unless one already exists or the user explicitly requests it.
-- Do not change the page flow or structure.
+### 1.2 Grid & Content Containment
+* **Max Width Strategy:** Standardize on a strict desktop grid constraint. Use `max-w-7xl` (1280px) for standard marketing sections and `max-w-5xl` (1024px) for high-density, editorial prose sections to maximize focus.
+* **Section Transitions:** Separate content blocks using raw structural whitespace or solid, hard-edged background color shifts. Do not use floating cards over ambient gradient backdrops.
 
-## Allowed Updates
+### 1.3 Margins and Padding System (Mathematical Scales)
+* **Macro-Spacing (Section-to-Section):** Enforce wide vertical breathing room. A minimum desktop vertical padding of `py-24` (96px) to `py-32` (128px) must be applied across alternating content components.
+* **Micro-Spacing (Inline Elements):** Maintain proportional geometric lockups. Use a strict 4:1 scale ratio for structural elements (e.g., if paragraph block padding is `p-8`, accompanying internal elements must map cleanly to `p-2`).
 
-Only update:
+---
 
-- Colors
-- Font family
-- Font sizes
-- Font weights
-- Line heights
-- Letter spacing
-- Backgrounds
-- Borders
-- Border radius
-- Card styling
-- Button styling
-- Hover states
-- Shadows
-- Spacing polish inside existing components
+## 2. Typographic Discipline & Scale
 
-## Visual Target
+### 2.1 Font Selection & Pairing Matrix
+* **Primary Display Serif:** Use high-contrast, editorial serif typefaces for all headings (H1, H2, H3). Suggested choices include *Playfair Display*, *Clash Display*, or *Cormorant Garamond*.
+* **Secondary Interface Sans:** Use high-legibility, geometric sans-serif typefaces for user interface controls, body copy, and secondary metadata. Suggested choices include *Inter*, *SF Pro*, or *Instrument Sans*.
 
-Make the existing website visually feel like the uploaded dashboard screenshot: clean, light, modern SaaS/dashboard UI.
-
-## Style Direction
-
-- Light mode default
-- Soft gray page background
-- White card/surface backgrounds
-- Subtle gray borders
-- Minimal or no shadows
-- Rounded corners around 8-16px
-- Clean Inter-style typography
-- Normal letter spacing
-- Calm 400-600 font weights
-- Restrained spacing
-- Professional dashboard-like UI
-
-## Palette
-
-Before applying this design direction to any website, ask the user for the two main brand/theme colors they want to use. These are the primary identity colors, not the only colors allowed in the UI.
-
-Required question:
-
+### 2.2 Strict Proportional Typography Scale
 ```text
-What are the two main brand/theme colors you want for this website?
-Please provide hex codes if you have them.
+[Element]      [Size]          [Weight]        [Line Height]   [Tracking]
+Hero H1        4.5rem (72px)   Bold (700)      1.05 (Tight)    -0.03em
+Section H2     3.0rem (48px)   Medium (500)    1.15            -0.02em
+Subhead H3     1.5rem (24px)   Regular (400)   1.25            Normal
+Body Copy      1.0rem (16px)   Regular (400)   1.60 (Wide)     Normal
+UI Metadata    0.875rem (14px) Medium (500)    1.40            +0.05em
 ```
 
-Use the user's two colors as:
+### 2.3 Typographic Rules
+* **No Extremes:** Do not mix maximum bold display titles with ultra-thin, hard-to-read line weights in adjacent body copy blocks.
+* **Container Bounds:** All long-form text elements must be explicitly constrained to a line length of 45 to 75 characters per line (`max-w-2xl` to `max-w-3xl`) to maximize scannability.
 
-- Primary accent: user color 1
-- Link/action accent: user color 2
+---
 
-Supporting neutral colors for backgrounds, cards, borders, text, muted text, hover states, and status states may still be used as needed. Choose or derive these supporting colors so they fit the clean, light SaaS/dashboard style.
+## 3. Sophisticated Color Budgets & Chromatic Restraint
 
-Current selected palette for this website:
+### 3.1 The 60-30-10 Architecture Rule
+* **60% Dominant (Canvas):** Limited to architectural neutrals. Use deep charcoal (`#0C0F12`), structured stone (`#1C1F22`), stark gallery white (`#FAFAFA`), or rich cream (`#FDFBF7`).
+* **30% Secondary (Structure):** Used for typography, structural borders, subtle containers, and navigation foundations.
+* **10% Accent (Intent):** Reserved purely for interactive cues, primary calls-to-action, or critical highlights.
 
-- Primary brand/theme color: `#F3F6FA`
-- Link/action brand color: `#0C1220`
+### 3.2 Chromatic Restrictions & Outlawed Assets
+* **Absolute Gradients Ban:** Radial background light-blooms, indigo-to-purple blurs, and shifting multicolour header text are strictly prohibited.
+* **Neon Suppression:** High-chroma cyan, magenta, and electric lime green are banned. Brand accents must utilize organic, historically grounded color tones (e.g., deep burgundy, olive drab, terracotta, or midnight blue).
 
-Because `#F3F6FA` is very light, use it primarily for the page background and soft brand surfaces. Use `#0C1220` for visible actions, links, focus states, icons, and high-contrast accents.
+---
 
-If the user does not provide two colors and asks to proceed, use this default reference palette:
+## 4. UI Elements & Functional Micro-Interactions
 
-- Primary accent: `#5B5CF6`
-- Link/action accent: `#1688FF`
-- Page background: `#F3F6FA`
-- Surface: `#FFFFFF`
-- Soft surface: `#F3F5F8`
-- Text primary: `#101827`
-- Text secondary: `#53627A`
-- Text muted: `#8A97AE`
-- Border: `#D9E0EA`
-- Hover/active surface: `#DEE4ED`
+### 4.1 Structural Edges & Borders
+* **Border Radius Lock:** Container border radius must be limited to crisp, sharp adjustments. Use a maximum of `rounded-md` (6px) or completely square `rounded-none` edges to imply precise architectural discipline.
+* **Dividers:** Horizontal and vertical dividing lines must be thin, solid, and subtly contrasted against the canvas background (e.g., `border-neutral-200` on light or `border-neutral-800` on dark). No decorative multi-colored rules.
 
-## Typography
+### 4.2 Buttons and Interactive Controls
+* **States and Affordance:** Every actionable button component must have four distinct visual states explicitly mapped in code:
+  1. `Default`: Solid neutral color blocks or sharply defined structural wireframe boxes.
+  2. `Hover`: Smooth, elegant color weight shifts or intentional background fills.
+  3. `Focus`: High-visibility outline focus rings (`focus-visible:ring-2 focus-visible:ring-offset-2`).
+  4. `Disabled`: Clearly dimmed opacity accompanied by `cursor-not-allowed` system mappings.
+* **Micro-Animations:** Replace aggressive, instantaneous snap transitions with smooth CSS animations. Enforce a standard duration using cubic-bezier easing formulas:  
+  `transition-all duration-300 ease-[cubic-bezier(0.25,1,0.5,1)]`
 
-Use Inter or the closest modern SaaS font stack:
+---
 
-```css
-font-family: Inter, "Segoe UI", "SF Pro Text", system-ui, sans-serif;
-```
+## 5. Asset Standards & System Integrity
 
-Typography rules:
+### 5.1 Graphic Iconography
+* **Zero Emoji Tolerance:** Emojis are strictly banned as UI components, navigation anchors, decorative header accents, or bullet points.
+* **Bespoke SVGs Only:** Use unified, pixel-perfect monochrome SVG icon systems (e.g., *Lucide*, *Phosphor Icons*, or *Remix Icon* configured to uniform light or regular stroke weights).
 
-- Body text: 14-15px, weight 400, line-height 22px
-- Headings: 18-24px, weight 600
-- Card titles: 18-20px, weight 600
-- Buttons: 14px, weight 600
-- Captions/labels: 11-12px, weight 500-600
-- Letter spacing: 0px
-- Avoid monospace fonts unless the text is actual code.
-
-## Buttons
-
-- Use rounded pill buttons when appropriate.
-- Primary buttons may use dark navy `#111827` or the chosen primary accent.
-- Secondary buttons should be subtle, bordered, or transparent.
-- Hover states should be soft and minimal.
-
-## Cards And Surfaces
-
-- Use white cards.
-- Use thin `#D9E0EA` borders.
-- Use 8-16px border radius.
-- Use minimal shadow or no shadow.
-- Use soft gray inner panels where needed.
-
-## Do Not Use
-
-- Gradients
-- Decorative blobs
-- Glassmorphism
-- Heavy shadows
-- Oversized hero typography
-- Extreme bold weights
-- Uppercase styling unless already present
-
-## Goal
-
-Keep the website exactly the same structurally, but make the visual skin match the uploaded dashboard screenshot as closely as possible.
+### 5.2 Real Data vs. Mock Placeholders
+* **System Status Integrity:** Do not use artificial green flashing indicators or mock live-metric counters unless they tie directly to real-time, functional API telemetry.
+* **High-Fidelity Social Proof:** Remove generic one-letter profile placeholders. Customer reviews must feature real typography, clean typography-driven monogram identifiers, or fully validated asset paths.

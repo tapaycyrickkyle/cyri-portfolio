@@ -4,6 +4,9 @@ import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 
 import { Icon } from "./portfolio-icon";
+import { Button } from "./ui/button";
+import { Input } from "./ui/input";
+import { Textarea } from "./ui/textarea";
 
 type FormState = {
   name: string;
@@ -150,13 +153,13 @@ export default function ContactForm({ email, endpoint }: ContactFormProps) {
           Thank you for reaching out. Your message has been received.
         </p>
 
-        <button
+        <Button
           type="button"
           className="primary-button mt-6 w-full justify-center"
           onClick={() => setShowSuccessModal(false)}
         >
           Close
-        </button>
+        </Button>
       </div>
     </div>
   ) : null;
@@ -167,7 +170,12 @@ export default function ContactForm({ email, endpoint }: ContactFormProps) {
         ? createPortal(successModal, document.body)
         : null}
 
-      <form onSubmit={handleSubmit} className="space-y-6">
+      <form
+        action={endpoint}
+        method="POST"
+        onSubmit={handleSubmit}
+        className="space-y-6"
+      >
         <div className="grid gap-5 sm:grid-cols-2">
           <div className="space-y-2">
             <label
@@ -176,7 +184,7 @@ export default function ContactForm({ email, endpoint }: ContactFormProps) {
             >
               Name
             </label>
-            <input
+            <Input
               id="name"
               name="name"
               autoComplete="name"
@@ -195,7 +203,7 @@ export default function ContactForm({ email, endpoint }: ContactFormProps) {
             >
               Email
             </label>
-            <input
+            <Input
               id="email"
               name="email"
               type="email"
@@ -217,7 +225,7 @@ export default function ContactForm({ email, endpoint }: ContactFormProps) {
           >
             Message
           </label>
-          <textarea
+          <Textarea
             id="message"
             name="message"
             rows={5}
@@ -236,23 +244,24 @@ export default function ContactForm({ email, endpoint }: ContactFormProps) {
         </div>
 
         <div className="flex flex-col gap-3 sm:flex-row">
-          <button
+          <Button
             type="submit"
             disabled={!endpoint || isSubmitting}
             suppressHydrationWarning
             className="primary-button w-full justify-center sm:flex-1 disabled:cursor-not-allowed disabled:opacity-60"
           >
             {isSubmitting ? "Sending..." : "Send Message"}
-          </button>
-          <button
+          </Button>
+          <Button
             type="button"
             onClick={handleCopy}
             suppressHydrationWarning
+            variant="outline"
             className="secondary-button w-full sm:w-auto"
           >
             <Icon name={copied ? "check" : "copy"} className="size-4" />
             {copied ? "Copied" : "Copy Email"}
-          </button>
+          </Button>
         </div>
 
         <p className="min-h-6 text-sm text-muted">{feedback}</p>

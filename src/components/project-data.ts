@@ -95,30 +95,7 @@ async function parseProjectInfoFile(filePath: string) {
   } satisfies RawProjectInfo;
 }
 
-async function resolveProjectImage(folderPath: string, folderName: string) {
-  const entries = await readdir(folderPath, { withFileTypes: true });
-  const files = entries
-    .filter((entry) => entry.isFile())
-    .map((entry) => entry.name);
-
-  const preferredFile = files.find((file) =>
-    /^cover\.(png|jpe?g|webp|avif)$/i.test(file),
-  );
-
-  const fallbackFile = files.find((file) =>
-    IMAGE_EXTENSIONS.has(path.extname(file).toLowerCase()),
-  );
-
-  const imageFile = preferredFile ?? fallbackFile;
-
-  if (!imageFile) {
-    return null;
-  }
-
-  return `/images/projects/${folderName}/${imageFile}`;
-}
-
-async function resolveProjectImages(folderPath: string, folderName: string) {
+async function resolveProjectImageFiles(folderPath: string) {
   const entries = await readdir(folderPath, { withFileTypes: true });
   const imageFiles = entries
     .filter((entry) => entry.isFile())
@@ -137,6 +114,16 @@ async function resolveProjectImages(folderPath: string, folderName: string) {
     imageFiles.unshift(coverFile);
   }
 
+  return imageFiles;
+}
+
+function resolveProjectImage(folderName: string, imageFiles: string[]) {
+  const [imageFile] = imageFiles;
+
+  return imageFile ? `/images/projects/${folderName}/${imageFile}` : null;
+}
+
+function resolveProjectImages(folderName: string, imageFiles: string[]) {
   return imageFiles.map((file) => `/images/projects/${folderName}/${file}`);
 }
 
@@ -147,11 +134,12 @@ async function loadProjectFromFolder(
   const infoPath = path.join(folderPath, "info.txt");
 
   try {
-    const [projectInfo, imagePath, imageGallery] = await Promise.all([
+    const [projectInfo, imageFiles] = await Promise.all([
       parseProjectInfoFile(infoPath),
-      resolveProjectImage(folderPath, folderName),
-      resolveProjectImages(folderPath, folderName),
+      resolveProjectImageFiles(folderPath),
     ]);
+    const imagePath = resolveProjectImage(folderName, imageFiles);
+    const imageGallery = resolveProjectImages(folderName, imageFiles);
 
     if (!projectInfo || !imagePath) {
       return null;

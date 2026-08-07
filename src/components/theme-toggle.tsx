@@ -1,9 +1,7 @@
 "use client";
 
 import { useEffect, useState, useSyncExternalStore } from "react";
-
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faMoon, faSun } from "@fortawesome/free-solid-svg-icons";
+import { Moon, Sun } from "lucide-react";
 
 const STORAGE_KEY = "portfolio-theme";
 const THEME_EVENT = "portfolio-theme-change";
@@ -105,7 +103,11 @@ export default function ThemeToggle({
           }`}
           onAnimationEnd={() => setDrawerSpin(false)}
         >
-          <FontAwesomeIcon icon={effectiveIsDark ? faMoon : faSun} className="size-3.5" />
+          {effectiveIsDark ? (
+            <Moon className="size-3.5" aria-hidden="true" strokeWidth={1.9} />
+          ) : (
+            <Sun className="size-3.5" aria-hidden="true" strokeWidth={1.9} />
+          )}
         </span>
         <span className="theme-drawer-toggle-copy">
           <span className="theme-drawer-toggle-kicker">Theme</span>
@@ -131,13 +133,15 @@ export default function ThemeToggle({
             <span
               className={`theme-icon-stack ${effectiveIsDark ? "theme-icon-stack-dark" : "theme-icon-stack-light"}`}
             >
-              <FontAwesomeIcon
-                icon={faMoon}
+              <Moon
                 className={`theme-core-icon ${effectiveIsDark ? "theme-core-icon-visible" : "theme-core-icon-hidden"}`}
+                aria-hidden="true"
+                strokeWidth={1.9}
               />
-              <FontAwesomeIcon
-                icon={faSun}
+              <Sun
                 className={`theme-core-icon ${effectiveIsDark ? "theme-core-icon-hidden" : "theme-core-icon-visible"}`}
+                aria-hidden="true"
+                strokeWidth={1.9}
               />
             </span>
           </span>

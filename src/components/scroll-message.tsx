@@ -43,12 +43,14 @@ export default function ScrollMessage({
       aria-label={text}
     >
       {words.map((word, index) => (
-        <span
-          key={`${word}-${index}`}
-          className="scroll-message-word"
-          style={{ ["--word-delay" as string]: `${index * 60}ms` }}
-        >
-          {word}
+        <span key={`${word}-${index}`}>
+          <span
+            className="scroll-message-word"
+            style={{ ["--word-delay" as string]: `${index * 60}ms` }}
+          >
+            {word}
+          </span>
+          {index < words.length - 1 ? " " : ""}
         </span>
       ))}
     </p>
