@@ -115,6 +115,7 @@ export default function MediaCarousel({
                   {[...rowItems, ...rowItems].map((item, itemIndex) => (
                     <button
                       key={`${item.image}-${rowIndex}-${itemIndex}`}
+                      suppressHydrationWarning
                       type="button"
                       aria-label={`Open full view of ${item.title}`}
                       className="media-gallery-item"

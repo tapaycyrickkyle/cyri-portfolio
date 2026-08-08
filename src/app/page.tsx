@@ -2,6 +2,7 @@ import Image from "next/image";
 import AutoScrollRail from "../components/auto-scroll-rail";
 import ContactForm from "../components/contact-form";
 import {
+  clientWebsites,
   contactLinks,
   footerLinks,
   heroSocialLinks,
@@ -61,22 +62,20 @@ export default async function Home() {
           <Reveal className="hero-copy space-y-6 md:space-y-7">
             <div className="space-y-5 md:space-y-6">
               <h1 className="max-w-none text-[clamp(2.15rem,10vw,4.8rem)] font-semibold leading-[0.94] tracking-[-0.075em] text-foreground">
-                Building, learning, and improving through real-world projects.
+                I build clean websites for business owners.
               </h1>
               <p className="max-w-3xl text-[0.97rem] leading-7 text-muted sm:text-base md:text-[1rem] md:leading-8 lg:max-w-2xl lg:text-[1.02rem] xl:max-w-3xl xl:text-[1.08rem]">
-                I am a <span className="scan-highlight-soft">motivated</span> and <span className="scan-highlight-soft">adaptable</span> Information Technology
-                student with experience in <span className="scan-highlight-soft">web</span>, <span className="scan-highlight-soft">desktop</span>, and <span className="scan-highlight-soft">mobile development</span>,
-                <span className="scan-highlight-soft"> UI/UX design</span>, and digital creativity. I stay updated with
-                <span className="scan-highlight-soft"> AI</span> and <span className="scan-highlight-soft">automation</span> to improve
-                <span className="scan-highlight-soft"> workflows</span>, efficiency, and problem-solving, and I am currently
-                seeking an <span className="scan-highlight-soft">internship opportunity</span> to contribute, learn, and grow through
-                real-world experience.
+                I&apos;m a <span className="scan-highlight-soft">freelance web developer</span> focused on creating
+                <span className="scan-highlight-soft"> responsive</span>, practical websites for local businesses,
+                service providers, and growing brands. I help turn business information into a
+                <span className="scan-highlight-soft"> clear online presence</span> that customers can visit,
+                understand, and contact.
               </p>
             </div>
 
             <div className="flex flex-col gap-3 pt-1 sm:flex-row sm:flex-wrap sm:gap-4">
-              <a href="#work" className="primary-button w-full sm:w-auto">
-                View My Work
+              <a href="#client-websites" className="primary-button w-full sm:w-auto">
+                View Websites
                 <Icon name="arrow" className="size-4" />
               </a>
               <a
@@ -87,7 +86,7 @@ export default async function Home() {
                 Download CV
               </a>
               <a href="#contact" className="secondary-button w-full sm:w-auto">
-                Contact Me
+                Start a Website
               </a>
             </div>
 
@@ -125,7 +124,7 @@ export default async function Home() {
                   <div>
                     <p className="hero-info-kicker">Current Focus</p>
                     <p className="hero-info-copy">
-                      Web development first, while continuing to explore mobile and desktop apps.
+                      Building clean, responsive websites for business owners who need a stronger online presence.
                     </p>
                   </div>
                 </article>
@@ -138,7 +137,7 @@ export default async function Home() {
                   <div>
                     <p className="hero-info-kicker">Building With</p>
                     <p className="hero-info-copy">
-                      Next.js, React, Flutter, Supabase, Tauri, Git, Figma, and practical modern development tools.
+                      Next.js, React, responsive layouts, contact forms, practical content structure, and modern web tools.
                     </p>
                   </div>
                 </article>
@@ -150,7 +149,7 @@ export default async function Home() {
                   <div>
                     <p className="hero-info-kicker">Available For</p>
                     <p className="hero-info-copy">
-                      Internships, junior roles, and collaborative projects where I can learn fast and contribute useful work.
+                      Business websites, landing pages, portfolio sites, and simple online pages for services or brands.
                     </p>
                   </div>
                 </article>
@@ -161,10 +160,9 @@ export default async function Home() {
                   <Icon name="globe" className="size-5" />
                 </div>
                   <div>
-                    <p className="hero-info-kicker">Eligibility</p>
+                    <p className="hero-info-kicker">How I Help</p>
                     <p className="hero-info-copy">
-                      Career Service Professional Eligibility, supporting readiness for formal and public-sector
-                      opportunities.
+                      I organize your business details into a website that is easy to read, easy to use, and easy to contact from.
                     </p>
                   </div>
               </article>
@@ -176,13 +174,79 @@ export default async function Home() {
           <div className="section-shell">
             <Reveal>
               <div className="message-panel">
-                <p className="message-panel-kicker">What I am looking for</p>
+                <p className="message-panel-kicker">For business owners</p>
                 <ScrollMessage
-                  text="I am looking for opportunities where I can contribute useful work, gain real experience, and keep growing across web, mobile, and desktop development."
+                  text="If you are a business owner who needs a website, I can help you create a clean, responsive online presence for your services, products, or brand."
                   className="message-panel-text"
                 />
               </div>
             </Reveal>
+          </div>
+        </section>
+
+        <section id="client-websites" className="section-shell">
+          <Reveal>
+            <SectionHeading
+              title="Business Websites I Built"
+              description="Real websites and landing pages I created for business owners using Next.js, focused on clear presentation, responsive layouts, and practical online presence."
+            />
+          </Reveal>
+
+          <div className="client-websites-grid section-content-gap">
+            {clientWebsites.map((website, index) => (
+              <Reveal
+                key={website.title}
+                delay={index * 90}
+                className="client-website-reveal"
+              >
+                <article className="client-website-item">
+                  <a
+                    href={website.href}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="client-website-preview"
+                    aria-label={`Visit ${website.title}`}
+                  >
+                    {website.image ? (
+                      <Image
+                        src={website.image}
+                        alt={website.alt}
+                        fill
+                        sizes="(min-width: 1280px) 30vw, (min-width: 768px) 50vw, 100vw"
+                        className="object-cover object-top"
+                      />
+                    ) : (
+                      <span className="client-website-live-preview">
+                        <span>Live Website</span>
+                        <strong>{website.title}</strong>
+                      </span>
+                    )}
+                  </a>
+
+                  <div className="client-website-copy">
+                    <div>
+                      <p className="client-website-kicker">
+                        Business Website
+                      </p>
+                      <h3>{website.title}</h3>
+                    </div>
+                    <p>{website.category}</p>
+                    <div className="client-website-footer">
+                      <span>Built with Next.js</span>
+                      <a
+                        href={website.href}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="client-website-link"
+                      >
+                        Visit Website
+                        <Icon name="arrow" className="size-4" />
+                      </a>
+                    </div>
+                  </div>
+                </article>
+              </Reveal>
+            ))}
           </div>
         </section>
 
@@ -208,9 +272,9 @@ export default async function Home() {
           <div className="section-shell">
             <Reveal>
               <div className="message-panel">
-                <p className="message-panel-kicker">How I approach work</p>
+                <p className="message-panel-kicker">How I build</p>
                 <ScrollMessage
-                  text="I build with clarity, practicality, and continuous learning in mind, while staying open to tools and technologies that improve the way I work."
+                  text="I build websites with clear structure, mobile-friendly layouts, practical content, and simple ways for customers to contact the business."
                   className="message-panel-text"
                 />
               </div>
@@ -224,8 +288,8 @@ export default async function Home() {
         >
           <Reveal>
             <SectionHeading
-              title="Skills I am Practicing"
-              description="The core tools and platforms I keep using as I grow across web development while continuing to build for mobile and desktop too."
+              title="Tools I Use to Build Websites"
+              description="The main tools and platforms I use to create responsive websites, landing pages, interfaces, and supporting visuals for business owners."
             />
           </Reveal>
 
@@ -279,28 +343,24 @@ export default async function Home() {
             <Reveal className="space-y-8">
               <SectionHeading
                 title="Who I Am"
-                description="I&apos;m Cyrick Kyle B. Tapay, focused on web development while continuing to grow across mobile and desktop application development."
+                description="I&apos;m Cyrick Kyle B. Tapay, a freelance web developer focused on building practical websites for business owners."
               />
               <div className="space-y-4 text-base leading-7 text-muted sm:text-lg sm:leading-8">
                 <p>
-                  I&apos;m from Dolores, Eastern Samar, and I started with
-                  simple layouts and curiosity before gradually moving toward
-                  building digital solutions that feel useful and grounded in
-                  real needs.
+                  I&apos;m from Dolores, Eastern Samar, and I build websites for
+                  business owners who need a clearer online presence for their
+                  services, products, or brand.
                 </p>
                 <p>
-                  <span className="scan-highlight-soft">Web development</span> is my main focus, but I also explore <span className="scan-highlight-soft">mobile</span>
-                  and <span className="scan-highlight-soft">desktop applications</span> to keep expanding my knowledge and stay
-                  flexible across different platforms. I&apos;m still early in my
-                  career, but I take <span className="scan-highlight-soft">iteration</span> seriously and aim to make
-                  each build more disciplined, practical, and polished than the
-                  last one.
+                  <span className="scan-highlight-soft">Web development</span> is my main focus. I create
+                  <span className="scan-highlight-soft"> responsive websites</span> that organize business
+                  information clearly, work well on phones, and make it easier
+                  for customers to understand and contact the business.
                 </p>
                 <p>
-                  I stay updated with current technologies, especially <span className="scan-highlight-soft">AI</span> and
-                  <span className="scan-highlight-soft"> automation</span>, and I use them as practical tools to improve
-                  <span className="scan-highlight-soft"> workflows</span>, efficiency, and the way I solve real-world
-                  development problems.
+                  I also keep improving my design sense, development workflow,
+                  and use of modern tools so each website feels cleaner, faster,
+                  and more useful for the owner and their customers.
                 </p>
               </div>
               <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
@@ -366,12 +426,13 @@ export default async function Home() {
           <div className="surface-card grid gap-5 p-4 sm:gap-8 sm:p-6 md:gap-10 md:p-8 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] lg:gap-14 xl:gap-16 xl:p-12">
             <Reveal className="space-y-8">
               <SectionHeading
-                title="Let's Connect"
-                description="I am looking for internships, junior opportunities, and projects where I can keep learning, contribute useful work, and grow across web, mobile, and desktop development."
+                title="Let&apos;s Build Your Website"
+                description="If you need a website for your business, service, portfolio, or landing page, send me a message and I&apos;ll help you plan a clean and practical online presence."
               />
               <p className="max-w-xl text-base leading-7 text-muted sm:text-lg sm:leading-8">
-                If you want to collaborate, ask about a project, or just say
-                hello, I would be happy to hear from you.
+                Tell me what your business does, what you want customers to see,
+                and where they should contact you. I&apos;ll help turn that into a
+                simple website plan.
               </p>
               <div className="space-y-4">
                 {contactLinks.map((item) => (
@@ -415,7 +476,7 @@ export default async function Home() {
               Cyrick.Tapay
             </a>
             <p className="font-mono text-sm text-muted">
-              We never stop learning.
+              Freelance websites for business owners.
             </p>
             <div className="flex flex-wrap items-center justify-center gap-3 pt-2 md:justify-start">
               {footerLinks.map((item) => (

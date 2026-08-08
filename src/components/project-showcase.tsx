@@ -78,12 +78,12 @@ export default function ProjectShowcase({
           <div className="section-divider-block flex flex-col gap-6 border-b border-outline/50 md:flex-row md:items-end md:justify-between">
             <div className="max-w-2xl">
               <h2 className="text-2xl font-semibold tracking-[-0.05em] text-foreground sm:text-3xl md:text-4xl lg:text-5xl">
-                Projects I Have Worked On
+                Projects
               </h2>
               <p className="mt-4 text-sm leading-7 text-muted sm:text-base md:text-lg">
-                A collection of student projects, interface concepts, and
-                workflow studies that show how I learn, build, and improve
-                through hands-on work.
+                A secondary collection of system prototypes, interface concepts,
+                and development studies that show how I keep improving my
+                process and technical range.
               </p>
             </div>
             {projects.length > 3 ? (

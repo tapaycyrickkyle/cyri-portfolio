@@ -23,6 +23,7 @@ export default function SectionNav({
 
   const sidebarIcons: IconName[] = [
     "home",
+    "globe",
     "briefcase",
     "book",
     "code",

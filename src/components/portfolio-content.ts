@@ -62,6 +62,14 @@ export type MediaEditItem = {
   height: number;
 };
 
+export type ClientWebsiteItem = {
+  title: string;
+  category: string;
+  href: string;
+  image?: string;
+  alt: string;
+};
+
 export type SocialLink = {
   icon: IconName;
   label: string;
@@ -109,7 +117,8 @@ export const heroSocialLinks: SocialLink[] = [
 ];
 
 export const navigation: NavigationItem[] = [
-  { label: "Work", href: "#work" },
+  { label: "Websites", href: "#client-websites" },
+  { label: "Projects", href: "#work" },
   { label: "Learning", href: "#learning" },
   { label: "Skills", href: "#skills" },
   { label: "Profile", href: "#profile" },
@@ -238,7 +247,7 @@ export const learningSteps: LearningStep[] = [
   {
     icon: "rocket",
     title: "Preparing",
-    description: "Seeking internships and collaborating on real tools.",
+    description: "Building practical websites and improving through real client needs.",
     step: "Step 04",
     badge: null,
   },
@@ -366,6 +375,29 @@ export function formatEditedVisualTitle(imagePath: string) {
     .trim()
     .replace(/\b\w/g, (char) => char.toUpperCase());
 }
+
+export const clientWebsites: ClientWebsiteItem[] = [
+  {
+    title: "Arkylite",
+    category: "Architecture and design-build business website",
+    href: "http://arkylite.com/",
+    image: "/images/client-websites/arkylite.png",
+    alt: "Screenshot preview of the Arkylite business website.",
+  },
+  {
+    title: "Mariquina Travel",
+    category: "Van and car rental business website",
+    href: "https://mariquinatravel.com/",
+    image: "/images/client-websites/mariquina-travel.png",
+    alt: "Screenshot preview of the Mariquina Travel business website.",
+  },
+  {
+    title: "North Grove at Pristina",
+    category: "Real estate landing page",
+    href: "https://northgroveatpristina.com/",
+    alt: "Live preview link for the North Grove at Pristina landing page.",
+  },
+];
 
 export const contactLinks: SocialLink[] = [
   {
