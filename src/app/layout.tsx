@@ -17,6 +17,9 @@ export const metadata: Metadata = {
   title: "Cyrick Tapay | Portfolio",
   description:
     "Portfolio focused on web development, practical workflows, and growth through real project work across web, mobile, and desktop apps.",
+  verification: {
+    google: "_HiNKIDh3ten_H3L9z5_Ktjm7fNaBMFs6deeN-968Dg",
+  },
   icons: {
     icon: "/images/profile-picture.jpg",
     shortcut: "/images/profile-picture.jpg",
