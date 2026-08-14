@@ -378,6 +378,13 @@ export function formatEditedVisualTitle(imagePath: string) {
 
 export const clientWebsites: ClientWebsiteItem[] = [
   {
+    title: "Huswell Trading",
+    category: "Custom packaging supplier business website",
+    href: "https://www.huswelltrading.com/",
+    image: "/images/client-websites/huswell-trading.webp",
+    alt: "Screenshot preview of the Huswell Trading business website.",
+  },
+  {
     title: "Arkylite",
     category: "Architecture and design-build business website",
     href: "http://arkylite.com/",
@@ -396,13 +403,6 @@ export const clientWebsites: ClientWebsiteItem[] = [
     category: "Real estate landing page",
     href: "https://northgroveatpristina.com/",
     alt: "Live preview link for the North Grove at Pristina landing page.",
-  },
-  {
-    title: "Huswell Trading",
-    category: "Custom packaging supplier business website",
-    href: "https://www.huswelltrading.com/",
-    image: "/images/client-websites/huswell-trading.webp",
-    alt: "Screenshot preview of the Huswell Trading business website.",
   },
 ];
 

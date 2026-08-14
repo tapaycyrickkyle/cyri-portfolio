@@ -5791,13 +5791,85 @@ a[href],
 }
 
 /* Business website showcase. */
-.client-websites-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: clamp(1rem, 2.5vw, 1.5rem);
+.client-websites-carousel {
+  position: relative;
 }
 
-.client-website-reveal,
+.client-websites-controls {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: clamp(1rem, 2.5vw, 1.5rem);
+}
+
+.client-websites-controls-row {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+}
+
+.client-websites-controls-label {
+  font-family: var(--font-inter), Inter, system-ui, sans-serif;
+  font-size: 0.75rem;
+  font-weight: 500;
+  line-height: 1.4;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--muted-soft);
+}
+
+.client-websites-controls-buttons {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.client-websites-control-button {
+  display: inline-flex;
+  width: 2.75rem;
+  height: 2.75rem;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--outline);
+  background: var(--surface);
+  color: var(--foreground);
+  cursor: pointer;
+  transition: all 300ms cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.client-websites-control-button:hover:not(:disabled),
+.client-websites-control-button:focus-visible {
+  background: var(--foreground);
+  color: var(--background);
+}
+
+.client-websites-control-button:focus-visible {
+  outline: 2px solid var(--foreground);
+  outline-offset: 2px;
+}
+
+.client-websites-control-button:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.client-websites-scroller {
+  display: flex;
+  gap: clamp(1rem, 2.5vw, 1.5rem);
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+}
+
+.client-websites-scroller::-webkit-scrollbar {
+  display: none;
+}
+
+.client-websites-scroller > .client-website-item {
+  flex: 0 0 92%;
+  scroll-snap-align: start;
+}
+
 .client-website-item {
   min-width: 0;
   height: 100%;
@@ -5924,13 +5996,13 @@ a[href],
 }
 
 @media (min-width: 768px) {
-  .client-websites-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+  .client-websites-scroller > .client-website-item {
+    flex: 0 0 calc(50% - 0.75rem);
   }
 }
 
 @media (min-width: 1180px) {
-  .client-websites-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+  .client-websites-scroller > .client-website-item {
+    flex: 0 0 calc(33.333% - 1rem);
   }
 }

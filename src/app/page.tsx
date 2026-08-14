@@ -1,5 +1,6 @@
 import Image from "next/image";
 import AutoScrollRail from "../components/auto-scroll-rail";
+import ClientWebsiteCarousel from "../components/client-website-carousel";
 import ContactForm from "../components/contact-form";
 import {
   clientWebsites,
@@ -192,62 +193,9 @@ export default async function Home() {
             />
           </Reveal>
 
-          <div className="client-websites-grid section-content-gap">
-            {clientWebsites.map((website, index) => (
-              <Reveal
-                key={website.title}
-                delay={index * 90}
-                className="client-website-reveal"
-              >
-                <article className="client-website-item">
-                  <a
-                    href={website.href}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="client-website-preview"
-                    aria-label={`Visit ${website.title}`}
-                  >
-                    {website.image ? (
-                      <Image
-                        src={website.image}
-                        alt={website.alt}
-                        fill
-                        sizes="(min-width: 1280px) 30vw, (min-width: 768px) 50vw, 100vw"
-                        className="object-cover object-top"
-                      />
-                    ) : (
-                      <span className="client-website-live-preview">
-                        <span>Live Website</span>
-                        <strong>{website.title}</strong>
-                      </span>
-                    )}
-                  </a>
-
-                  <div className="client-website-copy">
-                    <div>
-                      <p className="client-website-kicker">
-                        Business Website
-                      </p>
-                      <h3>{website.title}</h3>
-                    </div>
-                    <p>{website.category}</p>
-                    <div className="client-website-footer">
-                      <span>Built with Next.js</span>
-                      <a
-                        href={website.href}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="client-website-link"
-                      >
-                        Visit Website
-                        <Icon name="arrow" className="size-4" />
-                      </a>
-                    </div>
-                  </div>
-                </article>
-              </Reveal>
-            ))}
-          </div>
+<Reveal className="section-content-gap">
+            <ClientWebsiteCarousel websites={clientWebsites} />
+          </Reveal>
         </section>
 
         <ProjectShowcase projects={projects} />
