@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "postbuild": "node scripts/check-assets.mjs",
     "start": "next start",
     "lint": "eslint",
     "preview": "npm run build && npx wrangler dev",
