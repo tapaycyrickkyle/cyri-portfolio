@@ -397,6 +397,13 @@ export const clientWebsites: ClientWebsiteItem[] = [
     href: "https://northgroveatpristina.com/",
     alt: "Live preview link for the North Grove at Pristina landing page.",
   },
+  {
+    title: "Huswell Trading",
+    category: "Custom packaging supplier business website",
+    href: "https://www.huswelltrading.com/",
+    image: "/images/client-websites/huswell-trading.webp",
+    alt: "Screenshot preview of the Huswell Trading business website.",
+  },
 ];
 
 export const contactLinks: SocialLink[] = [
