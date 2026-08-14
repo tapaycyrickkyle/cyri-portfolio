@@ -132,13 +132,9 @@ export default function ClientWebsiteCarousel({
             </a>
 
             <div className="client-website-copy">
-              <div>
-                <p className="client-website-kicker">Business Website</p>
-                <h3>{website.title}</h3>
-              </div>
+              <h3>{website.title}</h3>
               <p>{website.category}</p>
               <div className="client-website-footer">
-                <span>Built with Next.js</span>
                 <a
                   href={website.href}
                   target="_blank"

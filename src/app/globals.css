@@ -5885,7 +5885,7 @@ a[href],
 .client-website-preview {
   position: relative;
   display: block;
-  aspect-ratio: 16 / 10;
+  aspect-ratio: 16 / 9;
   overflow: hidden;
   border-bottom: 1px solid var(--outline);
   background: #000000;
@@ -5911,17 +5911,6 @@ a[href],
   text-align: center;
 }
 
-.client-website-live-preview span,
-.client-website-kicker,
-.client-website-footer span {
-  font-family: var(--font-inter), Inter, system-ui, sans-serif;
-  font-size: 0.75rem;
-  font-weight: 500;
-  line-height: 1.4;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-}
-
 .client-website-live-preview span {
   color: rgba(255, 255, 255, 0.68);
 }
@@ -5938,18 +5927,13 @@ a[href],
   min-width: 0;
   flex-direction: column;
   justify-content: space-between;
-  gap: 1.5rem;
-  padding: clamp(1rem, 3vw, 1.35rem);
-}
-
-.client-website-kicker {
-  color: var(--muted-soft);
+  gap: 0.75rem;
+  padding: clamp(0.85rem, 2vw, 1.1rem);
 }
 
 .client-website-copy h3 {
-  margin-top: 0.35rem;
   font-family: var(--font-display), "Playfair Display", Georgia, serif;
-  font-size: clamp(1.45rem, 5vw, 1.9rem);
+  font-size: clamp(1.3rem, 4.5vw, 1.7rem);
   font-weight: 500;
   line-height: 1.12;
   color: var(--foreground);
@@ -5961,27 +5945,20 @@ a[href],
 }
 
 .client-website-footer {
-  display: flex;
-  flex-direction: column;
-  gap: 0.85rem;
   border-top: 1px solid var(--outline);
-  padding-top: 1rem;
-}
-
-.client-website-footer span {
-  color: var(--muted-soft);
+  padding-top: 0.75rem;
 }
 
 .client-website-link {
   display: inline-flex;
-  min-height: 3rem;
+  min-height: 2.5rem;
   width: fit-content;
   max-width: 100%;
   align-items: center;
   justify-content: center;
   gap: 0.55rem;
   border: 1px solid var(--foreground);
-  padding: 0.75rem 0.95rem;
+  padding: 0.6rem 0.85rem;
   color: var(--foreground);
   font-size: 0.78rem;
   font-weight: 700;
