@@ -381,14 +381,14 @@ export const clientWebsites: ClientWebsiteItem[] = [
     title: "Arkylite",
     category: "Architecture and design-build business website",
     href: "http://arkylite.com/",
-    image: "/images/client-websites/arkylite.png",
+    image: "/images/client-websites/arkylite.webp",
     alt: "Screenshot preview of the Arkylite business website.",
   },
   {
     title: "Mariquina Travel",
     category: "Van and car rental business website",
     href: "https://mariquinatravel.com/",
-    image: "/images/client-websites/mariquina-travel.png",
+    image: "/images/client-websites/mariquina-travel.webp",
     alt: "Screenshot preview of the Mariquina Travel business website.",
   },
   {
