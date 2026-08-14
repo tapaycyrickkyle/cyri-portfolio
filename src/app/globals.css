@@ -5853,6 +5853,7 @@ a[href],
 
 .client-websites-scroller {
   display: flex;
+  align-items: stretch;
   gap: clamp(1rem, 2.5vw, 1.5rem);
   overflow-x: auto;
   overscroll-behavior-x: contain;
@@ -5872,7 +5873,6 @@ a[href],
 
 .client-website-item {
   min-width: 0;
-  height: 100%;
 }
 
 .client-website-item {
@@ -5923,10 +5923,9 @@ a[href],
 }
 
 .client-website-copy {
-  display: flex;
+  display: grid;
   min-width: 0;
-  flex-direction: column;
-  justify-content: space-between;
+  grid-template-rows: auto auto 1fr;
   gap: 0.75rem;
   padding: clamp(0.85rem, 2vw, 1.1rem);
 }
