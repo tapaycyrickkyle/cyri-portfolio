@@ -402,7 +402,8 @@ export const clientWebsites: ClientWebsiteItem[] = [
     title: "Zeds Builders",
     category: "Hardware tools and equipment trading website",
     href: "https://zedsbuilders.com/",
-    alt: "Live preview link for the Zeds Builders business website.",
+    image: "/images/client-websites/zeds-builders.png",
+    alt: "Preview image for the Zeds Builders business website.",
   },
   {
     title: "North Grove at Pristina",
