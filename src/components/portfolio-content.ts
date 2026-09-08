@@ -399,6 +399,12 @@ export const clientWebsites: ClientWebsiteItem[] = [
     alt: "Screenshot preview of the Mariquina Travel business website.",
   },
   {
+    title: "Zeds Builders",
+    category: "Hardware tools and equipment trading website",
+    href: "https://zedsbuilders.com/",
+    alt: "Live preview link for the Zeds Builders business website.",
+  },
+  {
     title: "North Grove at Pristina",
     category: "Real estate landing page",
     href: "https://northgroveatpristina.com/",
