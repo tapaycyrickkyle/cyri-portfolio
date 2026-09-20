@@ -1,6 +1,7 @@
 import { readdir, readFile } from "node:fs/promises";
 import path from "node:path";
 
+import { CASE_STUDY_SLUGS, projectSlug } from "../lib/project-slugs";
 import type { ProjectItem } from "./portfolio-content";
 import { fallbackProjects } from "./portfolio-content";
 
@@ -205,4 +206,20 @@ export async function getProjects(): Promise<ProjectItem[]> {
   } catch {
     return fallbackProjects;
   }
+}
+
+export async function getCaseStudyProjects() {
+  const projects = await getProjects();
+
+  return projects.filter((project) =>
+    CASE_STUDY_SLUGS.includes(
+      projectSlug(project.title) as (typeof CASE_STUDY_SLUGS)[number],
+    ),
+  );
+}
+
+export async function getCaseStudyProject(slug: string) {
+  const projects = await getCaseStudyProjects();
+
+  return projects.find((project) => projectSlug(project.title) === slug) ?? null;
 }

@@ -1,8 +1,10 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 
+import { CASE_STUDY_SLUGS, projectSlug } from "../lib/project-slugs";
 import type { ProjectItem } from "./portfolio-content";
 import { Icon } from "./portfolio-icon";
 import Reveal from "./reveal";
@@ -153,7 +155,18 @@ export default function ProjectShowcase({
 
                       <div className="space-y-2.5">
                         <h3 className="text-[1.75rem] font-semibold tracking-[-0.05em] text-foreground">
-                          {project.title}
+                          {CASE_STUDY_SLUGS.includes(
+                            projectSlug(project.title) as (typeof CASE_STUDY_SLUGS)[number],
+                          ) ? (
+                            <Link
+                              href={`/work/${projectSlug(project.title)}`}
+                              className="transition-colors hover:text-accent"
+                            >
+                              {project.title}
+                            </Link>
+                          ) : (
+                            project.title
+                          )}
                         </h3>
                         <p className="project-card-description text-base leading-7 text-muted">
                           {project.description}
