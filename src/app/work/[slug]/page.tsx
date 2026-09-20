@@ -4,11 +4,8 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import { SITE_NAME, SITE_URL } from "../../../lib/site";
-import { CASE_STUDY_SLUGS, projectSlug } from "../../../lib/project-slugs";
-import {
-  getCaseStudyProject,
-  getCaseStudyProjects,
-} from "../../../components/project-data";
+import { projectSlug } from "../../../lib/project-slugs";
+import { getProject, getProjects } from "../../../components/project-data";
 
 type ProjectPageProps = {
   params: Promise<{ slug: string }>;
@@ -17,7 +14,7 @@ type ProjectPageProps = {
 export const dynamicParams = false;
 
 export async function generateStaticParams() {
-  const projects = await getCaseStudyProjects();
+  const projects = await getProjects();
 
   return projects.map((project) => ({
     slug: projectSlug(project.title),
@@ -28,7 +25,7 @@ export async function generateMetadata({
   params,
 }: ProjectPageProps): Promise<Metadata> {
   const { slug } = await params;
-  const project = await getCaseStudyProject(slug);
+  const project = await getProject(slug);
 
   if (!project) {
     return {
@@ -70,9 +67,9 @@ export async function generateMetadata({
 
 export default async function ProjectPage({ params }: ProjectPageProps) {
   const { slug } = await params;
-  const project = await getCaseStudyProject(slug);
+  const project = await getProject(slug);
 
-  if (!project || !CASE_STUDY_SLUGS.includes(slug as (typeof CASE_STUDY_SLUGS)[number])) {
+  if (!project) {
     notFound();
   }
 

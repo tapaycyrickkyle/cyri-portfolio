@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
-import { CASE_STUDY_SLUGS, projectSlug } from "../lib/project-slugs";
+import { projectSlug } from "../lib/project-slugs";
 import type { ProjectItem } from "./portfolio-content";
 import { Icon } from "./portfolio-icon";
 import Reveal from "./reveal";
@@ -49,11 +49,6 @@ export default function ProjectShowcase({
       : [];
 
   const canBrowseImages = projectImages.length > 1;
-
-  function openProject(project: ProjectItem) {
-    setActiveImageIndex(0);
-    setSelectedProject(project);
-  }
 
   function showPreviousImage() {
     setActiveImageIndex(
@@ -108,12 +103,16 @@ export default function ProjectShowcase({
             role="list"
             aria-label="Projects"
           >
-            {visibleProjects.map((project, index) => (
-            <Reveal
-              key={project.title}
-              delay={index * 80}
-              className="project-strip-item"
-            >
+            {visibleProjects.map((project, index) => {
+              const slug = projectSlug(project.title);
+              const projectHref = `/work/${slug}`;
+
+              return (
+                <Reveal
+                  key={project.title}
+                  delay={index * 80}
+                  className="project-strip-item"
+                >
               <article className="project-card-clean group h-full" role="listitem">
                 <div className="surface-card project-card-frame h-full overflow-hidden">
                   <div className="project-card-image-shell">
@@ -155,18 +154,12 @@ export default function ProjectShowcase({
 
                       <div className="space-y-2.5">
                         <h3 className="text-[1.75rem] font-semibold tracking-[-0.05em] text-foreground">
-                          {CASE_STUDY_SLUGS.includes(
-                            projectSlug(project.title) as (typeof CASE_STUDY_SLUGS)[number],
-                          ) ? (
-                            <Link
-                              href={`/work/${projectSlug(project.title)}`}
-                              className="transition-colors hover:text-accent"
-                            >
-                              {project.title}
-                            </Link>
-                          ) : (
-                            project.title
-                          )}
+                          <Link
+                            href={projectHref}
+                            className="transition-colors hover:text-accent"
+                          >
+                            {project.title}
+                          </Link>
                         </h3>
                         <p className="project-card-description text-base leading-7 text-muted">
                           {project.description}
@@ -176,26 +169,22 @@ export default function ProjectShowcase({
 
                     <div className="project-card-footer">
                       <span className="project-card-footer-note">
-                        Click for concept details
+                        Open full project
                       </span>
-                      <button
-                        suppressHydrationWarning
-                        type="button"
-                        onClick={() => openProject(project)}
-                        className="project-detail-link"
-                      >
+                      <Link href={projectHref} className="project-detail-link">
                         View Details
                         <Icon
                           name="arrow"
                           className="size-4 transition-transform group-hover:translate-x-1"
                         />
-                      </button>
+                      </Link>
                     </div>
                   </div>
                 </div>
               </article>
-            </Reveal>
-          ))}
+                </Reveal>
+              );
+            })}
           </div>
         </div>
       </section>
