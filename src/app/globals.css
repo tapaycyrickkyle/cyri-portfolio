@@ -5482,7 +5482,7 @@ main {
 
 /* Responsive deployment pass: mobile-first guardrails aligned with DESIGN.md. */
 :root {
-  --page-gutter: clamp(1rem, 4.5vw, 4rem);
+  --page-gutter: clamp(1rem, 3vw, 3.5rem);
   --content-width: 80rem;
   --nav-offset: clamp(2rem, 7vw, 2.75rem);
 }
@@ -5513,6 +5513,12 @@ a[href],
   width: min(100%, calc(var(--content-width) + (var(--page-gutter) * 2))) !important;
   max-width: none !important;
   padding-inline: var(--page-gutter) !important;
+}
+
+.section-shell > *,
+.section-hero > *,
+.site-footer > div > * {
+  min-width: 0;
 }
 
 .section-shell {
@@ -5624,6 +5630,13 @@ a[href],
   font-size: clamp(1.35rem, 6vw, 1.5rem) !important;
 }
 
+.project-detail-shell h1,
+.project-detail-shell h2,
+.project-detail-shell p,
+.project-detail-shell dd {
+  overflow-wrap: anywhere;
+}
+
 .card-rail-item-skill {
   flex-basis: clamp(7rem, 32vw, 10rem) !important;
 }
@@ -5703,12 +5716,30 @@ a[href],
   }
 
   .project-strip {
-    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
   }
 
   .site-footer > div {
     grid-template-columns: minmax(0, 1fr) auto !important;
     align-items: end !important;
+  }
+}
+
+@media (min-width: 1200px) {
+  .project-strip {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  }
+}
+
+@media (min-width: 1200px) and (max-width: 1279px) {
+  .project-card-footer {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .project-detail-link {
+    width: 100%;
+    justify-content: space-between;
   }
 }
 
@@ -5719,6 +5750,10 @@ a[href],
 
   .page-shell {
     padding-left: var(--sidebar-width) !important;
+  }
+
+  .project-detail-shell {
+    padding-left: 0 !important;
   }
 
   .portfolio-sidebar {
@@ -5804,10 +5839,14 @@ a[href],
 .client-websites-controls-row {
   display: flex;
   align-items: center;
+  max-width: 100%;
+  flex-wrap: wrap;
   gap: 0.9rem;
 }
 
 .client-websites-controls-label {
+  min-width: 0;
+  overflow-wrap: anywhere;
   font-family: var(--font-inter), Inter, system-ui, sans-serif;
   font-size: 0.75rem;
   font-weight: 500;

@@ -59,7 +59,7 @@ export default async function Home() {
       <SectionNav navigation={navigation} />
 
       <main style={{ paddingTop: "var(--nav-offset)" }}>
-        <section className="section-shell section-hero grid gap-6 sm:gap-8 lg:grid-cols-[minmax(0,1.04fr)_minmax(min(100%,17rem),0.96fr)] lg:items-start lg:gap-8 xl:grid-cols-[minmax(0,1.08fr)_minmax(min(100%,18rem),0.92fr)] xl:gap-10">
+        <section className="section-shell section-hero grid gap-6 sm:gap-8 xl:grid-cols-[minmax(0,1.08fr)_minmax(min(100%,18rem),0.92fr)] xl:items-start xl:gap-10">
           <Reveal className="hero-copy space-y-6 md:space-y-7">
             <div className="space-y-5 md:space-y-6">
               <h1 className="max-w-none text-[clamp(2.15rem,10vw,4.8rem)] font-semibold leading-[0.94] tracking-[-0.075em] text-foreground">
@@ -287,7 +287,7 @@ export default async function Home() {
           id="profile"
           className="section-shell"
         >
-            <div className="grid gap-6 sm:gap-8 md:gap-12 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] lg:items-center lg:gap-20 xl:gap-24">
+            <div className="grid gap-6 sm:gap-8 md:gap-12 xl:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] xl:items-center xl:gap-20 2xl:gap-24">
             <Reveal className="space-y-8">
               <SectionHeading
                 title="Who I Am"
@@ -339,8 +339,8 @@ export default async function Home() {
               </div>
             </Reveal>
 
-            <Reveal delay={140} className="relative lg:flex lg:justify-end">
-              <div className="profile-showcase mx-auto w-full max-w-[20rem] sm:max-w-[24rem] md:max-w-[28rem] lg:mx-0">
+            <Reveal delay={140} className="relative xl:flex xl:justify-end">
+              <div className="profile-showcase mx-auto w-full max-w-[20rem] sm:max-w-[24rem] md:max-w-[28rem] xl:mx-0">
                 <div className="profile-showcase-orbit profile-showcase-orbit-left" />
                 <div className="profile-showcase-orbit profile-showcase-orbit-right" />
                 <div className="profile-frame profile-showcase-frame">
@@ -371,7 +371,7 @@ export default async function Home() {
           id="contact"
           className="section-shell"
         >
-          <div className="surface-card grid gap-5 p-4 sm:gap-8 sm:p-6 md:gap-10 md:p-8 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] lg:gap-14 xl:gap-16 xl:p-12">
+          <div className="surface-card grid gap-5 p-4 sm:gap-8 sm:p-6 md:gap-10 md:p-8 xl:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] xl:gap-14 2xl:gap-16 xl:p-12">
             <Reveal className="space-y-8">
               <SectionHeading
                 title="Let&apos;s Build Your Website"

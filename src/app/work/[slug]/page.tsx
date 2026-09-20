@@ -93,23 +93,26 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
   };
 
   return (
-    <div className="page-shell relative isolate overflow-x-clip">
+    <div className="page-shell project-detail-shell relative isolate overflow-x-clip">
       <header className="border-b border-outline/60 bg-surface/95">
-        <div className="mx-auto flex max-w-[86rem] items-center justify-between gap-4 px-[var(--page-gutter)] py-5">
+        <div className="mx-auto flex max-w-[86rem] flex-wrap items-start justify-between gap-3 px-[var(--page-gutter)] py-4 sm:flex-nowrap sm:items-center sm:gap-4 sm:py-5">
           <Link
             href="/"
             className="brand-badge text-lg font-semibold tracking-[-0.12em] text-foreground"
           >
             Cyrick.Tapay
           </Link>
-          <Link href="/#work" className="secondary-button">
+          <Link
+            href="/#work"
+            className="secondary-button w-full justify-center sm:w-auto"
+          >
             Back to Projects
           </Link>
         </div>
       </header>
 
       <main>
-        <article className="section-shell space-y-10 py-16 sm:space-y-14 sm:py-24">
+        <article className="section-shell min-w-0 space-y-10 py-16 sm:space-y-14 sm:py-24">
           <script
             type="application/ld+json"
             dangerouslySetInnerHTML={{
@@ -163,8 +166,8 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
             )}
           </dl>
 
-          <div className="grid gap-10 lg:grid-cols-[minmax(0,1.15fr)_minmax(18rem,0.85fr)] lg:gap-16">
-            <div className="space-y-10">
+          <div className="grid min-w-0 gap-10 lg:grid-cols-[minmax(0,1.15fr)_minmax(18rem,0.85fr)] lg:gap-16">
+            <div className="min-w-0 space-y-10">
               <section aria-labelledby="overview-heading" className="space-y-4">
                 <h2
                   id="overview-heading"
@@ -195,7 +198,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
               </section>
             </div>
 
-            <aside className="space-y-6 border-t border-outline pt-6 lg:border-l lg:border-t-0 lg:pl-8 lg:pt-0">
+            <aside className="min-w-0 space-y-6 border-t border-outline pt-6 lg:border-l lg:border-t-0 lg:pl-8 lg:pt-0">
               <div>
                 <p className="font-mono text-[11px] uppercase tracking-[0.24em] text-muted-soft">
                   Technologies
@@ -263,7 +266,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
       </main>
 
       <footer className="site-footer border-t border-outline/50 py-10">
-        <div className="mx-auto flex max-w-[86rem] items-center justify-between gap-4 px-[var(--page-gutter)] text-sm text-muted">
+        <div className="mx-auto flex max-w-[86rem] flex-wrap items-start justify-between gap-3 px-[var(--page-gutter)] text-sm text-muted sm:flex-nowrap sm:items-center sm:gap-4">
           <span>© {new Date().getFullYear()} Cyrick Kyle Tapay.</span>
           <Link href="/" className="text-foreground hover:text-accent">
             Back to portfolio
