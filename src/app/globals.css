@@ -37,8 +37,8 @@
   --color-outline-strong: var(--outline-strong);
   --color-accent: var(--accent);
   --color-accent-foreground: var(--accent-foreground);
-  --font-sans: var(--font-inter), "Inter", "Segoe UI", "SF Pro Text", system-ui, sans-serif;
-  --font-mono: var(--font-inter), "Inter", "Segoe UI", "SF Pro Text", system-ui, sans-serif;
+  --font-sans: var(--font-geist-sans), "Geist Sans", "Segoe UI", "SF Pro Text", system-ui, sans-serif;
+  --font-mono: var(--font-geist-sans), "Geist Sans", "Segoe UI", "SF Pro Text", system-ui, sans-serif;
 }
 
 .dark {
@@ -4680,7 +4680,7 @@ select,
 .contact-link,
 .form-field,
 .site-footer {
-  font-family: var(--font-inter), Inter, "SF Pro Text", system-ui, sans-serif !important;
+  font-family: var(--font-geist-sans), "Geist Sans", "SF Pro Text", system-ui, sans-serif !important;
 }
 
 h1,
@@ -4917,7 +4917,7 @@ h3,
 }
 
 .media-lightbox-caption span {
-  font-family: var(--font-inter), Inter, system-ui, sans-serif !important;
+  font-family: var(--font-geist-sans), "Geist Sans", system-ui, sans-serif !important;
   font-size: 0.75rem !important;
   font-weight: 500 !important;
   letter-spacing: 0.05em !important;
@@ -4929,7 +4929,7 @@ h3,
   text-align: right !important;
   text-overflow: ellipsis !important;
   white-space: nowrap !important;
-  font-family: var(--font-inter), Inter, system-ui, sans-serif !important;
+  font-family: var(--font-geist-sans), "Geist Sans", system-ui, sans-serif !important;
   font-size: 0.95rem !important;
   font-weight: 600 !important;
 }
@@ -5069,7 +5069,7 @@ h3,
 }
 
 .media-gallery-caption span {
-  font-family: var(--font-inter), Inter, system-ui, sans-serif !important;
+  font-family: var(--font-geist-sans), "Geist Sans", system-ui, sans-serif !important;
   font-size: 0.68rem !important;
   font-weight: 500 !important;
   letter-spacing: 0.05em !important;
@@ -5077,7 +5077,7 @@ h3,
 }
 
 .media-gallery-caption strong {
-  font-family: var(--font-inter), Inter, system-ui, sans-serif !important;
+  font-family: var(--font-geist-sans), "Geist Sans", system-ui, sans-serif !important;
   font-size: 0.92rem !important;
   font-weight: 600 !important;
 }
@@ -5091,7 +5091,7 @@ h3,
 }
 
 .media-gallery-note span {
-  font-family: var(--font-inter), Inter, system-ui, sans-serif !important;
+  font-family: var(--font-geist-sans), "Geist Sans", system-ui, sans-serif !important;
   font-size: 0.78rem !important;
   font-weight: 500 !important;
   letter-spacing: 0.05em !important;
@@ -5847,7 +5847,7 @@ a[href],
 .client-websites-controls-label {
   min-width: 0;
   overflow-wrap: anywhere;
-  font-family: var(--font-inter), Inter, system-ui, sans-serif;
+  font-family: var(--font-geist-sans), "Geist Sans", system-ui, sans-serif;
   font-size: 0.75rem;
   font-weight: 500;
   line-height: 1.4;
