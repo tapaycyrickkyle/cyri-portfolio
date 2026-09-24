@@ -46,12 +46,6 @@ export type TechStackItem = {
   wideLogo?: boolean;
 };
 
-export type SolutionArea = {
-  icon: IconName;
-  title: string;
-  description: string;
-};
-
 export type MediaEditItem = {
   title: string;
   label: string;
@@ -117,7 +111,7 @@ export const heroSocialLinks: SocialLink[] = [
 ];
 
 export const navigation: NavigationItem[] = [
-  { label: "Solutions", href: "#solutions" },
+  { label: "Websites", href: "#client-websites" },
   { label: "Projects", href: "#work" },
   { label: "Learning", href: "#learning" },
   { label: "Skills", href: "#skills" },
@@ -335,33 +329,6 @@ export const techStackItems: TechStackItem[] = [
   },
 ];
 
-export const solutionAreas: SolutionArea[] = [
-  {
-    icon: "globe",
-    title: "Business Websites",
-    description:
-      "Clear, responsive websites that explain what you offer and make it easier for customers to take the next step.",
-  },
-  {
-    icon: "spark",
-    title: "AI Automation",
-    description:
-      "AI-assisted workflows that help organize information, answer common questions, and reduce repetitive work.",
-  },
-  {
-    icon: "dashboard",
-    title: "Workflow Systems",
-    description:
-      "Dashboards and connected processes that make business tasks easier to track, review, and manage.",
-  },
-  {
-    icon: "database",
-    title: "Digital Problem Solving",
-    description:
-      "Practical web tools that turn a specific business bottleneck into a clearer, more usable system.",
-  },
-];
-
 export function formatEditedVisualTitle(imagePath: string) {
   const fileName = imagePath.split("/").pop() ?? imagePath;
   const baseName = fileName.replace(/\.[^.]+$/, "");
@@ -374,6 +341,13 @@ export function formatEditedVisualTitle(imagePath: string) {
 }
 
 export const clientWebsites: ClientWebsiteItem[] = [
+  {
+    title: "Estudio Fresco",
+    category: "Vacation rental website in Tagaytay",
+    href: "https://estudiofrescowindresidence.com/",
+    image: "/images/client-websites/estudio-fresco.jpg",
+    alt: "Living area and kitchen at Estudio Fresco in Wind Residences Tagaytay.",
+  },
   {
     title: "Huswell Trading",
     category: "Custom packaging supplier business website",
@@ -407,12 +381,6 @@ export const clientWebsites: ClientWebsiteItem[] = [
     category: "Real estate landing page",
     href: "https://northgroveatpristina.com/",
     alt: "Live preview link for the North Grove at Pristina landing page.",
-  },
-  {
-    title: "Estudio Fresco",
-    category: "Vacation rental website in Tagaytay",
-    href: "https://estudiofrescowindresidence.com/",
-    alt: "Live preview link for the Estudio Fresco vacation rental website in Tagaytay.",
   },
 ];
 

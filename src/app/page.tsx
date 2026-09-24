@@ -8,7 +8,6 @@ import {
   footerLinks,
   heroSocialLinks,
   navigation,
-  solutionAreas,
   techStackItems,
 } from "../components/portfolio-content";
 import { getMediaEdits } from "../components/media-data";
@@ -75,8 +74,8 @@ export default async function Home() {
             </div>
 
             <div className="flex flex-col gap-3 pt-1 sm:flex-row sm:flex-wrap sm:gap-4">
-              <a href="#solutions" className="primary-button w-full sm:w-auto">
-                Explore Solutions
+              <a href="#work" className="primary-button w-full sm:w-auto">
+                Explore My Work
                 <Icon name="arrow" className="size-4" />
               </a>
               <a
@@ -177,7 +176,7 @@ export default async function Home() {
               <div className="message-panel">
                 <p className="message-panel-kicker">For business owners</p>
                 <ScrollMessage
-                  text="If something in your business is repetitive, unclear, or difficult to manage, let&apos;s talk about whether a website, automation, or workflow tool can help."
+                  text="Something in your business slowing you down? Let&apos;s talk about a practical solution—whether that&apos;s a better website, AI automation, or a simpler workflow."
                   className="message-panel-text"
                 />
               </div>
@@ -185,44 +184,10 @@ export default async function Home() {
           </div>
         </section>
 
-        <section id="solutions" className="section-shell">
-          <Reveal>
-            <SectionHeading
-              title="What I Can Help With"
-              description="From a clearer online presence to smarter workflows, I build practical digital solutions around the problem your business needs to solve."
-            />
-          </Reveal>
-
-          <div className="section-content-gap grid border-y border-outline lg:grid-cols-4">
-            {solutionAreas.map((area, index) => (
-              <Reveal
-                key={area.title}
-                delay={index * 70}
-                className="border-t border-outline first:border-t-0 lg:border-l lg:border-t-0 lg:first:border-l-0"
-              >
-                <article className="h-full px-0 py-6 lg:px-5">
-                  <div className="flex items-center justify-between gap-4">
-                    <span className="font-mono text-[11px] uppercase tracking-[0.24em] text-muted-soft">
-                      {String(index + 1).padStart(2, "0")}
-                    </span>
-                    <Icon name={area.icon} className="size-5 text-muted-soft" />
-                  </div>
-                  <h3 className="mt-10 text-xl font-medium tracking-[-0.04em] text-foreground">
-                    {area.title}
-                  </h3>
-                  <p className="mt-3 text-sm leading-7 text-muted">
-                    {area.description}
-                  </p>
-                </article>
-              </Reveal>
-            ))}
-          </div>
-        </section>
-
         <section id="client-websites" className="section-shell">
           <Reveal>
             <SectionHeading
-              title="Selected Work: Websites"
+              title="Websites I’ve Built"
               description="Live websites and landing pages I built for business owners, service providers, and growing brands."
             />
           </Reveal>
