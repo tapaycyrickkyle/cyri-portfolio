@@ -8,6 +8,7 @@ import {
   footerLinks,
   heroSocialLinks,
   navigation,
+  solutionAreas,
   techStackItems,
 } from "../components/portfolio-content";
 import { getMediaEdits } from "../components/media-data";
@@ -63,20 +64,19 @@ export default async function Home() {
           <Reveal className="hero-copy space-y-6 md:space-y-7">
             <div className="space-y-5 md:space-y-6">
               <h1 className="max-w-none text-[clamp(2.15rem,10vw,4.8rem)] font-semibold leading-[0.94] tracking-[-0.075em] text-foreground">
-                I build clean websites for business owners.
+                I turn business problems into practical digital solutions.
               </h1>
               <p className="max-w-3xl text-[0.97rem] leading-7 text-muted sm:text-base md:text-[1rem] md:leading-8 lg:max-w-2xl lg:text-[1.02rem] xl:max-w-3xl xl:text-[1.08rem]">
-                I&apos;m a <span className="scan-highlight-soft">freelance web developer</span> focused on creating
-                <span className="scan-highlight-soft"> responsive</span>, practical websites for local businesses,
-                service providers, and growing brands. I help turn business information into a
-                <span className="scan-highlight-soft"> clear online presence</span> that customers can visit,
-                understand, and contact.
+                I&apos;m a <span className="scan-highlight-soft">web developer and AI automation specialist</span> who builds
+                modern websites, AI-assisted workflows, and practical internal tools. I help business owners turn
+                repetitive work, unclear processes, and scattered information into
+                <span className="scan-highlight-soft"> clearer digital solutions</span>.
               </p>
             </div>
 
             <div className="flex flex-col gap-3 pt-1 sm:flex-row sm:flex-wrap sm:gap-4">
-              <a href="#client-websites" className="primary-button w-full sm:w-auto">
-                View Websites
+              <a href="#solutions" className="primary-button w-full sm:w-auto">
+                Explore Solutions
                 <Icon name="arrow" className="size-4" />
               </a>
               <a
@@ -87,7 +87,7 @@ export default async function Home() {
                 Download CV
               </a>
               <a href="#contact" className="secondary-button w-full sm:w-auto">
-                Start a Website
+                Let&apos;s Talk
               </a>
             </div>
 
@@ -125,7 +125,7 @@ export default async function Home() {
                   <div>
                     <p className="hero-info-kicker">Current Focus</p>
                     <p className="hero-info-copy">
-                      Building clean, responsive websites for business owners who need a stronger online presence.
+                      Building websites, AI automations, and workflow systems that connect business needs to practical digital solutions.
                     </p>
                   </div>
                 </article>
@@ -138,7 +138,7 @@ export default async function Home() {
                   <div>
                     <p className="hero-info-kicker">Building With</p>
                     <p className="hero-info-copy">
-                      Next.js, React, responsive layouts, contact forms, practical content structure, and modern web tools.
+                      Modern web apps, AI tools, dashboards, structured data, and responsive interfaces.
                     </p>
                   </div>
                 </article>
@@ -150,7 +150,7 @@ export default async function Home() {
                   <div>
                     <p className="hero-info-kicker">Available For</p>
                     <p className="hero-info-copy">
-                      Business websites, landing pages, portfolio sites, and simple online pages for services or brands.
+                      Business websites, AI-assisted workflows, internal tools, dashboards, and process improvements.
                     </p>
                   </div>
                 </article>
@@ -163,7 +163,7 @@ export default async function Home() {
                   <div>
                     <p className="hero-info-kicker">How I Help</p>
                     <p className="hero-info-copy">
-                      I organize your business details into a website that is easy to read, easy to use, and easy to contact from.
+                      I start with the problem, map the workflow, and build the simplest useful solution for the people doing the work.
                     </p>
                   </div>
               </article>
@@ -177,7 +177,7 @@ export default async function Home() {
               <div className="message-panel">
                 <p className="message-panel-kicker">For business owners</p>
                 <ScrollMessage
-                  text="If you are a business owner who needs a website, I can help you create a clean, responsive online presence for your services, products, or brand."
+                  text="If something in your business is repetitive, unclear, or difficult to manage, let&apos;s talk about whether a website, automation, or workflow tool can help."
                   className="message-panel-text"
                 />
               </div>
@@ -185,11 +185,45 @@ export default async function Home() {
           </div>
         </section>
 
+        <section id="solutions" className="section-shell">
+          <Reveal>
+            <SectionHeading
+              title="What I Can Help With"
+              description="From a clearer online presence to smarter workflows, I build practical digital solutions around the problem your business needs to solve."
+            />
+          </Reveal>
+
+          <div className="section-content-gap grid border-y border-outline lg:grid-cols-4">
+            {solutionAreas.map((area, index) => (
+              <Reveal
+                key={area.title}
+                delay={index * 70}
+                className="border-t border-outline first:border-t-0 lg:border-l lg:border-t-0 lg:first:border-l-0"
+              >
+                <article className="h-full px-0 py-6 lg:px-5">
+                  <div className="flex items-center justify-between gap-4">
+                    <span className="font-mono text-[11px] uppercase tracking-[0.24em] text-muted-soft">
+                      {String(index + 1).padStart(2, "0")}
+                    </span>
+                    <Icon name={area.icon} className="size-5 text-muted-soft" />
+                  </div>
+                  <h3 className="mt-10 text-xl font-medium tracking-[-0.04em] text-foreground">
+                    {area.title}
+                  </h3>
+                  <p className="mt-3 text-sm leading-7 text-muted">
+                    {area.description}
+                  </p>
+                </article>
+              </Reveal>
+            ))}
+          </div>
+        </section>
+
         <section id="client-websites" className="section-shell">
           <Reveal>
             <SectionHeading
-              title="Business Websites I Built"
-              description="Real websites and landing pages I created for business owners using Next.js, focused on clear presentation, responsive layouts, and practical online presence."
+              title="Selected Work: Websites"
+              description="Live websites and landing pages I built for business owners, service providers, and growing brands."
             />
           </Reveal>
 
@@ -220,9 +254,9 @@ export default async function Home() {
           <div className="section-shell">
             <Reveal>
               <div className="message-panel">
-                <p className="message-panel-kicker">How I build</p>
+                <p className="message-panel-kicker">How I solve problems</p>
                 <ScrollMessage
-                  text="I build websites with clear structure, mobile-friendly layouts, practical content, and simple ways for customers to contact the business."
+                  text="I start by understanding the business problem, then map the information and workflow before building a practical website, automation, or internal tool."
                   className="message-panel-text"
                 />
               </div>
@@ -236,8 +270,8 @@ export default async function Home() {
         >
           <Reveal>
             <SectionHeading
-              title="Tools I Use to Build Websites"
-              description="The main tools and platforms I use to create responsive websites, landing pages, interfaces, and supporting visuals for business owners."
+              title="Capabilities & Tools"
+              description="The frameworks, data tools, AI tools, and creative software I use to build websites, automation workflows, dashboards, and practical digital solutions."
             />
           </Reveal>
 
@@ -291,24 +325,21 @@ export default async function Home() {
             <Reveal className="space-y-8">
               <SectionHeading
                 title="Who I Am"
-                description="I&apos;m Cyrick Kyle B. Tapay, a freelance web developer focused on building practical websites for business owners."
+                description="I&apos;m Cyrick Kyle B. Tapay, a web developer and AI automation specialist focused on practical digital solutions."
               />
               <div className="space-y-4 text-base leading-7 text-muted sm:text-lg sm:leading-8">
                 <p>
-                  I&apos;m from Dolores, Eastern Samar, and I build websites for
-                  business owners who need a clearer online presence for their
-                  services, products, or brand.
+                  I&apos;m from Dolores, Eastern Samar, and I work with business
+                  owners who need a clearer online presence, smoother workflows,
+                  or better tools for the way they work.
                 </p>
                 <p>
-                  <span className="scan-highlight-soft">Web development</span> is my main focus. I create
-                  <span className="scan-highlight-soft"> responsive websites</span> that organize business
-                  information clearly, work well on phones, and make it easier
-                  for customers to understand and contact the business.
+                  My work combines <span className="scan-highlight-soft">web development</span>,
+                  <span className="scan-highlight-soft"> AI-assisted automation</span>, and workflow design. I build
+                  websites, dashboards, and systems that organize information and make recurring work easier to manage.
                 </p>
                 <p>
-                  I also keep improving my design sense, development workflow,
-                  and use of modern tools so each website feels cleaner, faster,
-                  and more useful for the owner and their customers.
+                  I approach each project by understanding the problem first, then choosing the simplest useful solution—whether that is a clearer website, an automated workflow, or a custom internal tool.
                 </p>
               </div>
               <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
@@ -374,13 +405,14 @@ export default async function Home() {
           <div className="surface-card grid gap-5 p-4 sm:gap-8 sm:p-6 md:gap-10 md:p-8 xl:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] xl:gap-14 2xl:gap-16 xl:p-12">
             <Reveal className="space-y-8">
               <SectionHeading
-                title="Let&apos;s Build Your Website"
-                description="If you need a website for your business, service, portfolio, or landing page, send me a message and I&apos;ll help you plan a clean and practical online presence."
+                title="Let&apos;s Talk About the Problem"
+                description="Tell me what you want to improve, automate, or make clearer, and we can explore the right digital solution for your business."
               />
               <p className="max-w-xl text-base leading-7 text-muted sm:text-lg sm:leading-8">
-                Tell me what your business does, what you want customers to see,
-                and where they should contact you. I&apos;ll help turn that into a
-                simple website plan.
+                You don&apos;t need to have the technical answer yet. Tell me what is
+                difficult, repetitive, unclear, or slowing your team down. We can
+                explore whether a website, automation, or workflow tool is the
+                right solution.
               </p>
               <div className="space-y-4">
                 {contactLinks.map((item) => (
@@ -424,7 +456,7 @@ export default async function Home() {
               Cyrick.Tapay
             </a>
             <p className="font-mono text-sm text-muted">
-              Freelance websites for business owners.
+              Digital solutions for business owners.
             </p>
             <div className="flex flex-wrap items-center justify-center gap-3 pt-2 md:justify-start">
               {footerLinks.map((item) => (

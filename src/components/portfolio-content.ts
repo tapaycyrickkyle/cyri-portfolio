@@ -46,7 +46,7 @@ export type TechStackItem = {
   wideLogo?: boolean;
 };
 
-export type FutureArea = {
+export type SolutionArea = {
   icon: IconName;
   title: string;
   description: string;
@@ -89,7 +89,7 @@ export const heroSocialLinks: SocialLink[] = [
   {
     icon: "linkedin",
     label: "LinkedIn",
-    href: "https://www.linkedin.com/in/tapay-cyrick-3593b032b/",
+    href: "https://www.linkedin.com/in/cyricktapay/",
     brandColor: "#0A66C2",
     external: true,
   },
@@ -117,7 +117,7 @@ export const heroSocialLinks: SocialLink[] = [
 ];
 
 export const navigation: NavigationItem[] = [
-  { label: "Websites", href: "#client-websites" },
+  { label: "Solutions", href: "#solutions" },
   { label: "Projects", href: "#work" },
   { label: "Learning", href: "#learning" },
   { label: "Skills", href: "#skills" },
@@ -335,33 +335,30 @@ export const techStackItems: TechStackItem[] = [
   },
 ];
 
-export const futureAreas: FutureArea[] = [
+export const solutionAreas: SolutionArea[] = [
   {
-    icon: "code",
-    title: "Web Dev",
-    description: "Creating responsive, fast-loading web apps.",
-  },
-  {
-    icon: "figma",
-    title: "UI/UX",
-    description: "Designing clearer interfaces and smoother user experiences.",
-  },
-  {
-    icon: "database",
-    title: "Database",
-    description: "Structuring and managing data efficiently.",
+    icon: "globe",
+    title: "Business Websites",
+    description:
+      "Clear, responsive websites that explain what you offer and make it easier for customers to take the next step.",
   },
   {
     icon: "spark",
-    title: "AI and Automation",
+    title: "AI Automation",
     description:
-      "Using intelligent tools and practical system workflows to solve real business problems more efficiently.",
+      "AI-assisted workflows that help organize information, answer common questions, and reduce repetitive work.",
   },
   {
-    icon: "terminal",
-    title: "Agentic Development",
+    icon: "dashboard",
+    title: "Workflow Systems",
     description:
-      "Designing AI-assisted workflows and system behaviors that can help plan, execute, and improve work more intentionally.",
+      "Dashboards and connected processes that make business tasks easier to track, review, and manage.",
+  },
+  {
+    icon: "database",
+    title: "Digital Problem Solving",
+    description:
+      "Practical web tools that turn a specific business bottleneck into a clearer, more usable system.",
   },
 ];
 
@@ -411,6 +408,12 @@ export const clientWebsites: ClientWebsiteItem[] = [
     href: "https://northgroveatpristina.com/",
     alt: "Live preview link for the North Grove at Pristina landing page.",
   },
+  {
+    title: "Estudio Fresco",
+    category: "Vacation rental website in Tagaytay",
+    href: "https://estudiofrescowindresidence.com/",
+    alt: "Live preview link for the Estudio Fresco vacation rental website in Tagaytay.",
+  },
 ];
 
 export const contactLinks: SocialLink[] = [
@@ -427,8 +430,8 @@ export const contactLinks: SocialLink[] = [
   },
   {
     icon: "linkedin",
-    label: "linkedin.com/in/tapay-cyrick-3593b032b",
-    href: "https://www.linkedin.com/in/tapay-cyrick-3593b032b/",
+    label: "linkedin.com/in/cyricktapay",
+    href: "https://www.linkedin.com/in/cyricktapay/",
     external: true,
   },
 ];
@@ -443,7 +446,7 @@ export const footerLinks: SocialLink[] = [
   {
     icon: "linkedin",
     label: "LinkedIn",
-    href: "https://www.linkedin.com/in/tapay-cyrick-3593b032b/",
+    href: "https://www.linkedin.com/in/cyricktapay/",
     external: true,
   },
   {

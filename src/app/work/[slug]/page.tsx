@@ -143,7 +143,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
             />
           </div>
 
-          <dl className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+          <dl className="grid border-y border-outline lg:grid-cols-4">
             {[
               ["Role", project.role],
               ["Type", project.projectType],
@@ -153,13 +153,16 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
               value ? (
                 <div
                   key={label}
-                  className="border border-outline bg-surface-soft px-4 py-4"
+                  className="border-t border-outline px-0 py-5 first:border-t-0 lg:border-l lg:border-t-0 lg:px-5 lg:first:border-l-0"
                 >
-                  <dt className="font-mono text-[11px] uppercase tracking-[0.2em] text-muted-soft">
+                  <dt className="font-mono text-[10px] uppercase tracking-[0.24em] text-muted-soft">
                     {label}
                   </dt>
-                  <dd className="mt-2 text-sm font-medium text-foreground">
-                    {value}
+                  <dd className="mt-2 flex items-center gap-2 text-[15px] font-medium leading-6 text-foreground">
+                    {label === "Status" ? (
+                      <span aria-hidden="true" className="h-1.5 w-1.5 shrink-0 bg-accent" />
+                    ) : null}
+                    <span className="min-w-0">{value}</span>
                   </dd>
                 </div>
               ) : null,

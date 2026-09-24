@@ -75,12 +75,12 @@ export default function ProjectShowcase({
           <div className="section-divider-block flex flex-col gap-6 border-b border-outline/50 md:flex-row md:items-end md:justify-between">
             <div className="max-w-2xl">
               <h2 className="text-2xl font-semibold tracking-[-0.05em] text-foreground sm:text-3xl md:text-4xl lg:text-5xl">
-                Projects
+                Applications & Workflow Projects
               </h2>
               <p className="mt-4 text-sm leading-7 text-muted sm:text-base md:text-lg">
-                A secondary collection of system prototypes, interface concepts,
-                and development studies that show how I keep improving my
-                process and technical range.
+                Web applications, dashboards, AI tools, and workflow prototypes
+                that show how I approach business problems, information structure,
+                and practical system design.
               </p>
             </div>
             {projects.length > 3 ? (
@@ -140,7 +140,7 @@ export default function ProjectShowcase({
                         </span>
                         <span className="project-card-divider-dot" />
                         <span className="project-card-kicker">
-                          Practice Work
+                          Solution Study
                         </span>
                       </div>
 

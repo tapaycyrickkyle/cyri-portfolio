@@ -68,14 +68,20 @@ const personAndWebsiteJsonLd = {
       "@id": `${SITE_URL}/#person`,
       name: "Cyrick Kyle B. Tapay",
       url: SITE_URL,
-      jobTitle: "Freelance Web Developer",
+      jobTitle: "Web Developer & AI Automation Specialist",
+      knowsAbout: [
+        "Web development",
+        "AI automation",
+        "Workflow automation",
+        "Business problem solving",
+      ],
       homeLocation: {
         "@type": "Place",
         name: "Dolores, Eastern Samar, Philippines",
       },
       sameAs: [
         "https://github.com/tapaycyrickkyle",
-        "https://www.linkedin.com/in/tapay-cyrick-3593b032b/",
+        "https://www.linkedin.com/in/cyricktapay/",
         "https://x.com/cyrix0801",
         "https://web.facebook.com/cyrick.kyle.tapay.2024",
         "https://www.instagram.com/cyrick3/",
