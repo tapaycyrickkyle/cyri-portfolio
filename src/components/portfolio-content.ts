@@ -46,6 +46,23 @@ export type TechStackItem = {
   wideLogo?: boolean;
 };
 
+export type ExperienceItem = {
+  icon: IconName;
+  logoSrc: string;
+  logoAlt: string;
+  logoBackground: "white" | "soft";
+  title: string;
+  organization: string;
+  employmentType: string;
+  dateRange: string;
+  startMonth: string;
+  initialDuration: string;
+  location: string;
+  summary: string;
+  responsibilities: string[];
+  skills: string[];
+};
+
 export type MediaEditItem = {
   title: string;
   label: string;
@@ -111,12 +128,61 @@ export const heroSocialLinks: SocialLink[] = [
 ];
 
 export const navigation: NavigationItem[] = [
+  { label: "Experience", href: "#experience" },
   { label: "Websites", href: "#client-websites" },
   { label: "Projects", href: "#work" },
   { label: "Learning", href: "#learning" },
   { label: "Skills", href: "#skills" },
   { label: "Profile", href: "#profile" },
   { label: "Contact", href: "#contact" },
+];
+
+export const experienceItems: ExperienceItem[] = [
+  {
+    icon: "code",
+    logoSrc: "/images/huswell-logo.png",
+    logoAlt: "Huswell Trading logo",
+    logoBackground: "white",
+    title: "Freelance Web Developer & AI Automation Specialist",
+    organization: "Huswell Trading - Philippines",
+    employmentType: "Freelance",
+    dateRange: "Aug 2026 - Present",
+    startMonth: "2026-08",
+    initialDuration: "2 mos",
+    location: "Remote",
+    summary:
+      "Provide freelance web development and AI automation solutions for Huswell Trading, helping improve its digital presence and streamline business processes.",
+    responsibilities: [
+      "Develop and maintain business websites and web-based solutions.",
+      "Build AI-powered automations and workflows to reduce repetitive tasks.",
+      "Identify business problems that can be improved through digital solutions and automation.",
+      "Implement and improve tools based on the company's operational needs.",
+    ],
+    skills: ["Web Development and Artificial Intelligence (AI)"],
+  },
+  {
+    icon: "brush",
+    logoSrc: "/images/freelance-placeholder.svg",
+    logoAlt: "Freelance photo editor placeholder image",
+    logoBackground: "soft",
+    title: "Freelance Photo Editor",
+    organization: "Freelance",
+    employmentType: "Freelance",
+    dateRange: "Sep 2024 - Present",
+    startMonth: "2024-09",
+    initialDuration: "2 yrs 1 mo",
+    location: "Eastern Visayas, Philippines · Remote",
+    summary:
+      "Provide freelance photo editing services for clients, creating clean, polished, and professional visual content based on their needs.",
+    responsibilities: [
+      "Edit and enhance photos for social media, marketing, and promotional use.",
+      "Perform background removal, image cleanup, retouching, and quality enhancement.",
+      "Adjust lighting, contrast, sharpness, and overall image presentation.",
+      "Work with clients to deliver visuals that match their preferred style and branding.",
+      "Manage multiple editing requests while meeting deadlines and maintaining consistent quality.",
+    ],
+    skills: ["Adobe Photoshop and Image Editing"],
+  },
 ];
 
 export const introCards: IntroCard[] = [

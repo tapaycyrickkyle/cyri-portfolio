@@ -104,41 +104,65 @@ export default function MediaCarousel({
     <>
       <div className="media-carousel media-carousel-bleed">
         <div className="media-gallery" aria-label="Edited visuals gallery">
+          <div className="media-gallery-header">
+            <span className="media-gallery-header-label">Selected archive</span>
+            <span className="media-gallery-header-meta">
+              {String(items.length).padStart(2, "0")} works / manual scroll
+            </span>
+          </div>
           <div className="media-gallery-stack">
             {galleryRows.map((rowItems, rowIndex) => (
               <div
                 key={`media-gallery-row-${rowIndex}`}
                 className="media-gallery-row"
                 data-row={rowIndex + 1}
+                role="region"
+                aria-label={`Edited visuals row ${rowIndex + 1}`}
+                tabIndex={0}
               >
                 <div className="media-gallery-row-track">
-                  {[...rowItems, ...rowItems].map((item, itemIndex) => (
-                    <button
-                      key={`${item.image}-${rowIndex}-${itemIndex}`}
-                      suppressHydrationWarning
-                      type="button"
-                      aria-label={`Open full view of ${item.title}`}
-                      className="media-gallery-item"
-                      data-shape={getShape(item)}
-                      style={{
-                        aspectRatio: `${item.width} / ${item.height}`,
-                        position: "relative",
-                      }}
-                      onClick={() => setSelectedItem(item)}
-                    >
-                      <Image
-                        src={item.image}
-                        alt={itemIndex < rowItems.length ? item.alt : ""}
-                        fill
-                        sizes="(min-width: 1280px) 30rem, (min-width: 768px) 24rem, 68vw"
-                        className="object-contain"
-                      />
-                      <span className="media-gallery-caption">
-                        <span>{item.label}</span>
-                        <strong>{item.title}</strong>
-                      </span>
-                    </button>
-                  ))}
+                  {rowItems.map((item) => {
+                    const archiveIndex = items.indexOf(item) + 1;
+                    const archiveLabel = `A${String(archiveIndex).padStart(2, "0")}`;
+
+                    return (
+                      <button
+                        key={`${item.image}-${rowIndex}`}
+                        suppressHydrationWarning
+                        type="button"
+                        aria-label={`Open full view of ${item.title}, ${item.width} by ${item.height} pixels`}
+                        className="media-gallery-item"
+                        data-shape={getShape(item)}
+                        style={{
+                          aspectRatio: `${item.width} / ${item.height}`,
+                          position: "relative",
+                        }}
+                        onClick={() => setSelectedItem(item)}
+                      >
+                        <Image
+                          src={item.image}
+                          alt={item.alt}
+                          fill
+                          sizes="(min-width: 1280px) 30rem, (min-width: 768px) 24rem, 68vw"
+                          className="object-contain"
+                        />
+                        <span
+                          className="media-gallery-corner-mark"
+                          aria-hidden="true"
+                        />
+                        <span className="media-gallery-caption">
+                          <span className="media-gallery-caption-meta">
+                            <span className="media-gallery-caption-index">
+                              {archiveLabel}
+                            </span>
+                            <span className="media-gallery-caption-size">
+                              {item.width} × {item.height}
+                            </span>
+                          </span>
+                        </span>
+                      </button>
+                    );
+                  })}
                 </div>
               </div>
             ))}

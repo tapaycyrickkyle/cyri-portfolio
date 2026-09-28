@@ -11,6 +11,7 @@ export default function AutoScrollRail({
   paused = false,
   duration = 34,
   duplicateForLoop = true,
+  autoScroll = false,
 }: {
   children: ReactNode;
   className?: string;
@@ -18,12 +19,14 @@ export default function AutoScrollRail({
   paused?: boolean;
   duration?: number;
   duplicateForLoop?: boolean;
+  autoScroll?: boolean;
 }) {
   const railRef = useRef<HTMLDivElement | null>(null);
   const [isVisible, setIsVisible] = useState(true);
+  const shouldLoop = autoScroll && duplicateForLoop;
 
   const railChildren = useMemo(() => {
-    if (!duplicateForLoop) {
+    if (!shouldLoop) {
       return <div className="card-rail-group">{children}</div>;
     }
 
@@ -35,9 +38,13 @@ export default function AutoScrollRail({
         </div>
       </>
     );
-  }, [children, duplicateForLoop]);
+  }, [children, shouldLoop]);
 
   useEffect(() => {
+    if (!autoScroll) {
+      return;
+    }
+
     const rail = railRef.current;
 
     if (!rail) {
@@ -54,13 +61,13 @@ export default function AutoScrollRail({
     observer.observe(rail);
 
     return () => observer.disconnect();
-  }, []);
+  }, [autoScroll]);
 
   return (
     <div
       ref={railRef}
-      className={className}
-      data-paused={paused || !isVisible}
+      className={`${className} ${autoScroll ? "" : "card-rail-static"}`.trim()}
+      data-paused={paused || !autoScroll || !isVisible}
       style={
         {
           "--rail-duration": `${duration}s`,

@@ -17,10 +17,8 @@ export default function ProjectShowcase({
   const [selectedProject, setSelectedProject] = useState<ProjectItem | null>(
     null,
   );
-  const [showAllProjects, setShowAllProjects] = useState(false);
   const [activeImageIndex, setActiveImageIndex] = useState(0);
-
-  const visibleProjects = showAllProjects ? projects : projects.slice(0, 3);
+  const hasMoreProjects = projects.length > 5;
 
   useEffect(() => {
     if (!selectedProject) {
@@ -63,7 +61,7 @@ export default function ProjectShowcase({
   function handleAskAboutProject() {
     setSelectedProject(null);
     window.requestAnimationFrame(() => {
-      document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
+      document.getElementById("contact")?.scrollIntoView({ behavior: "auto" });
       window.history.replaceState(null, "", "#contact");
     });
   }
@@ -83,27 +81,19 @@ export default function ProjectShowcase({
                 and practical system design.
               </p>
             </div>
-            {projects.length > 3 ? (
-              <button
-                suppressHydrationWarning
-                type="button"
-                onClick={() => setShowAllProjects((current) => !current)}
-                className="project-see-all-button"
-              >
-                {showAllProjects ? "Show Less" : "See All"}
-              </button>
-            ) : null}
           </div>
         </Reveal>
 
-        <div className="section-content-gap project-strip-wrap">
+        <div className="section-content-gap project-list-wrap">
           <div
-            className="project-strip"
-            data-expanded={showAllProjects}
+            className={`project-list ${
+              hasMoreProjects ? "project-list-scrollable" : ""
+            }`}
             role="list"
             aria-label="Projects"
+            tabIndex={hasMoreProjects ? 0 : undefined}
           >
-            {visibleProjects.map((project, index) => {
+            {projects.map((project, index) => {
               const slug = projectSlug(project.title);
               const projectHref = `/work/${slug}`;
 
@@ -111,77 +101,42 @@ export default function ProjectShowcase({
                 <Reveal
                   key={project.title}
                   delay={index * 80}
-                  className="project-strip-item"
+                  className="project-list-item"
                 >
-              <article className="project-card-clean group h-full" role="listitem">
-                <div className="surface-card project-card-frame h-full overflow-hidden">
-                  <div className="project-card-image-shell">
-                    <div className="project-card-image aspect-[16/11]">
-                      <Image
-                        src={project.image}
-                        alt={project.alt}
-                        fill
-                        loading={index === 0 ? "eager" : "lazy"}
-                        sizes="(min-width: 1280px) 33vw, (min-width: 768px) 50vw, 100vw"
-                        className="object-cover transition duration-700 group-hover:scale-[1.04]"
-                      />
-                      <div className="project-image-wash absolute inset-0" />
-                      <div className="project-index-badge">
-                        {String(projects.indexOf(project) + 1).padStart(2, "0")}
-                      </div>
-                    </div>
-                  </div>
+                  <article className="project-list-row" role="listitem">
+                    <span className="project-list-index" aria-hidden="true">
+                      {String(projects.indexOf(project) + 1).padStart(2, "0")}
+                    </span>
 
-                  <div className="project-card-copy">
-                    <div className="space-y-5">
-                      <div className="project-card-kicker-row">
-                        <span className="project-card-kicker">
-                          Project {String(projects.indexOf(project) + 1).padStart(2, "0")}
+                    <div className="project-list-main">
+                      <div className="project-list-kicker-row">
+                        <span className="project-list-kicker">
+                          {project.status}
                         </span>
-                        <span className="project-card-divider-dot" />
-                        <span className="project-card-kicker">
-                          Solution Study
-                        </span>
+                        <span className="project-list-divider" aria-hidden="true" />
+                        <span className="project-list-kicker">Solution Study</span>
                       </div>
 
-                      <div className="flex flex-wrap gap-2">
+                      <h3 className="project-list-title">
+                        <Link href={projectHref}>{project.title}</Link>
+                      </h3>
+
+                      <p className="project-list-description">{project.description}</p>
+
+                      <div className="project-list-tags" aria-label="Project technologies">
                         {project.tags.map((tag) => (
-                          <span key={tag} className="project-chip">
+                          <span key={tag} className="project-list-tag">
                             {tag}
                           </span>
                         ))}
                       </div>
-
-                      <div className="space-y-2.5">
-                        <h3 className="text-[1.75rem] font-semibold tracking-[-0.05em] text-foreground">
-                          <Link
-                            href={projectHref}
-                            className="transition-colors hover:text-accent"
-                          >
-                            {project.title}
-                          </Link>
-                        </h3>
-                        <p className="project-card-description text-base leading-7 text-muted">
-                          {project.description}
-                        </p>
-                      </div>
                     </div>
 
-                    <div className="project-card-footer">
-                      <span className="project-card-footer-note">
-                        Open full project
-                      </span>
-                      <Link href={projectHref} className="project-detail-link">
-                        View Details
-                        <Icon
-                          name="arrow"
-                          className="size-4 transition-transform group-hover:translate-x-1"
-                        />
-                      </Link>
-                    </div>
-                  </div>
-                </div>
-              </article>
+                    <Link href={projectHref} className="project-list-link">
+                      View Details
+                      <Icon name="arrow" className="size-4" />
+                    </Link>
+                  </article>
                 </Reveal>
               );
             })}
@@ -229,7 +184,7 @@ export default function ProjectShowcase({
                         type="button"
                         aria-label="Previous project image"
                         onClick={showPreviousImage}
-                        className="absolute left-2.5 top-1/2 z-10 inline-flex size-9 -translate-y-1/2 items-center justify-center rounded-full border border-white/20 bg-black/55 text-white backdrop-blur-sm sm:left-5 sm:size-11"
+                         className="project-lightbox-control absolute left-2.5 top-1/2 z-10 inline-flex size-9 -translate-y-1/2 items-center justify-center border border-white/20 bg-black text-white sm:left-5 sm:size-11"
                       >
                         <Icon name="arrow" className="size-4 rotate-180" />
                       </button>
@@ -238,11 +193,11 @@ export default function ProjectShowcase({
                         type="button"
                         aria-label="Next project image"
                         onClick={showNextImage}
-                        className="absolute right-2.5 top-1/2 z-10 inline-flex size-9 -translate-y-1/2 items-center justify-center rounded-full border border-white/20 bg-black/55 text-white backdrop-blur-sm sm:right-5 sm:size-11"
+                         className="project-lightbox-control absolute right-2.5 top-1/2 z-10 inline-flex size-9 -translate-y-1/2 items-center justify-center border border-white/20 bg-black text-white sm:right-5 sm:size-11"
                       >
                         <Icon name="arrow" className="size-4" />
                       </button>
-                      <div className="absolute bottom-2.5 right-2.5 z-10 rounded-full border border-white/15 bg-black/55 px-2.5 py-1 font-mono text-[10px] uppercase tracking-[0.18em] text-white backdrop-blur-sm sm:bottom-5 sm:right-5 sm:px-3 sm:text-[11px]">
+                       <div className="project-lightbox-count absolute bottom-2.5 right-2.5 z-10 border border-white/15 bg-black px-2.5 py-1 font-mono text-[10px] uppercase tracking-[0.18em] text-white sm:bottom-5 sm:right-5 sm:px-3 sm:text-[11px]">
                         {String(activeImageIndex + 1).padStart(2, "0")} /{" "}
                         {String(projectImages.length).padStart(2, "0")}
                       </div>
@@ -259,7 +214,7 @@ export default function ProjectShowcase({
                         type="button"
                         aria-label={`Show project image ${index + 1}`}
                         onClick={() => setActiveImageIndex(index)}
-                        className={`relative h-14 w-20 shrink-0 overflow-hidden rounded-md border sm:h-20 sm:w-28 ${
+                         className={`project-lightbox-thumbnail relative h-14 w-20 shrink-0 overflow-hidden border sm:h-20 sm:w-28 ${
                           index === activeImageIndex
                             ? "border-white shadow-[0_0_0_1px_rgba(255,255,255,0.2)]"
                             : "border-white/15 opacity-75"

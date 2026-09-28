@@ -25,6 +25,7 @@ export default function SectionNav({
     "home",
     "globe",
     "briefcase",
+    "briefcase",
     "book",
     "code",
     "user",

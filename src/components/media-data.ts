@@ -7,7 +7,7 @@ import { formatEditedVisualTitle } from "./portfolio-content";
 const EDITS_DIR = path.join(process.cwd(), "public", "images", "edits");
 const IMAGE_EXTENSIONS = new Set([".png", ".jpg", ".jpeg", ".webp", ".avif"]);
 const FALLBACK_SIZE = { width: 1200, height: 900 };
-const JPEG_HEADER_BYTES = 256 * 1024;
+const IMAGE_HEADER_BYTES = 256 * 1024;
 
 function readPngDimensions(buffer: Buffer) {
   if (buffer.length < 24 || buffer.toString("ascii", 1, 4) !== "PNG") {
@@ -48,6 +48,54 @@ function readJpegDimensions(buffer: Buffer) {
   return null;
 }
 
+function readWebpDimensions(buffer: Buffer) {
+  if (
+    buffer.length < 30 ||
+    buffer.toString("ascii", 0, 4) !== "RIFF" ||
+    buffer.toString("ascii", 8, 12) !== "WEBP"
+  ) {
+    return null;
+  }
+
+  const chunkType = buffer.toString("ascii", 12, 16);
+
+  if (chunkType === "VP8X") {
+    return {
+      width: 1 + buffer.readUIntLE(24, 3),
+      height: 1 + buffer.readUIntLE(27, 3),
+    };
+  }
+
+  if (chunkType === "VP8L" && buffer[20] === 0x2f) {
+    const byteOne = buffer[21];
+    const byteTwo = buffer[22];
+    const byteThree = buffer[23];
+    const byteFour = buffer[24];
+
+    return {
+      width: 1 + ((byteTwo & 0x3f) << 8) + byteOne,
+      height:
+        1 +
+        ((byteFour & 0x0f) << 10) +
+        (byteThree << 2) +
+        ((byteTwo & 0xc0) >> 6),
+    };
+  }
+
+  if (chunkType === "VP8 ") {
+    const frameHeader = buffer.indexOf(Buffer.from([0x9d, 0x01, 0x2a]), 20);
+
+    if (frameHeader >= 0 && frameHeader + 7 < buffer.length) {
+      return {
+        width: buffer.readUInt16LE(frameHeader + 3) & 0x3fff,
+        height: buffer.readUInt16LE(frameHeader + 5) & 0x3fff,
+      };
+    }
+  }
+
+  return null;
+}
+
 async function readImageHeader(filePath: string, byteLength: number) {
   const file = await open(filePath, "r");
 
@@ -66,7 +114,7 @@ async function resolveImageDimensions(filePath: string) {
   const extension = path.extname(filePath).toLowerCase();
   const buffer = await readImageHeader(
     filePath,
-    extension === ".png" ? 32 : JPEG_HEADER_BYTES,
+    extension === ".png" ? 32 : IMAGE_HEADER_BYTES,
   );
 
   if (extension === ".png") {
@@ -75,6 +123,10 @@ async function resolveImageDimensions(filePath: string) {
 
   if (extension === ".jpg" || extension === ".jpeg") {
     return readJpegDimensions(buffer) ?? FALLBACK_SIZE;
+  }
+
+  if (extension === ".webp") {
+    return readWebpDimensions(buffer) ?? FALLBACK_SIZE;
   }
 
   return FALLBACK_SIZE;

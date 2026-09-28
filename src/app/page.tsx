@@ -5,6 +5,7 @@ import ContactForm from "../components/contact-form";
 import {
   clientWebsites,
   contactLinks,
+  experienceItems,
   footerLinks,
   heroSocialLinks,
   navigation,
@@ -13,6 +14,7 @@ import {
 import { getMediaEdits } from "../components/media-data";
 import { getProjects } from "../components/project-data";
 import MediaCarousel from "../components/media-carousel";
+import ExperienceDuration from "../components/experience-duration";
 import { Icon } from "../components/portfolio-icon";
 import ProjectShowcase from "../components/project-showcase";
 import Reveal from "../components/reveal";
@@ -59,113 +61,59 @@ export default async function Home() {
       <SectionNav navigation={navigation} />
 
       <main style={{ paddingTop: "var(--nav-offset)" }}>
-        <section className="section-shell section-hero grid gap-6 sm:gap-8 xl:grid-cols-[minmax(0,1.08fr)_minmax(min(100%,18rem),0.92fr)] xl:items-start xl:gap-10">
+        <section className="section-shell section-hero">
           <Reveal className="hero-copy space-y-6 md:space-y-7">
-            <div className="space-y-5 md:space-y-6">
+            <div className="hero-copy-grid">
               <h1 className="max-w-none text-[clamp(2.15rem,10vw,4.8rem)] font-semibold leading-[0.94] tracking-[-0.075em] text-foreground">
                 I turn business problems into practical digital solutions.
               </h1>
-              <p className="max-w-3xl text-[0.97rem] leading-7 text-muted sm:text-base md:text-[1rem] md:leading-8 lg:max-w-2xl lg:text-[1.02rem] xl:max-w-3xl xl:text-[1.08rem]">
-                I&apos;m a <span className="scan-highlight-soft">web developer and AI automation specialist</span> who builds
-                modern websites, AI-assisted workflows, and practical internal tools. I help business owners turn
-                repetitive work, unclear processes, and scattered information into
-                <span className="scan-highlight-soft"> clearer digital solutions</span>.
-              </p>
-            </div>
-
-            <div className="flex flex-col gap-3 pt-1 sm:flex-row sm:flex-wrap sm:gap-4">
-              <a href="#work" className="primary-button w-full sm:w-auto">
-                Explore My Work
-                <Icon name="arrow" className="size-4" />
-              </a>
-              <a
-                href="/CV/CV-Cyrick-Tapay.pdf"
-                download="CV-Cyrick-Tapay.pdf"
-                className="secondary-button w-full sm:w-auto"
-              >
-                Download CV
-              </a>
-              <a href="#contact" className="secondary-button w-full sm:w-auto">
-                Let&apos;s Talk
-              </a>
-            </div>
-
-            <Reveal delay={150}>
-              <div className="pt-4">
-                <p className="font-mono text-[11px] uppercase tracking-[0.22em] text-muted-soft">
-                  Verify my profiles
+              <div className="hero-support space-y-6 md:space-y-7">
+                <p className="max-w-3xl text-[0.97rem] leading-7 text-muted sm:text-base md:text-[1rem] md:leading-8 lg:max-w-2xl lg:text-[1.02rem] xl:max-w-3xl xl:text-[1.08rem]">
+                  I&apos;m a <span className="scan-highlight-soft">web developer and AI automation specialist</span> who builds
+                  modern websites, AI-assisted workflows, and practical internal tools. I help business owners turn
+                  repetitive work, unclear processes, and scattered information into
+                  <span className="scan-highlight-soft"> clearer digital solutions</span>.
                 </p>
-                <div className="mt-4 flex flex-wrap gap-3">
-                  {heroSocialLinks.map((link) => (
-                    <a
-                      key={link.label}
-                      href={link.href}
-                      target={link.external ? "_blank" : undefined}
-                      rel={link.external ? "noreferrer" : undefined}
-                      aria-label={link.label}
-                      title={link.label}
-                      className="hero-social-link"
-                    >
-                      <SocialBrandIcon name={link.icon} className="size-5" />
-                    </a>
-                  ))}
+                <div className="flex flex-col gap-3 pt-1 sm:flex-row sm:flex-wrap sm:gap-4">
+                  <a href="#work" className="primary-button w-full sm:w-auto">
+                    Explore My Work
+                    <Icon name="arrow" className="size-4" />
+                  </a>
+                  <a
+                    href="/CV/CV-Cyrick-Tapay.pdf"
+                    download="CV-Cyrick-Tapay.pdf"
+                    className="secondary-button w-full sm:w-auto"
+                  >
+                    Download CV
+                  </a>
+                  <a href="#contact" className="secondary-button w-full sm:w-auto">
+                    Let&apos;s Talk
+                  </a>
                 </div>
+
+                <Reveal delay={150}>
+                  <div className="pt-4">
+                    <p className="font-mono text-[11px] uppercase tracking-[0.22em] text-muted-soft">
+                      Verify my profiles
+                    </p>
+                    <div className="mt-4 flex flex-wrap gap-3">
+                      {heroSocialLinks.map((link) => (
+                        <a
+                          key={link.label}
+                          href={link.href}
+                          target={link.external ? "_blank" : undefined}
+                          rel={link.external ? "noreferrer" : undefined}
+                          aria-label={link.label}
+                          title={link.label}
+                          className="hero-social-link"
+                        >
+                          <SocialBrandIcon name={link.icon} className="size-5" />
+                        </a>
+                      ))}
+                    </div>
+                  </div>
+                </Reveal>
               </div>
-            </Reveal>
-
-          </Reveal>
-
-          <Reveal delay={220} className="hero-side">
-            <div className="hero-side-stack">
-              <article className="surface-card hero-info-card hero-info-card-featured">
-                <div className="hero-info-icon">
-                  <Icon name="code" className="size-5" />
-                </div>
-                  <div>
-                    <p className="hero-info-kicker">Current Focus</p>
-                    <p className="hero-info-copy">
-                      Building websites, AI automations, and workflow systems that connect business needs to practical digital solutions.
-                    </p>
-                  </div>
-                </article>
-
-              <div className="hero-side-grid">
-                <article className="surface-card hero-info-card">
-                  <div className="hero-info-icon">
-                    <Icon name="dashboard" className="size-5" />
-                  </div>
-                  <div>
-                    <p className="hero-info-kicker">Building With</p>
-                    <p className="hero-info-copy">
-                      Modern web apps, AI tools, dashboards, structured data, and responsive interfaces.
-                    </p>
-                  </div>
-                </article>
-
-                <article className="surface-card hero-info-card">
-                  <div className="hero-info-icon">
-                    <Icon name="rocket" className="size-5" />
-                  </div>
-                  <div>
-                    <p className="hero-info-kicker">Available For</p>
-                    <p className="hero-info-copy">
-                      Business websites, AI-assisted workflows, internal tools, dashboards, and process improvements.
-                    </p>
-                  </div>
-                </article>
-              </div>
-
-              <article className="surface-card hero-info-card">
-                <div className="hero-info-icon">
-                  <Icon name="globe" className="size-5" />
-                </div>
-                  <div>
-                    <p className="hero-info-kicker">How I Help</p>
-                    <p className="hero-info-copy">
-                      I start with the problem, map the workflow, and build the simplest useful solution for the people doing the work.
-                    </p>
-                  </div>
-              </article>
             </div>
           </Reveal>
         </section>
@@ -181,6 +129,100 @@ export default async function Home() {
                 />
               </div>
             </Reveal>
+          </div>
+        </section>
+
+        <section id="experience" className="section-shell">
+          <Reveal>
+            <SectionHeading
+              title="Experience"
+              description="Freelance work across web development, AI automation, and visual content production."
+            />
+          </Reveal>
+
+          <div className="section-content-gap border-y border-outline/60">
+            {experienceItems.map((item, index) => (
+              <Reveal key={item.title} delay={index * 120}>
+                <article
+                  className={`grid gap-7 py-8 sm:py-10 md:grid-cols-[minmax(12rem,0.34fr)_minmax(0,1fr)] md:gap-10 ${
+                    index < experienceItems.length - 1
+                      ? "border-b border-outline/60"
+                      : ""
+                  }`}
+                >
+                  <div className="space-y-3 md:border-r md:border-outline/60 md:pr-8">
+                    <div className="flex items-center gap-3">
+                      <span className="font-mono text-sm font-medium tracking-[0.08em] text-muted-soft">
+                        {String(index + 1).padStart(2, "0")}
+                      </span>
+                      <span className="h-px flex-1 bg-outline/70" aria-hidden="true" />
+                    </div>
+                    <p className="text-sm leading-6 text-foreground">
+                      {item.dateRange}{" "}
+                      <span aria-hidden="true">·</span>{" "}
+                      <ExperienceDuration
+                        startMonth={item.startMonth}
+                        initialDuration={item.initialDuration}
+                      />
+                    </p>
+                    <p className="text-sm leading-6 text-muted">{item.location}</p>
+                  </div>
+
+                  <div className="min-w-0 space-y-5">
+                    <div className="flex items-start gap-3">
+                      <Image
+                        src={item.logoSrc}
+                        alt={item.logoAlt}
+                        width={44}
+                        height={44}
+                        className={`size-11 shrink-0 border border-outline object-contain ${
+                          item.logoBackground === "white"
+                            ? "bg-white"
+                            : "bg-surface-soft"
+                        }`}
+                      />
+                      <div className="min-w-0">
+                        <h3 className="text-[clamp(1.65rem,3vw,2.35rem)] font-medium leading-[1.12] tracking-[-0.03em] text-foreground">
+                          {item.title}
+                        </h3>
+                        <p className="mt-2 text-sm leading-6 text-muted">
+                          {item.organization} <span aria-hidden="true">·</span>{" "}
+                          {item.employmentType}
+                        </p>
+                      </div>
+                    </div>
+
+                    <p className="max-w-3xl text-base leading-7 text-muted">
+                      {item.summary}
+                    </p>
+
+                    <ul className="space-y-2 text-base leading-7 text-muted">
+                      {item.responsibilities.map((responsibility) => (
+                        <li key={responsibility} className="flex gap-3">
+                          <span
+                            className="mt-[0.72em] size-1.5 shrink-0 bg-accent"
+                            aria-hidden="true"
+                          />
+                          <span>{responsibility}</span>
+                        </li>
+                      ))}
+                    </ul>
+
+                    <div className="flex flex-wrap gap-x-5 gap-y-2 border-t border-outline/60 pt-3">
+                      {item.skills.map((skill) => (
+                        <span
+                          key={skill}
+                          className="inline-flex items-center gap-2 text-sm font-medium text-foreground"
+                        >
+                          <Icon name={item.icon} className="size-4" />
+                          {skill}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </article>
+              </Reveal>
+            ))}
           </div>
         </section>
 
@@ -244,6 +286,7 @@ export default async function Home() {
             className="section-content-gap card-rail card-rail-bleed card-rail-skills"
             trackClassName="card-rail-track"
             duration={42}
+            autoScroll={false}
           >
             {techStackItems.map((item) => (
               <div
@@ -286,7 +329,7 @@ export default async function Home() {
           id="profile"
           className="section-shell"
         >
-            <div className="grid gap-6 sm:gap-8 md:gap-12 xl:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] xl:items-center xl:gap-20 2xl:gap-24">
+            <div className="grid gap-6 sm:gap-8 md:gap-12 xl:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] xl:items-center xl:gap-x-20 xl:gap-y-12 2xl:gap-x-24">
             <Reveal className="space-y-8">
               <SectionHeading
                 title="Who I Am"
@@ -306,32 +349,6 @@ export default async function Home() {
                 <p>
                   I approach each project by understanding the problem first, then choosing the simplest useful solution—whether that is a clearer website, an automated workflow, or a custom internal tool.
                 </p>
-              </div>
-              <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
-                <div className="border-l-2 border-accent pl-4">
-                  <span className="block font-mono text-[11px] uppercase tracking-[0.24em] text-muted-soft">
-                    Education
-                  </span>
-                  <span className="mt-1 block text-lg font-semibold text-foreground">
-                    BS in Information Technology
-                  </span>
-                </div>
-                <div className="border-l-2 border-accent pl-4">
-                  <span className="block font-mono text-[11px] uppercase tracking-[0.24em] text-muted-soft">
-                    Location
-                  </span>
-                  <span className="mt-1 block text-lg font-semibold text-foreground">
-                    Dolores, E. Samar
-                  </span>
-                </div>
-                <div className="border-l-2 border-accent pl-4">
-                  <span className="block font-mono text-[11px] uppercase tracking-[0.24em] text-muted-soft">
-                    Eligibility
-                  </span>
-                  <span className="mt-1 block text-lg font-semibold text-foreground">
-                    Career Service Professional
-                  </span>
-                </div>
               </div>
             </Reveal>
 
@@ -359,6 +376,23 @@ export default async function Home() {
                   </div>
                 </div>
               </div>
+            </Reveal>
+
+            <Reveal delay={220} className="xl:col-span-2">
+              <dl className="profile-details-rail">
+                <div className="profile-details-item">
+                  <dt className="profile-details-label">Education</dt>
+                  <dd className="profile-details-value">BS in Information Technology</dd>
+                </div>
+                <div className="profile-details-item">
+                  <dt className="profile-details-label">Location</dt>
+                  <dd className="profile-details-value">Dolores, E. Samar</dd>
+                </div>
+                <div className="profile-details-item">
+                  <dt className="profile-details-label">Eligibility</dt>
+                  <dd className="profile-details-value">Career Service Professional</dd>
+                </div>
+              </dl>
             </Reveal>
           </div>
         </section>
@@ -388,7 +422,7 @@ export default async function Home() {
                     rel={item.external ? "noreferrer" : undefined}
                     className="contact-link group flex items-center gap-4 text-foreground"
                   >
-                    <span className="flex size-11 items-center justify-center rounded-full border border-outline bg-surface-soft transition-colors group-hover:border-outline-strong">
+                    <span className="flex size-11 items-center justify-center border border-outline bg-surface-soft transition-colors group-hover:border-outline-strong">
                       {isSocialBrandName(item.icon) ? (
                         <SocialBrandIcon name={item.icon} className="size-5" />
                       ) : (
