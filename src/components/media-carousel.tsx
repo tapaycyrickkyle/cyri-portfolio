@@ -121,48 +121,33 @@ export default function MediaCarousel({
                 tabIndex={0}
               >
                 <div className="media-gallery-row-track">
-                  {rowItems.map((item) => {
-                    const archiveIndex = items.indexOf(item) + 1;
-                    const archiveLabel = `A${String(archiveIndex).padStart(2, "0")}`;
-
-                    return (
-                      <button
-                        key={`${item.image}-${rowIndex}`}
-                        suppressHydrationWarning
-                        type="button"
-                        aria-label={`Open full view of ${item.title}, ${item.width} by ${item.height} pixels`}
-                        className="media-gallery-item"
-                        data-shape={getShape(item)}
-                        style={{
-                          aspectRatio: `${item.width} / ${item.height}`,
-                          position: "relative",
-                        }}
-                        onClick={() => setSelectedItem(item)}
-                      >
-                        <Image
-                          src={item.image}
-                          alt={item.alt}
-                          fill
-                          sizes="(min-width: 1280px) 30rem, (min-width: 768px) 24rem, 68vw"
-                          className="object-contain"
-                        />
-                        <span
-                          className="media-gallery-corner-mark"
-                          aria-hidden="true"
-                        />
-                        <span className="media-gallery-caption">
-                          <span className="media-gallery-caption-meta">
-                            <span className="media-gallery-caption-index">
-                              {archiveLabel}
-                            </span>
-                            <span className="media-gallery-caption-size">
-                              {item.width} × {item.height}
-                            </span>
-                          </span>
-                        </span>
-                      </button>
-                    );
-                  })}
+                  {rowItems.map((item) => (
+                    <button
+                      key={`${item.image}-${rowIndex}`}
+                      suppressHydrationWarning
+                      type="button"
+                      aria-label={`Open full view of ${item.title}`}
+                      className="media-gallery-item"
+                      data-shape={getShape(item)}
+                      style={{
+                        aspectRatio: `${item.width} / ${item.height}`,
+                        position: "relative",
+                      }}
+                      onClick={() => setSelectedItem(item)}
+                    >
+                      <Image
+                        src={item.image}
+                        alt={item.alt}
+                        fill
+                        sizes="(min-width: 1280px) 30rem, (min-width: 768px) 24rem, 68vw"
+                        className="object-contain"
+                      />
+                      <span
+                        className="media-gallery-corner-mark"
+                        aria-hidden="true"
+                      />
+                    </button>
+                  ))}
                 </div>
               </div>
             ))}
