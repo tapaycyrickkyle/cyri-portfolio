@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import AutoScrollRail from "../components/auto-scroll-rail";
 import ClientWebsiteCarousel from "../components/client-website-carousel";
 import ContactForm from "../components/contact-form";
@@ -13,6 +14,7 @@ import {
 } from "../components/portfolio-content";
 import { getMediaEdits } from "../components/media-data";
 import { getProjects } from "../components/project-data";
+import { serviceLinks } from "../components/service-data";
 import MediaCarousel from "../components/media-carousel";
 import ExperienceDuration from "../components/experience-duration";
 import { Icon } from "../components/portfolio-icon";
@@ -89,6 +91,21 @@ export default async function Home() {
                   <a href="#contact" className="secondary-button w-full sm:w-auto">
                     Let&apos;s Talk
                   </a>
+                </div>
+
+                <div className="flex flex-wrap items-center gap-x-4 gap-y-2 border-t border-outline/60 pt-4 text-sm">
+                  <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-muted-soft">
+                    Services
+                  </span>
+                  {serviceLinks.map((link) => (
+                    <Link
+                      key={link.href}
+                      href={link.href}
+                      className="text-foreground underline decoration-outline-strong underline-offset-4 hover:text-accent"
+                    >
+                      {link.label}
+                    </Link>
+                  ))}
                 </div>
 
                 <Reveal delay={150}>
@@ -333,7 +350,7 @@ export default async function Home() {
             <Reveal className="space-y-8">
               <SectionHeading
                 title="Who I Am"
-                description="I&apos;m Cyrick Kyle B. Tapay, a web developer and AI automation specialist focused on practical digital solutions."
+                description="I&apos;m Cyrick Kyle B. Tapay, a freelance web developer and AI automation specialist based in the Philippines."
               />
               <div className="space-y-4 text-base leading-7 text-muted sm:text-lg sm:leading-8">
                 <p>
@@ -345,6 +362,11 @@ export default async function Home() {
                   My work combines <span className="scan-highlight-soft">web development</span>,
                   <span className="scan-highlight-soft"> AI-assisted automation</span>, and workflow design. I build
                   websites, dashboards, and systems that organize information and make recurring work easier to manage.
+                </p>
+                <p>
+                  I passed the Career Service Examination at the Professional
+                  Level and hold Career Service Professional Eligibility in the
+                  Philippines.
                 </p>
                 <p>
                   I approach each project by understanding the problem first, then choosing the simplest useful solution—whether that is a clearer website, an automated workflow, or a custom internal tool.
@@ -390,7 +412,7 @@ export default async function Home() {
                 </div>
                 <div className="profile-details-item">
                   <dt className="profile-details-label">Eligibility</dt>
-                  <dd className="profile-details-value">Career Service Professional</dd>
+                  <dd className="profile-details-value">Career Service Professional Eligibility</dd>
                 </div>
               </dl>
             </Reveal>

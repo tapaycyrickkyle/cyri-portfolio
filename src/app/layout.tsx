@@ -64,13 +64,27 @@ const personAndWebsiteJsonLd = {
       "@id": `${SITE_URL}/#person`,
       name: "Cyrick Kyle B. Tapay",
       url: SITE_URL,
-      jobTitle: "Web Developer & AI Automation Specialist",
+      image: `${SITE_URL}/images/profile-picture.jpg`,
+      email: "tapaycyrickkyle@gmail.com",
+      description: SITE_DESCRIPTION,
+      jobTitle: "Freelance Web Developer & AI Automation Specialist",
       knowsAbout: [
         "Web development",
         "AI automation",
         "Workflow automation",
         "Business problem solving",
+        "Next.js and React",
+        "AI-assisted workflow design",
       ],
+      hasCredential: {
+        "@type": "EducationalOccupationalCredential",
+        credentialCategory: "Career Service Professional Eligibility",
+        recognizedBy: {
+          "@type": "Organization",
+          name: "Civil Service Commission of the Philippines",
+          url: "https://www.csc.gov.ph/",
+        },
+      },
       homeLocation: {
         "@type": "Place",
         name: "Dolores, Eastern Samar, Philippines",
