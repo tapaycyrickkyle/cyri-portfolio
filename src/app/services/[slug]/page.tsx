@@ -101,7 +101,7 @@ export default async function ServicePage({ params }: ServicePageProps) {
   };
 
   return (
-    <div className="page-shell relative isolate overflow-x-clip">
+    <div className="page-shell project-detail-shell relative isolate overflow-x-clip">
       <header className="border-b border-outline/60 bg-surface/95">
         <div className="mx-auto flex max-w-[86rem] flex-wrap items-start justify-between gap-3 px-[var(--page-gutter)] py-4 sm:flex-nowrap sm:items-center sm:gap-4 sm:py-5">
           <Link
