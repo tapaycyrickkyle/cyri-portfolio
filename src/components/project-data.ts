@@ -19,6 +19,7 @@ type RawProjectInfo = {
 };
 
 const PROJECTS_DIR = path.join(process.cwd(), "public", "images", "projects");
+const PROJECT_CONTENT_DIR = path.join(process.cwd(), "src", "content", "projects");
 const IMAGE_EXTENSIONS = new Set([".png", ".jpg", ".jpeg", ".webp", ".avif"]);
 const PROJECT_ORDER = [
   "Business-Chatbot",
@@ -132,7 +133,7 @@ async function loadProjectFromFolder(
   folderName: string,
 ): Promise<ProjectItem | null> {
   const folderPath = path.join(PROJECTS_DIR, folderName);
-  const infoPath = path.join(folderPath, "info.txt");
+  const infoPath = path.join(PROJECT_CONTENT_DIR, `${folderName}.txt`);
 
   try {
     const [projectInfo, imageFiles] = await Promise.all([

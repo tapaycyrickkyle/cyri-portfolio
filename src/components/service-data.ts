@@ -125,9 +125,9 @@ export const services: ServicePageData[] = [
     slug: "ai-automation-philippines",
     eyebrow: "AI automation services / Philippines",
     title: "AI-assisted workflows that reduce repetitive business work.",
-    metaTitle: "AI Automation Specialist in the Philippines | Workflow Automation",
+    metaTitle: "AI Automation Specialist in the Philippines | Workflows",
     description:
-      "Freelance AI automation services in the Philippines by Cyrick Kyle B. Tapay: practical AI-assisted workflows, chatbot systems, and internal tools for businesses.",
+      "Freelance AI automation services in the Philippines by Cyrick Kyle B. Tapay for small businesses and teams: practical AI-assisted workflows, chatbot systems, and internal tools.",
     intro:
       "I help businesses turn repetitive tasks, scattered information, and manual follow-ups into clearer AI-assisted workflows and practical internal tools.",
     serviceType: "AI workflow automation",

@@ -3,7 +3,16 @@ import { GeistMono } from "geist/font/mono";
 import { GeistPixelSquare } from "geist/font/pixel";
 import { GeistSans } from "geist/font/sans";
 
-import { SITE_DESCRIPTION, SITE_NAME, SITE_TITLE, SITE_URL } from "../lib/site";
+import {
+  PERSON_EMAIL,
+  PERSON_JOB_TITLE,
+  PERSON_NAME,
+  SITE_DESCRIPTION,
+  SITE_LOCALE,
+  SITE_NAME,
+  SITE_TITLE,
+  SITE_URL,
+} from "../lib/site";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -16,13 +25,26 @@ export const metadata: Metadata = {
   alternates: {
     canonical: SITE_URL,
   },
+  robots: {
+    index: true,
+    follow: true,
+    nocache: false,
+    googleBot: {
+      index: true,
+      follow: true,
+      noimageindex: false,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
   openGraph: {
     type: "website",
     url: SITE_URL,
     siteName: SITE_NAME,
     title: SITE_TITLE,
     description: SITE_DESCRIPTION,
-    locale: "en_PH",
+    locale: SITE_LOCALE,
     images: [
       {
         url: "/images/profile-picture.jpg",
@@ -36,15 +58,22 @@ export const metadata: Metadata = {
     description: SITE_DESCRIPTION,
     images: ["/images/profile-picture.jpg"],
   },
-  creator: "Cyrick Kyle B. Tapay",
+  creator: PERSON_NAME,
   publisher: SITE_NAME,
+  applicationName: SITE_NAME,
+  category: "technology",
+  formatDetection: {
+    email: false,
+    telephone: false,
+    address: false,
+  },
   verification: {
     google: "_HiNKIDh3ten_H3L9z5_Ktjm7fNaBMFs6deeN-968Dg",
   },
   icons: {
     icon: "/images/profile-picture.jpg",
     shortcut: "/images/profile-picture.jpg",
-  apple: "/images/profile-picture.jpg",
+    apple: "/images/profile-picture.jpg",
   },
 };
 
@@ -57,23 +86,30 @@ const personAndWebsiteJsonLd = {
       url: SITE_URL,
       name: SITE_NAME,
       description: SITE_DESCRIPTION,
-      inLanguage: "en",
+      inLanguage: "en-PH",
+      publisher: {
+        "@id": `${SITE_URL}/#person`,
+      },
     },
     {
       "@type": "Person",
       "@id": `${SITE_URL}/#person`,
-      name: "Cyrick Kyle B. Tapay",
+      name: PERSON_NAME,
       url: SITE_URL,
       image: `${SITE_URL}/images/profile-picture.jpg`,
-      email: "tapaycyrickkyle@gmail.com",
+      email: PERSON_EMAIL,
       description: SITE_DESCRIPTION,
-      jobTitle: "Freelance Web Developer & AI Automation Specialist",
+      jobTitle: PERSON_JOB_TITLE,
       knowsAbout: [
         "Web development",
         "AI automation",
         "Workflow automation",
         "Business problem solving",
+        "Business websites",
+        "Web applications and dashboards",
+        "Chatbot systems",
         "Next.js and React",
+        "Supabase and PostgreSQL",
         "AI-assisted workflow design",
       ],
       hasCredential: {
@@ -124,7 +160,7 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      lang="en"
+      lang="en-PH"
       suppressHydrationWarning
       className={`${GeistSans.variable} ${GeistMono.variable} ${GeistPixelSquare.variable} h-full antialiased`}
     >

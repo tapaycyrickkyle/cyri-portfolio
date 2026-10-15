@@ -80,14 +80,17 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "CreativeWork",
+    "@id": `${SITE_URL}/work/${slug}#creativework`,
     name: project.title,
     url: `${SITE_URL}/work/${slug}`,
     description: project.description,
+    inLanguage: "en-PH",
     image: galleryImages.map((image) => `${SITE_URL}${image}`),
     creator: {
-      "@type": "Person",
-      name: "Cyrick Kyle B. Tapay",
-      url: SITE_URL,
+      "@id": `${SITE_URL}/#person`,
+    },
+    isPartOf: {
+      "@id": `${SITE_URL}/#website`,
     },
     keywords: project.tags.join(", "),
   };
