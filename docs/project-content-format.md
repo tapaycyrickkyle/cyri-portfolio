@@ -1,6 +1,6 @@
 # Project content format
 
-Project metadata is stored in `src/content/projects/` so it can be read during the static build without being published as a public asset.
+Project metadata is stored in `src/content/projects/` so it can be read by the application without being published as a public asset.
 
 Each project file uses this format:
 

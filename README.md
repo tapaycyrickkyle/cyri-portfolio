@@ -32,3 +32,9 @@ NEXT_PUBLIC_FORMSPREE_ENDPOINT=https://formspree.io/f/yourFormId
 If the endpoint is missing, the contact form stays visible but direct submission is disabled and the copy-email fallback still works.
 
 Keep real environment values only in `.env.local`. Do not place real endpoints, keys, or secrets in `.env.example` because that file is intended to be committed as a safe template.
+
+## Deployment
+
+This is a standard Next.js server application for Vercel. Connect the GitHub repository to Vercel, select the Next.js framework preset, and use the default build settings. Pushes to `main` can be configured to create the production deployment automatically.
+
+Add the production environment variables in the Vercel project settings before deploying. Keep local values in `.env.local`; never commit secrets.
