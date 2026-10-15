@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import AutoScrollRail from "../components/auto-scroll-rail";
 import ClientWebsiteCarousel from "../components/client-website-carousel";
+import ClientReviewsSection from "../components/client-reviews-section";
 import ContactForm from "../components/contact-form";
 import {
   clientWebsites,
@@ -29,6 +30,8 @@ import {
 } from "../components/social-brand-icon";
 
 const FORMSPREE_ENDPOINT = "https://formspree.io/f/xdajjakw";
+
+export const revalidate = 300;
 
 function SectionHeading({
   title,
@@ -257,6 +260,8 @@ export default async function Home() {
         </section>
 
         <ProjectShowcase projects={projects} />
+
+        <ClientReviewsSection />
 
         <section className="section-shell">
           <Reveal>
