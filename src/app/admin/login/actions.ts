@@ -23,43 +23,55 @@ export async function loginAdmin(
     return { error: "Enter your email and password." };
   }
 
-  const requestHeaders = await headers();
-  if (!(await consumeRateLimit("admin-login", requestHeaders))) {
+  let supabase: Awaited<ReturnType<typeof createSupabaseServerClient>> = null;
+
+  try {
+    const requestHeaders = await headers();
+    if (!(await consumeRateLimit("admin-login", requestHeaders))) {
+      return { error: "Sign-in is temporarily unavailable. Try again shortly." };
+    }
+
+    supabase = await createSupabaseServerClient();
+    if (!supabase) {
+      return { error: "Admin sign-in is not configured yet." };
+    }
+
+    const { error: signInError } = await supabase.auth.signInWithPassword({
+      email,
+      password,
+    });
+
+    if (signInError) {
+      await supabase.auth.signOut();
+      return { error: "The email or password is not valid." };
+    }
+
+    const {
+      data: { user },
+    } = await supabase.auth.getUser();
+    if (!user) {
+      await supabase.auth.signOut();
+      return { error: "The email or password is not valid." };
+    }
+
+    const { data: admin, error: adminError } = await supabase
+      .from("review_admins")
+      .select("user_id")
+      .eq("user_id", user.id)
+      .maybeSingle();
+
+    if (adminError || !admin) {
+      await supabase.auth.signOut();
+      return { error: "The email or password is not valid." };
+    }
+  } catch {
+    try {
+      await supabase?.auth.signOut();
+    } catch {
+      // Keep the login failure message stable if cleanup also fails.
+    }
+
     return { error: "Sign-in is temporarily unavailable. Try again shortly." };
-  }
-
-  const supabase = await createSupabaseServerClient();
-  if (!supabase) {
-    return { error: "Admin sign-in is not configured yet." };
-  }
-
-  const { error: signInError } = await supabase.auth.signInWithPassword({
-    email,
-    password,
-  });
-
-  if (signInError) {
-    await supabase.auth.signOut();
-    return { error: "The email or password is not valid." };
-  }
-
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
-  if (!user) {
-    await supabase.auth.signOut();
-    return { error: "The email or password is not valid." };
-  }
-
-  const { data: admin, error: adminError } = await supabase
-    .from("review_admins")
-    .select("user_id")
-    .eq("user_id", user.id)
-    .maybeSingle();
-
-  if (adminError || !admin) {
-    await supabase.auth.signOut();
-    return { error: "The email or password is not valid." };
   }
 
   redirect("/admin");
