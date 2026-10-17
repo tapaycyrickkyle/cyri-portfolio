@@ -1,10 +1,11 @@
 import "server-only";
 
+import { cache } from "react";
 import { redirect } from "next/navigation";
 
 import { createSupabaseServerClient } from "../supabase/server";
 
-export async function getCurrentAdmin() {
+export const getCurrentAdmin = cache(async function getCurrentAdmin() {
   try {
     const supabase = await createSupabaseServerClient();
 
@@ -34,7 +35,7 @@ export async function getCurrentAdmin() {
   } catch {
     return null;
   }
-}
+});
 
 export async function requireAdmin() {
   const admin = await getCurrentAdmin();
