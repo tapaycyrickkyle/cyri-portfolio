@@ -191,7 +191,7 @@ export function NotificationModal({
               type="button"
               disabled={confirmDisabled || confirmPending}
               onClick={onConfirm}
-              className="inline-flex min-h-10 items-center justify-center border border-foreground bg-foreground px-4 text-sm font-medium text-background transition-colors hover:bg-surface-strong focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground disabled:cursor-not-allowed disabled:opacity-55"
+              className="inline-flex min-h-10 items-center justify-center border border-foreground bg-foreground px-4 text-sm font-medium text-background transition-colors hover:bg-surface-strong hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground disabled:cursor-not-allowed disabled:opacity-55"
             >
               {confirmPending ? "Working…" : confirmLabel}
             </button>

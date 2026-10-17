@@ -154,7 +154,7 @@ export default function ReviewForm({
       <button
         type="submit"
         disabled={status === "submitting"}
-        className="inline-flex min-h-11 items-center gap-2 border border-foreground bg-foreground px-4 py-2 text-sm font-medium text-background transition-colors hover:bg-surface-strong focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground disabled:cursor-not-allowed disabled:opacity-55"
+        className="inline-flex min-h-11 items-center gap-2 border border-foreground bg-foreground px-4 py-2 text-sm font-medium text-background transition-colors hover:bg-surface-strong hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground disabled:cursor-not-allowed disabled:opacity-55"
       >
         <Send className="size-4" aria-hidden="true" />
         {status === "submitting" ? "Submitting…" : "Submit feedback"}
