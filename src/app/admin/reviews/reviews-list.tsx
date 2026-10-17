@@ -227,8 +227,8 @@ function ActionButton({
       onClick={onClick}
       className={`inline-flex min-h-10 items-center gap-2 border px-3 text-sm transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground disabled:cursor-not-allowed disabled:opacity-55 ${
         danger
-          ? "border-red-800/40 text-red-900 hover:bg-red-50 dark:text-red-100 dark:hover:bg-red-950/30"
-          : "border-outline-strong text-foreground hover:bg-surface-soft"
+          ? "border-red-800/40 text-red-900 hover:bg-red-100 dark:text-red-100 dark:hover:bg-red-900/40"
+          : "border-outline-strong text-foreground hover:bg-surface-strong"
       }`}
     >
       <Icon className="size-4" aria-hidden="true" />

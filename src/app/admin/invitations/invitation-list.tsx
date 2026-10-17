@@ -100,7 +100,7 @@ export default function InvitationList({
           <button
             type="button"
             onClick={() => copyLink(feedback.link)}
-            className="inline-flex min-h-10 items-center gap-2 border border-outline-strong px-3 text-sm text-foreground transition-colors hover:bg-surface-soft focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground"
+            className="inline-flex min-h-10 items-center gap-2 border border-outline-strong px-3 text-sm text-foreground transition-colors hover:bg-surface-strong focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground"
           >
             <Copy className="size-4" aria-hidden="true" />
             {copied ? "Copied" : "Copy link"}
@@ -188,7 +188,7 @@ function InvitationCard({
               type="button"
               disabled={disabled}
               onClick={onRevoke}
-              className="inline-flex min-h-10 items-center gap-2 border border-red-800/40 px-3 text-sm text-red-900 transition-colors hover:bg-red-50 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground disabled:cursor-not-allowed disabled:opacity-55 dark:text-red-100 dark:hover:bg-red-950/30"
+              className="inline-flex min-h-10 items-center gap-2 border border-red-800/40 px-3 text-sm text-red-900 transition-colors hover:bg-red-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground disabled:cursor-not-allowed disabled:opacity-55 dark:text-red-100 dark:hover:bg-red-900/40"
             >
               <X className="size-4" aria-hidden="true" />
               Revoke
@@ -199,7 +199,7 @@ function InvitationCard({
               type="button"
               disabled={disabled}
               onClick={onRegenerate}
-              className="inline-flex min-h-10 items-center gap-2 border border-outline-strong px-3 text-sm text-foreground transition-colors hover:bg-surface-soft focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground disabled:cursor-not-allowed disabled:opacity-55"
+              className="inline-flex min-h-10 items-center gap-2 border border-outline-strong px-3 text-sm text-foreground transition-colors hover:bg-surface-strong focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground disabled:cursor-not-allowed disabled:opacity-55"
             >
               <RefreshCw className="size-4" aria-hidden="true" />
               Regenerate link

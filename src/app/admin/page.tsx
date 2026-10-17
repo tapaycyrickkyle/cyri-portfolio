@@ -44,7 +44,7 @@ export default async function AdminOverviewPage() {
           </div>
           <Link
             href="/"
-            className="inline-flex min-h-10 items-center gap-2 self-start border border-outline-strong px-3 text-sm text-foreground transition-colors hover:bg-surface-soft focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground sm:self-auto"
+            className="inline-flex min-h-10 items-center gap-2 self-start border border-outline-strong px-3 text-sm text-foreground transition-colors hover:bg-surface-strong focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground sm:self-auto"
           >
             View portfolio
             <ArrowRight className="size-4" aria-hidden="true" />
@@ -122,7 +122,7 @@ function AdminActionCard({
   return (
     <Link
       href={href}
-      className="group border border-outline bg-surface p-5 transition-colors hover:border-outline-strong hover:bg-surface-soft focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground"
+      className="group border border-outline bg-surface p-5 transition-colors hover:border-outline-strong hover:bg-surface-strong focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground"
     >
       <Icon className="size-5 text-muted transition-colors group-hover:text-foreground" aria-hidden="true" />
       <h3 className="mt-5 text-base font-semibold text-foreground">{title}</h3>

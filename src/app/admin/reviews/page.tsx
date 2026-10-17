@@ -80,7 +80,7 @@ function ReviewFilter({
       className={`inline-flex min-h-9 items-center border px-3 text-sm transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground ${
         active
           ? "border-foreground bg-foreground text-background"
-          : "border-outline text-muted hover:border-outline-strong hover:bg-surface-soft hover:text-foreground"
+          : "border-outline text-muted hover:border-outline-strong hover:bg-surface-strong hover:text-foreground"
       }`}
     >
       {label}

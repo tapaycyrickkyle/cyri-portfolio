@@ -165,7 +165,7 @@ export function NotificationModal({
             type="button"
             aria-label={closeLabel}
             onClick={onClose}
-            className="absolute right-4 top-4 inline-flex size-9 items-center justify-center border border-transparent text-muted transition-colors hover:border-outline-strong hover:bg-surface-soft hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground"
+            className="absolute right-4 top-4 inline-flex size-9 items-center justify-center border border-transparent text-muted transition-colors hover:border-outline-strong hover:bg-surface-strong hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground"
           >
             <X className="size-4" aria-hidden="true" />
           </button>
@@ -182,7 +182,7 @@ export function NotificationModal({
           <button
             type="button"
             onClick={onClose}
-            className="inline-flex min-h-10 items-center justify-center border border-outline-strong px-4 text-sm font-medium text-foreground transition-colors hover:bg-surface-soft focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground"
+            className="inline-flex min-h-10 items-center justify-center border border-outline-strong px-4 text-sm font-medium text-foreground transition-colors hover:bg-surface-strong focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground"
           >
             {onConfirm ? "Cancel" : closeLabel}
           </button>
@@ -191,7 +191,7 @@ export function NotificationModal({
               type="button"
               disabled={confirmDisabled || confirmPending}
               onClick={onConfirm}
-              className="inline-flex min-h-10 items-center justify-center border border-foreground bg-foreground px-4 text-sm font-medium text-background transition-colors hover:bg-surface-strong hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground disabled:cursor-not-allowed disabled:opacity-55"
+              className="private-primary-action inline-flex min-h-10 items-center justify-center border border-foreground bg-foreground px-4 text-sm font-medium text-background transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground disabled:cursor-not-allowed disabled:opacity-55"
             >
               {confirmPending ? "Working…" : confirmLabel}
             </button>

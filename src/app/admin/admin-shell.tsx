@@ -39,7 +39,7 @@ export default function AdminShell({
               <form action={logoutAdmin}>
                 <button
                   type="submit"
-                  className="inline-flex min-h-9 items-center gap-2 border border-outline-strong px-3 font-mono text-[11px] uppercase tracking-[0.12em] text-foreground transition-colors hover:bg-surface-soft focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground"
+                  className="inline-flex min-h-9 items-center gap-2 border border-outline-strong px-3 font-mono text-[11px] uppercase tracking-[0.12em] text-foreground transition-colors hover:bg-surface-strong focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground"
                 >
                   <LogOut className="size-4" aria-hidden="true" />
                   Log out
@@ -53,7 +53,7 @@ export default function AdminShell({
               <Link
                 key={href}
                 href={href}
-                className="inline-flex min-h-10 items-center gap-2 border border-transparent px-3 text-sm text-muted transition-colors hover:border-outline-strong hover:bg-surface-soft hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground"
+                className="inline-flex min-h-10 items-center gap-2 border border-transparent px-3 text-sm text-muted transition-colors hover:border-outline-strong hover:bg-surface-strong hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground"
               >
                 <Icon className="size-4" aria-hidden="true" />
                 {label}

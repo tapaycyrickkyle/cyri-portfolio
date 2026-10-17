@@ -120,7 +120,7 @@ export default function InvitationForm() {
             <button
               type="button"
               onClick={copyLink}
-              className="inline-flex min-h-10 items-center gap-2 border border-outline-strong px-3 text-sm text-foreground transition-colors hover:bg-surface-soft focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground"
+              className="inline-flex min-h-10 items-center gap-2 border border-outline-strong px-3 text-sm text-foreground transition-colors hover:bg-surface-strong focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground"
             >
               <Copy className="size-4" aria-hidden="true" />
               {copied ? "Copied" : "Copy link"}
@@ -132,7 +132,7 @@ export default function InvitationForm() {
           <button
             type="submit"
             disabled={pending}
-            className="inline-flex min-h-11 items-center gap-2 border border-foreground bg-foreground px-4 py-2 text-sm font-medium text-background transition-colors hover:bg-surface-strong hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground disabled:cursor-not-allowed disabled:opacity-55"
+            className="private-primary-action inline-flex min-h-11 items-center gap-2 border border-foreground bg-foreground px-4 py-2 text-sm font-medium text-background transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground disabled:cursor-not-allowed disabled:opacity-55"
           >
             <Plus className="size-4" aria-hidden="true" />
             {pending ? "Creating…" : "Create private link"}

@@ -124,7 +124,7 @@ export default function ReviewForm({
                 aria-label={`${value} ${value === 1 ? "star" : "stars"}`}
                 aria-pressed={rating === value}
                 onClick={() => setRating(value)}
-                className="flex size-11 items-center justify-center border border-outline transition-colors hover:border-outline-strong hover:bg-surface-soft focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground"
+                className="flex size-11 items-center justify-center border border-outline transition-colors hover:border-outline-strong hover:bg-surface-strong focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground"
               >
                 <Star className={`size-5 ${selected ? "fill-current text-foreground" : "text-muted"}`} aria-hidden="true" />
               </button>
@@ -154,7 +154,7 @@ export default function ReviewForm({
       <button
         type="submit"
         disabled={status === "submitting"}
-        className="inline-flex min-h-11 items-center gap-2 border border-foreground bg-foreground px-4 py-2 text-sm font-medium text-background transition-colors hover:bg-surface-strong hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground disabled:cursor-not-allowed disabled:opacity-55"
+        className="private-primary-action inline-flex min-h-11 items-center gap-2 border border-foreground bg-foreground px-4 py-2 text-sm font-medium text-background transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground disabled:cursor-not-allowed disabled:opacity-55"
       >
         <Send className="size-4" aria-hidden="true" />
         {status === "submitting" ? "Submitting…" : "Submit feedback"}

@@ -701,7 +701,7 @@ html:not(.dark) .primary-button {
 
 .primary-button:hover {
   transform: translateY(-2px);
-  opacity: 0.96;
+  opacity: 1;
 }
 
 .secondary-button {
@@ -4237,7 +4237,9 @@ html:not(.dark) .primary-button {
   --outline: #c8c0b7;
   --outline-strong: #8e857b;
   --surface-soft: #f0ede8;
-  --surface-strong: #ddd7cf;
+  --surface-strong: #cfc7be;
+  --private-primary-hover: #252a31;
+  --private-primary-hover-foreground: #ffffff;
 }
 
 .dark .private-workspace {
@@ -4246,7 +4248,9 @@ html:not(.dark) .primary-button {
   --outline: #5b5854;
   --outline-strong: #96908a;
   --surface-soft: #2b2a28;
-  --surface-strong: #3a3733;
+  --surface-strong: #4a4540;
+  --private-primary-hover: #e7e0d9;
+  --private-primary-hover-foreground: #161515;
 }
 
 body {
@@ -7058,6 +7062,18 @@ body:has(.page-shell) {
   right: 0;
   bottom: 0;
   border-width: 0 1px 1px 0;
+}
+
+/* Keep interactive hover states crisp instead of faded or washed out. */
+.primary-button:hover,
+.primary-button:focus-visible {
+  opacity: 1 !important;
+}
+
+.private-workspace .private-primary-action:hover {
+  border-color: var(--private-primary-hover) !important;
+  background: var(--private-primary-hover) !important;
+  color: var(--private-primary-hover-foreground) !important;
 }
 
 @media (max-width: 767px) {
