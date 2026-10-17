@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 
+import { DismissibleNotification } from "../../../components/ui/notification-modal";
 import AdminShell from "../admin-shell";
 import InvitationForm from "./invitation-form";
 import InvitationList from "./invitation-list";
@@ -43,9 +44,11 @@ export default async function AdminInvitationsPage() {
           {invitations ? (
             <InvitationList invitations={invitations} />
           ) : (
-            <p className="border border-amber-800/30 bg-amber-50 p-4 text-sm leading-6 text-amber-950 dark:bg-amber-950/20 dark:text-amber-100">
-              Invitation data is unavailable. Confirm that the Supabase migration has been run and that this account is allowlisted.
-            </p>
+            <DismissibleNotification
+              tone="warning"
+              title="Invitation data is unavailable"
+              message="Confirm that the Supabase migration has been run and that this account is allowlisted."
+            />
           )}
         </section>
       </div>

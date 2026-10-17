@@ -7,6 +7,7 @@ import {
   regenerateInvitation,
   revokeInvitation,
 } from "../../../lib/reviews/actions";
+import { NotificationModal } from "../../../components/ui/notification-modal";
 import type {
   ActionResult,
   InvitationStatus,
@@ -20,6 +21,13 @@ const statusLabels: Record<InvitationStatus, string> = {
   used: "Used",
 };
 
+type ConfirmationRequest = {
+  action: () => Promise<ActionResult>;
+  confirmLabel: string;
+  message: string;
+  title: string;
+};
+
 export default function InvitationList({
   invitations,
 }: {
@@ -27,13 +35,27 @@ export default function InvitationList({
 }) {
   const [isPending, startTransition] = useTransition();
   const [feedback, setFeedback] = useState<ActionResult | null>(null);
+  const [notification, setNotification] = useState<ActionResult | null>(null);
+  const [confirmation, setConfirmation] = useState<ConfirmationRequest | null>(null);
   const [copied, setCopied] = useState(false);
 
   function runAction(action: () => Promise<ActionResult>) {
     startTransition(async () => {
-      setFeedback(await action());
+      const result = await action();
+      setFeedback(result);
+      setNotification(result);
       setCopied(false);
     });
+  }
+
+  function confirmAction() {
+    if (!confirmation) {
+      return;
+    }
+
+    const { action } = confirmation;
+    setConfirmation(null);
+    runAction(action);
   }
 
   async function copyLink(link?: string) {
@@ -52,18 +74,24 @@ export default function InvitationList({
 
   return (
     <div className="space-y-4">
-      {feedback?.message ? (
-        <div
-          role={feedback.ok ? "status" : "alert"}
-          className={`border px-3 py-2 text-sm leading-6 ${
-            feedback.ok
-              ? "border-[#7aa891] bg-[#e8f4ed] text-[#153b2d] dark:border-[#86c9ad] dark:bg-[#17372d] dark:text-[#ecfff5]"
-              : "border-red-800/30 bg-red-50 text-red-950 dark:bg-red-950/20 dark:text-red-100"
-          }`}
-        >
-          {feedback.message}
-        </div>
-      ) : null}
+      <NotificationModal
+        open={Boolean(confirmation)}
+        tone="warning"
+        title={confirmation?.title ?? "Confirm action"}
+        message={confirmation?.message ?? "Confirm this action to continue."}
+        confirmLabel={confirmation?.confirmLabel ?? "Confirm"}
+        confirmPending={isPending}
+        onClose={() => setConfirmation(null)}
+        onConfirm={confirmAction}
+      />
+
+      <NotificationModal
+        open={Boolean(notification?.message)}
+        tone={notification?.ok ? "success" : "error"}
+        title={notification?.ok ? "Invitation updated" : "Invitation action failed"}
+        message={notification?.message ?? ""}
+        onClose={() => setNotification(null)}
+      />
 
       {feedback?.link ? (
         <div className="space-y-3 border border-outline-strong bg-surface p-4">
@@ -92,14 +120,20 @@ export default function InvitationList({
               invitation={invitation}
               disabled={isPending}
               onRegenerate={() => {
-                if (window.confirm("Regenerate this invitation? The current link will stop working.")) {
-                  runAction(() => regenerateInvitation(invitation.id));
-                }
+                setConfirmation({
+                  action: () => regenerateInvitation(invitation.id),
+                  confirmLabel: "Regenerate link",
+                  message: "The current link will stop working and a replacement link will be created.",
+                  title: "Regenerate this invitation?",
+                });
               }}
               onRevoke={() => {
-                if (window.confirm("Revoke this invitation? The client will no longer be able to use it.")) {
-                  runAction(() => revokeInvitation(invitation.id));
-                }
+                setConfirmation({
+                  action: () => revokeInvitation(invitation.id),
+                  confirmLabel: "Revoke invitation",
+                  message: "The client will no longer be able to use this private review link.",
+                  title: "Revoke this invitation?",
+                });
               }}
             />
           ))}

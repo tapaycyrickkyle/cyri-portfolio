@@ -1,8 +1,9 @@
 "use client";
 
-import { useActionState } from "react";
+import { useActionState, useState } from "react";
 import { LogIn } from "lucide-react";
 
+import { NotificationModal } from "../../../components/ui/notification-modal";
 import {
   type LoginActionState,
   loginAdmin,
@@ -15,9 +16,20 @@ export default function AdminLoginForm() {
     loginAdmin,
     initialLoginActionState,
   );
+  const [dismissedState, setDismissedState] = useState<LoginActionState | null>(null);
+  const showError = Boolean(state.error && state !== dismissedState);
 
   return (
-    <form action={formAction} className="space-y-5">
+    <>
+      <NotificationModal
+        open={showError && Boolean(state.error)}
+        tone="error"
+        title="Sign-in failed"
+        message={state.error ?? "The administrator sign-in could not be completed."}
+        onClose={() => setDismissedState(state)}
+      />
+
+      <form action={formAction} className="space-y-5">
       <div className="space-y-2">
         <label htmlFor="admin-email" className="text-sm font-medium text-foreground">
           Email address
@@ -46,12 +58,6 @@ export default function AdminLoginForm() {
         />
       </div>
 
-      {state.error ? (
-        <p role="alert" className="border border-red-800/40 bg-red-50 px-3 py-2 text-sm leading-6 text-red-900 dark:bg-red-950/30 dark:text-red-100">
-          {state.error}
-        </p>
-      ) : null}
-
       <button
         type="submit"
         disabled={pending}
@@ -60,6 +66,7 @@ export default function AdminLoginForm() {
         <LogIn className="size-4" aria-hidden="true" />
         {pending ? "Signing in…" : "Sign in"}
       </button>
-    </form>
+      </form>
+    </>
   );
 }

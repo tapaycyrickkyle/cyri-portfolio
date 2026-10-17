@@ -7,45 +7,99 @@ import {
   deleteReview,
   moderateReview,
 } from "../../../lib/reviews/actions";
+import { NotificationModal } from "../../../components/ui/notification-modal";
 import type { ActionResult, AdminReview, ReviewStatus } from "../../../lib/reviews/types";
+
+type ConfirmationRequest = {
+  action: () => void;
+  confirmLabel: string;
+  message: string;
+  title: string;
+};
 
 export default function ReviewsList({ reviews }: { reviews: AdminReview[] }) {
   const [isPending, startTransition] = useTransition();
-  const [feedback, setFeedback] = useState<ActionResult | null>(null);
+  const [notification, setNotification] = useState<ActionResult | null>(null);
+  const [confirmation, setConfirmation] = useState<ConfirmationRequest | null>(null);
+  const [rejection, setRejection] = useState<AdminReview | null>(null);
+  const [rejectionReason, setRejectionReason] = useState("");
 
   function runAction(action: () => Promise<ActionResult>) {
     startTransition(async () => {
-      setFeedback(await action());
+      setNotification(await action());
     });
   }
 
   function moderate(review: AdminReview, status: ReviewStatus) {
-    let reason = "";
     if (status === "rejected") {
-      const response = window.prompt("Add a short internal reason for rejecting this review:", review.moderation_reason ?? "");
-      if (response === null) {
-        return;
-      }
-      reason = response;
+      setRejection(review);
+      setRejectionReason(review.moderation_reason ?? "");
+      return;
     }
 
-    runAction(() => moderateReview(review.id, status, reason));
+    runAction(() => moderateReview(review.id, status));
+  }
+
+  function confirmRejection() {
+    if (!rejection) {
+      return;
+    }
+
+    const reviewId = rejection.id;
+    const reason = rejectionReason;
+    setRejection(null);
+    runAction(() => moderateReview(reviewId, "rejected", reason));
   }
 
   return (
     <div className="space-y-4">
-      {feedback?.message ? (
-        <p
-          role={feedback.ok ? "status" : "alert"}
-          className={`border px-3 py-2 text-sm leading-6 ${
-            feedback.ok
-              ? "border-[#7aa891] bg-[#e8f4ed] text-[#153b2d] dark:border-[#86c9ad] dark:bg-[#17372d] dark:text-[#ecfff5]"
-              : "border-red-800/30 bg-red-50 text-red-950 dark:bg-red-950/20 dark:text-red-100"
-          }`}
-        >
-          {feedback.message}
-        </p>
-      ) : null}
+      <NotificationModal
+        open={Boolean(confirmation)}
+        tone="warning"
+        title={confirmation?.title ?? "Confirm action"}
+        message={confirmation?.message ?? "Confirm this action to continue."}
+        confirmLabel={confirmation?.confirmLabel ?? "Confirm"}
+        confirmPending={isPending}
+        onClose={() => setConfirmation(null)}
+        onConfirm={() => {
+          confirmation?.action();
+          setConfirmation(null);
+        }}
+      />
+
+      <NotificationModal
+        open={Boolean(rejection)}
+        tone="warning"
+        title="Reject this review?"
+        message="Add a short internal reason. This note stays in the private moderation archive."
+        confirmLabel="Reject review"
+        confirmPending={isPending}
+        onClose={() => setRejection(null)}
+        onConfirm={confirmRejection}
+      >
+        <div className="space-y-2">
+          <label htmlFor="rejection-reason" className="text-sm font-medium text-foreground">
+            Internal reason
+          </label>
+          <textarea
+            id="rejection-reason"
+            value={rejectionReason}
+            onChange={(event) => setRejectionReason(event.target.value)}
+            maxLength={2_000}
+            rows={4}
+            className="w-full resize-y border border-outline bg-background px-3 py-2 text-base leading-6 text-foreground placeholder:text-muted-soft focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground sm:text-sm"
+            placeholder="Why should this review remain unpublished?"
+          />
+        </div>
+      </NotificationModal>
+
+      <NotificationModal
+        open={Boolean(notification?.message)}
+        tone={notification?.ok ? "success" : "error"}
+        title={notification?.ok ? "Review updated" : "Review action failed"}
+        message={notification?.message ?? ""}
+        onClose={() => setNotification(null)}
+      />
 
       {reviews.length === 0 ? (
         <div className="border border-dashed border-outline-strong p-7 text-center">
@@ -59,9 +113,12 @@ export default function ReviewsList({ reviews }: { reviews: AdminReview[] }) {
             disabled={isPending}
             review={review}
             onDelete={() => {
-              if (window.confirm("Delete this review permanently? This cannot be undone.")) {
-                runAction(() => deleteReview(review.id));
-              }
+              setConfirmation({
+                action: () => runAction(() => deleteReview(review.id)),
+                confirmLabel: "Delete review",
+                message: "This permanently removes the review and cannot be undone.",
+                title: "Delete this review?",
+              });
             }}
             onModerate={(status) => moderate(review, status)}
           />

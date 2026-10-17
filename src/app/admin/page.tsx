@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ArrowRight, ClipboardList, Link2, MessageSquareText } from "lucide-react";
 
+import { DismissibleNotification } from "../../components/ui/notification-modal";
 import AdminShell from "./admin-shell";
 import { getAdminSummary } from "../../lib/reviews/data";
 import { requireAdmin } from "../../lib/reviews/auth";
@@ -70,12 +71,11 @@ export default async function AdminOverviewPage() {
             </div>
           </section>
         ) : (
-          <section className="border border-amber-800/30 bg-amber-50 p-5 text-amber-950 dark:bg-amber-950/20 dark:text-amber-100" role="status">
-            <h2 className="font-semibold">Database setup is not available yet.</h2>
-            <p className="mt-2 max-w-2xl text-sm leading-6">
-              Run the supplied Supabase migration and configure the server environment variables before using the private review workspace.
-            </p>
-          </section>
+          <DismissibleNotification
+            tone="warning"
+            title="Database setup is not available yet"
+            message="Run the supplied Supabase migration and configure the server environment variables before using the private review workspace."
+          />
         )}
 
         <section aria-labelledby="actions-heading" className="space-y-4">

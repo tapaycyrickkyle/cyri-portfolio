@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
+import { DismissibleNotification } from "../../../components/ui/notification-modal";
 import AdminShell from "../admin-shell";
 import ReviewsList from "./reviews-list";
 import { requireAdmin } from "../../../lib/reviews/auth";
@@ -52,9 +53,11 @@ export default async function AdminReviewsPage({
         {reviews ? (
           <ReviewsList reviews={reviews} />
         ) : (
-          <p className="border border-amber-800/30 bg-amber-50 p-4 text-sm leading-6 text-amber-950 dark:bg-amber-950/20 dark:text-amber-100">
-            Review data is unavailable. Confirm that the Supabase migration has been run and that this account is allowlisted.
-          </p>
+          <DismissibleNotification
+            tone="warning"
+            title="Review data is unavailable"
+            message="Confirm that the Supabase migration has been run and that this account is allowlisted."
+          />
         )}
       </div>
     </AdminShell>

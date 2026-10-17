@@ -1,7 +1,18 @@
 "use client";
 
 import { FormEvent, useState } from "react";
-import { CheckCircle2, Send, Star } from "lucide-react";
+import { Send, Star } from "lucide-react";
+
+import {
+  NotificationModal,
+  type NotificationTone,
+} from "../../../components/ui/notification-modal";
+
+type ReviewNotification = {
+  tone: NotificationTone;
+  title: string;
+  message: string;
+};
 
 export default function ReviewForm({
   clientName,
@@ -14,20 +25,28 @@ export default function ReviewForm({
 }) {
   const [rating, setRating] = useState(0);
   const [reviewText, setReviewText] = useState("");
-  const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
-  const [error, setError] = useState("");
+  const [status, setStatus] = useState<"idle" | "submitting">("idle");
+  const [notification, setNotification] = useState<ReviewNotification | null>(null);
 
   async function submitReview(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    setError("");
+    setNotification(null);
 
     if (rating < 1 || rating > 5) {
-      setError("Choose a rating from 1 to 5 stars.");
+      setNotification({
+        tone: "error",
+        title: "Rating required",
+        message: "Choose a rating from 1 to 5 stars.",
+      });
       return;
     }
 
     if (reviewText.trim().length < 20) {
-      setError("Please share at least 20 characters of feedback.");
+      setNotification({
+        tone: "error",
+        title: "Feedback is too short",
+        message: "Please share at least 20 characters of feedback.",
+      });
       return;
     }
 
@@ -52,25 +71,35 @@ export default function ReviewForm({
         throw new Error("Review submission failed.");
       }
 
-      setStatus("success");
+      setRating(0);
+      setReviewText("");
+      setNotification({
+        tone: "success",
+        title: "Thank you for your feedback",
+        message: "Your response was submitted for review. You can close this page now.",
+      });
+      setStatus("idle");
     } catch {
-      setStatus("error");
-      setError("This review could not be submitted right now. Please try again later or request a new link.");
+      setStatus("idle");
+      setNotification({
+        tone: "error",
+        title: "Review not submitted",
+        message: "This review could not be submitted right now. Please try again later or request a new link.",
+      });
     }
   }
 
-  if (status === "success") {
-    return (
-      <section className="mt-8 border border-[#7aa891] bg-[#e8f4ed] p-6 text-[#153b2d] dark:border-[#86c9ad] dark:bg-[#17372d] dark:text-[#ecfff5]" role="status">
-        <CheckCircle2 className="size-6" aria-hidden="true" />
-        <h2 className="mt-4 text-xl font-semibold tracking-[-0.04em]">Thank you for your feedback.</h2>
-        <p className="mt-2 text-sm leading-6">Your response was submitted for review. You can close this page now.</p>
-      </section>
-    );
-  }
-
   return (
-    <form onSubmit={submitReview} className="mt-8 space-y-6 border border-outline bg-surface p-5 sm:p-8">
+    <>
+      <NotificationModal
+        open={Boolean(notification)}
+        tone={notification?.tone ?? "info"}
+        title={notification?.title ?? "Review"}
+        message={notification?.message ?? ""}
+        onClose={() => setNotification(null)}
+      />
+
+      <form onSubmit={submitReview} className="mt-8 space-y-6 border border-outline bg-surface p-5 sm:p-8">
       <div className="grid gap-4 border-b border-outline pb-5 sm:grid-cols-2">
         <div>
           <p className="font-mono text-[10px] uppercase tracking-[0.14em] text-muted">Client</p>
@@ -122,12 +151,6 @@ export default function ReviewForm({
         <p className="text-right font-mono text-[11px] text-muted">{reviewText.length}/5000</p>
       </div>
 
-      {error ? (
-        <p role="alert" className="border border-red-800/30 bg-red-50 px-3 py-2 text-sm leading-6 text-red-950 dark:bg-red-950/20 dark:text-red-100">
-          {error}
-        </p>
-      ) : null}
-
       <button
         type="submit"
         disabled={status === "submitting"}
@@ -136,6 +159,7 @@ export default function ReviewForm({
         <Send className="size-4" aria-hidden="true" />
         {status === "submitting" ? "Submitting…" : "Submit feedback"}
       </button>
-    </form>
+      </form>
+    </>
   );
 }

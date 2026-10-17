@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 
+import { DismissibleNotification } from "../../../components/ui/notification-modal";
 import ReviewForm from "./review-form";
 import { getReviewInvitationContext } from "../../../lib/reviews/public";
 
@@ -54,14 +55,11 @@ export default async function ClientReviewPage({
             />
           </div>
         ) : (
-          <div className="mt-8 border border-outline bg-surface p-6 sm:p-8">
-            <h1 className="text-2xl font-semibold tracking-[-0.05em] text-foreground sm:text-3xl">
-              This feedback link is not available.
-            </h1>
-            <p className="mt-4 text-sm leading-7 text-muted">
-              The link may have expired, already been used, or been withdrawn. Please contact the person who sent it if you need a new invitation.
-            </p>
-          </div>
+          <DismissibleNotification
+            tone="error"
+            title="This feedback link is not available"
+            message="The link may have expired, already been used, or been withdrawn. Please contact the person who sent it if you need a new invitation."
+          />
         )}
       </div>
     </main>

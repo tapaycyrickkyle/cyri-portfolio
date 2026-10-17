@@ -1,9 +1,12 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { createPortal } from "react-dom";
+import { useState } from "react";
 
 import { Icon } from "./portfolio-icon";
+import {
+  NotificationModal,
+  type NotificationTone,
+} from "./ui/notification-modal";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { Textarea } from "./ui/textarea";
@@ -25,34 +28,20 @@ type ContactFormProps = {
   endpoint?: string;
 };
 
+type ContactNotification = {
+  tone: NotificationTone;
+  title: string;
+  message: string;
+};
+
 export default function ContactForm({ email, endpoint }: ContactFormProps) {
   const [form, setForm] = useState<FormState>(initialState);
-  const [feedback, setFeedback] = useState("");
+  const [notification, setNotification] = useState<ContactNotification | null>(null);
   const [copied, setCopied] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [showSuccessModal, setShowSuccessModal] = useState(false);
-
-  useEffect(() => {
-    if (!showSuccessModal) {
-      return;
-    }
-
-    function handleKeyDown(event: KeyboardEvent) {
-      if (event.key === "Escape") {
-        setShowSuccessModal(false);
-      }
-    }
-
-    window.addEventListener("keydown", handleKeyDown);
-
-    return () => {
-      window.removeEventListener("keydown", handleKeyDown);
-    };
-  }, [showSuccessModal]);
 
   function updateField<K extends keyof FormState>(field: K, value: FormState[K]) {
     setForm((current) => ({ ...current, [field]: value }));
-    setFeedback("");
   }
 
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
@@ -63,7 +52,11 @@ export default function ContactForm({ email, endpoint }: ContactFormProps) {
     const message = form.message.trim();
 
     if (!name || !senderEmail || !message) {
-      setFeedback("Please fill in your name, email, and message first.");
+      setNotification({
+        tone: "warning",
+        title: "Complete the form",
+        message: "Please fill in your name, email, and message first.",
+      });
       return;
     }
 
@@ -89,15 +82,26 @@ export default function ContactForm({ email, endpoint }: ContactFormProps) {
       });
 
       if (!response.ok) {
-        setFeedback("Something went wrong while sending. Please try again or use the email link.");
+        setNotification({
+          tone: "error",
+          title: "Message not sent",
+          message: "Something went wrong while sending. Please try again or use the email link.",
+        });
         return;
       }
 
       setForm(initialState);
-      setFeedback("");
-      setShowSuccessModal(true);
+      setNotification({
+        tone: "success",
+        title: "Message sent",
+        message: "Thank you for reaching out. Your message has been received.",
+      });
     } catch {
-      setFeedback("Message could not be sent right now. Please try again or use the email link.");
+      setNotification({
+        tone: "error",
+        title: "Message not sent",
+        message: "Message could not be sent right now. Please try again or use the email link.",
+      });
     } finally {
       setIsSubmitting(false);
     }
@@ -107,68 +111,31 @@ export default function ContactForm({ email, endpoint }: ContactFormProps) {
     try {
       await navigator.clipboard.writeText(email);
       setCopied(true);
-      setFeedback("Email copied to clipboard.");
+      setNotification({
+        tone: "success",
+        title: "Email copied",
+        message: "The email address is ready to paste.",
+      });
 
       window.setTimeout(() => setCopied(false), 1800);
     } catch {
-      setFeedback("Copy is not available here. Please use the email address directly.");
+      setNotification({
+        tone: "error",
+        title: "Copy unavailable",
+        message: "Copy is not available here. Please use the email address directly.",
+      });
     }
   }
 
-  const successModal = showSuccessModal ? (
-    <div
-      className="contact-success-overlay fixed inset-0 z-[999] grid place-items-center p-4 sm:p-6"
-      role="dialog"
-      aria-modal="true"
-      aria-labelledby="contact-success-title"
-      onClick={() => setShowSuccessModal(false)}
-    >
-      <div
-        className="dialog-panel contact-success-modal relative w-full max-w-[min(92vw,30rem)] overflow-hidden border border-outline bg-surface p-5 text-center shadow-[var(--shadow-panel)] sm:p-7"
-        onClick={(event) => event.stopPropagation()}
-      >
-        <button
-          type="button"
-          aria-label="Close success message"
-          className="contact-success-close"
-          onClick={() => setShowSuccessModal(false)}
-        >
-          <span aria-hidden="true" className="contact-success-close-glyph">&times;</span>
-        </button>
-
-        <div className="contact-success-icon">
-          <Icon name="check" className="size-6" />
-        </div>
-
-        <p className="font-mono text-[11px] uppercase tracking-[0.24em] text-muted-soft">
-          Message sent
-        </p>
-        <h3
-          id="contact-success-title"
-          className="mt-3 text-2xl font-semibold tracking-[-0.05em] text-foreground"
-        >
-          The message is sent successfully.
-        </h3>
-        <p className="mx-auto mt-3 max-w-[26rem] text-sm leading-7 text-muted sm:text-base">
-          Thank you for reaching out. Your message has been received.
-        </p>
-
-        <Button
-          type="button"
-          className="primary-button mt-6 w-full justify-center"
-          onClick={() => setShowSuccessModal(false)}
-        >
-          Close
-        </Button>
-      </div>
-    </div>
-  ) : null;
-
   return (
     <>
-      {successModal && typeof document !== "undefined"
-        ? createPortal(successModal, document.body)
-        : null}
+      <NotificationModal
+        open={Boolean(notification)}
+        tone={notification?.tone ?? "info"}
+        title={notification?.title ?? "Contact"}
+        message={notification?.message ?? ""}
+        onClose={() => setNotification(null)}
+      />
 
       <form
         action={endpoint}
@@ -264,7 +231,6 @@ export default function ContactForm({ email, endpoint }: ContactFormProps) {
           </Button>
         </div>
 
-        <p className="min-h-6 text-sm text-muted">{feedback}</p>
       </form>
     </>
   );

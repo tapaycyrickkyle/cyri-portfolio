@@ -3,6 +3,7 @@
 import { useActionState, useState } from "react";
 import { Copy, Link2, Plus } from "lucide-react";
 
+import { NotificationModal } from "../../../components/ui/notification-modal";
 import { createInvitation } from "../../../lib/reviews/actions";
 import type { ActionResult } from "../../../lib/reviews/types";
 
@@ -14,7 +15,9 @@ const initialActionState: ActionResult = {
 export default function InvitationForm() {
   const [expiration, setExpiration] = useState("30");
   const [state, formAction, pending] = useActionState(createInvitation, initialActionState);
+  const [dismissedState, setDismissedState] = useState<ActionResult | null>(null);
   const [copied, setCopied] = useState(false);
+  const notification = state.message && state !== dismissedState ? state : null;
 
   async function copyLink() {
     if (!state.link) {
@@ -31,7 +34,16 @@ export default function InvitationForm() {
   }
 
   return (
-    <section aria-labelledby="create-invitation-heading" className="border border-outline bg-surface p-5 sm:p-6">
+    <>
+      <NotificationModal
+        open={Boolean(notification?.message)}
+        tone={notification?.ok ? "success" : "error"}
+        title={notification?.ok ? "Invitation created" : "Invitation not created"}
+        message={notification?.message ?? ""}
+        onClose={() => setDismissedState(state)}
+      />
+
+      <section aria-labelledby="create-invitation-heading" className="border border-outline bg-surface p-5 sm:p-6">
       <div className="flex items-start gap-3">
         <span className="flex size-9 shrink-0 items-center justify-center border border-outline bg-surface-soft">
           <Plus className="size-4" aria-hidden="true" />
@@ -98,19 +110,6 @@ export default function InvitationForm() {
           />
         </div>
 
-        {state.message ? (
-          <p
-            role={state.ok ? "status" : "alert"}
-            className={`md:col-span-2 border px-3 py-2 text-sm leading-6 ${
-              state.ok
-                ? "border-[#7aa891] bg-[#e8f4ed] text-[#153b2d] dark:border-[#86c9ad] dark:bg-[#17372d] dark:text-[#ecfff5]"
-                : "border-red-800/30 bg-red-50 text-red-950 dark:bg-red-950/20 dark:text-red-100"
-            }`}
-          >
-            {state.message}
-          </p>
-        ) : null}
-
         {state.link ? (
           <div className="space-y-3 border border-outline-strong bg-background p-4 md:col-span-2">
             <div className="flex items-center gap-2 text-sm font-medium text-foreground">
@@ -140,7 +139,8 @@ export default function InvitationForm() {
           </button>
         </div>
       </form>
-    </section>
+      </section>
+    </>
   );
 }
 
