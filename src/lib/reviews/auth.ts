@@ -5,13 +5,13 @@ import { redirect } from "next/navigation";
 import { createSupabaseServerClient } from "../supabase/server";
 
 export async function getCurrentAdmin() {
-  const supabase = await createSupabaseServerClient();
-
-  if (!supabase) {
-    return null;
-  }
-
   try {
+    const supabase = await createSupabaseServerClient();
+
+    if (!supabase) {
+      return null;
+    }
+
     const {
       data: { user },
     } = await supabase.auth.getUser();
