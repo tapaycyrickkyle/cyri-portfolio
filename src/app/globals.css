@@ -5425,11 +5425,6 @@ h3,
   }
 }
 
-/* Tighter hero entry spacing only. */
-main {
-  padding-top: 0 !important;
-}
-
 .section-hero {
   padding-top: clamp(1rem, 3vw, 2rem) !important;
 }
@@ -6792,15 +6787,15 @@ a[href],
   will-change: auto;
 }
 
-/* Motion-free portfolio mode: scrolling and interaction state changes happen instantly. */
-html,
-html * {
+/* Motion-free portfolio mode: keep the private review/admin workspace interactive. */
+.page-shell,
+.page-shell * {
   scroll-behavior: auto !important;
 }
 
-html *,
-html *::before,
-html *::after {
+.page-shell *,
+.page-shell *::before,
+.page-shell *::after {
   animation: none !important;
   transition: none !important;
 }
@@ -6821,11 +6816,11 @@ html *::after {
   --portfolio-body-leading: 1.55;
 }
 
-html {
+html:has(.page-shell) {
   font-size: 14px !important;
 }
 
-body {
+body:has(.page-shell) {
   font-size: var(--portfolio-body-size) !important;
   line-height: var(--portfolio-body-leading) !important;
 }
