@@ -4,9 +4,11 @@ import { useActionState } from "react";
 import { LogIn } from "lucide-react";
 
 import {
-  initialLoginActionState,
+  type LoginActionState,
   loginAdmin,
 } from "./actions";
+
+const initialLoginActionState: LoginActionState = { error: null };
 
 export default function AdminLoginForm() {
   const [state, formAction, pending] = useActionState(

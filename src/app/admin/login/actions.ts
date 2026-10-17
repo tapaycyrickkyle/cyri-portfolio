@@ -10,8 +10,6 @@ export type LoginActionState = {
   error: string | null;
 };
 
-export const initialLoginActionState: LoginActionState = { error: null };
-
 export async function loginAdmin(
   _previousState: LoginActionState,
   formData: FormData,
