@@ -1,4 +1,4 @@
-const skeletonClass = "animate-pulse motion-reduce:animate-none bg-surface-strong";
+const skeletonClass = "admin-skeleton animate-pulse motion-reduce:animate-none";
 
 export default function AdminLoading() {
   return (
@@ -10,7 +10,7 @@ export default function AdminLoading() {
     >
       <span className="sr-only">Loading admin workspace...</span>
 
-      <div className="h-0.5 w-full overflow-hidden bg-surface-strong" aria-hidden="true">
+      <div className="admin-loading-track h-0.5 w-full overflow-hidden" aria-hidden="true">
         <div className="admin-loading-progress h-full w-1/3 bg-foreground" />
       </div>
 

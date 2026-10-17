@@ -4236,8 +4236,10 @@ html:not(.dark) .primary-button {
   --muted-soft: #5a544d;
   --outline: #bdb4aa;
   --outline-strong: #756b61;
-  --surface-soft: #f0ede8;
-  --surface-strong: #cfc7be;
+  --surface-soft: #f3f4f5;
+  --surface-strong: #e1e4e8;
+  --private-skeleton: #e8eaed;
+  --private-loading-track: #f4f5f6;
   --private-primary-hover: #252a31;
   --private-primary-hover-foreground: #ffffff;
 }
@@ -4247,8 +4249,10 @@ html:not(.dark) .primary-button {
   --muted-soft: #aaa19b;
   --outline: #5b5854;
   --outline-strong: #96908a;
-  --surface-soft: #2b2a28;
-  --surface-strong: #4a4540;
+  --surface-soft: #2b2e33;
+  --surface-strong: #3e444b;
+  --private-skeleton: #34383e;
+  --private-loading-track: #272a2f;
   --private-primary-hover: #e7e0d9;
   --private-primary-hover-foreground: #161515;
 }
@@ -7074,6 +7078,15 @@ body:has(.page-shell) {
   border-color: var(--private-primary-hover) !important;
   background: var(--private-primary-hover) !important;
   color: var(--private-primary-hover-foreground) !important;
+}
+
+/* Use calm neutral loading surfaces in the private workspace. */
+.private-workspace .admin-skeleton {
+  background: var(--private-skeleton) !important;
+}
+
+.private-workspace .admin-loading-track {
+  background: var(--private-loading-track) !important;
 }
 
 @media (max-width: 767px) {
