@@ -141,6 +141,31 @@ button {
     box-shadow 0.32s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
+@keyframes admin-loading-progress {
+  0% {
+    transform: translateX(-120%);
+  }
+
+  50% {
+    transform: translateX(120%);
+  }
+
+  100% {
+    transform: translateX(340%);
+  }
+}
+
+.admin-loading-progress {
+  animation: admin-loading-progress 1.4s cubic-bezier(0.25, 1, 0.5, 1) infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .admin-loading-progress {
+    animation: none;
+    transform: translateX(0);
+  }
+}
+
 a[href],
 button,
 [role="button"],
