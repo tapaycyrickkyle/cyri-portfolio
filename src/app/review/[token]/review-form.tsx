@@ -14,7 +14,6 @@ export default function ReviewForm({
 }) {
   const [rating, setRating] = useState(0);
   const [reviewText, setReviewText] = useState("");
-  const [displayNameConsent, setDisplayNameConsent] = useState(false);
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
   const [error, setError] = useState("");
 
@@ -41,7 +40,7 @@ export default function ReviewForm({
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          displayNameConsent,
+          displayNameConsent: true,
           rating,
           reviewText,
           token,
@@ -123,15 +122,7 @@ export default function ReviewForm({
         <p className="text-right font-mono text-[11px] text-muted">{reviewText.length}/5000</p>
       </div>
 
-      <label className="flex items-start gap-3 text-sm leading-6 text-muted">
-        <input
-          type="checkbox"
-          checked={displayNameConsent}
-          onChange={(event) => setDisplayNameConsent(event.target.checked)}
-          className="mt-1 size-4 accent-current"
-        />
-        <span>I consent to my name being shown with this feedback if it is approved for the public portfolio.</span>
-      </label>
+      <p className="text-sm leading-6 text-muted">Your name will be shown with the review if it is published.</p>
 
       {error ? (
         <p role="alert" className="border border-red-800/30 bg-red-50 px-3 py-2 text-sm leading-6 text-red-950 dark:bg-red-950/20 dark:text-red-100">
