@@ -11,25 +11,29 @@ export async function getCurrentAdmin() {
     return null;
   }
 
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
+  try {
+    const {
+      data: { user },
+    } = await supabase.auth.getUser();
 
-  if (!user) {
+    if (!user) {
+      return null;
+    }
+
+    const { data: admin, error } = await supabase
+      .from("review_admins")
+      .select("user_id")
+      .eq("user_id", user.id)
+      .maybeSingle();
+
+    if (error || !admin) {
+      return null;
+    }
+
+    return { supabase, user };
+  } catch {
     return null;
   }
-
-  const { data: admin, error } = await supabase
-    .from("review_admins")
-    .select("user_id")
-    .eq("user_id", user.id)
-    .maybeSingle();
-
-  if (error || !admin) {
-    return null;
-  }
-
-  return { supabase, user };
 }
 
 export async function requireAdmin() {
