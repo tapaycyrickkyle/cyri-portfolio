@@ -61,7 +61,7 @@ export default function ReviewForm({
 
   if (status === "success") {
     return (
-      <section className="mt-8 border border-emerald-800/30 bg-emerald-50 p-6 text-emerald-950 dark:bg-emerald-950/20 dark:text-emerald-100" role="status">
+      <section className="mt-8 border border-[#7aa891] bg-[#e8f4ed] p-6 text-[#153b2d] dark:border-[#86c9ad] dark:bg-[#17372d] dark:text-[#ecfff5]" role="status">
         <CheckCircle2 className="size-6" aria-hidden="true" />
         <h2 className="mt-4 text-xl font-semibold tracking-[-0.04em]">Thank you for your feedback.</h2>
         <p className="mt-2 text-sm leading-6">Your response was submitted for review. You can close this page now.</p>

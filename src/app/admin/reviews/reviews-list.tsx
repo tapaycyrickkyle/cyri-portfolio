@@ -39,7 +39,7 @@ export default function ReviewsList({ reviews }: { reviews: AdminReview[] }) {
           role={feedback.ok ? "status" : "alert"}
           className={`border px-3 py-2 text-sm leading-6 ${
             feedback.ok
-              ? "border-emerald-800/30 bg-emerald-50 text-emerald-950 dark:bg-emerald-950/20 dark:text-emerald-100"
+              ? "border-[#7aa891] bg-[#e8f4ed] text-[#153b2d] dark:border-[#86c9ad] dark:bg-[#17372d] dark:text-[#ecfff5]"
               : "border-red-800/30 bg-red-50 text-red-950 dark:bg-red-950/20 dark:text-red-100"
           }`}
         >
@@ -183,7 +183,7 @@ function ActionButton({
 function StatusBadge({ status }: { status: ReviewStatus }) {
   const styles = {
     pending: "border-amber-800/30 bg-amber-50 text-amber-950 dark:bg-amber-950/20 dark:text-amber-100",
-    published: "border-emerald-800/30 bg-emerald-50 text-emerald-950 dark:bg-emerald-950/20 dark:text-emerald-100",
+    published: "border-[#7aa891] bg-[#e8f4ed] text-[#153b2d] dark:border-[#86c9ad] dark:bg-[#17372d] dark:text-[#ecfff5]",
     rejected: "border-red-800/30 bg-red-50 text-red-950 dark:bg-red-950/20 dark:text-red-100",
   } as const;
 

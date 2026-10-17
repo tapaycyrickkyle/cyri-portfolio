@@ -103,7 +103,7 @@ export default function InvitationForm() {
             role={state.ok ? "status" : "alert"}
             className={`md:col-span-2 border px-3 py-2 text-sm leading-6 ${
               state.ok
-                ? "border-emerald-800/30 bg-emerald-50 text-emerald-950 dark:bg-emerald-950/20 dark:text-emerald-100"
+                ? "border-[#7aa891] bg-[#e8f4ed] text-[#153b2d] dark:border-[#86c9ad] dark:bg-[#17372d] dark:text-[#ecfff5]"
                 : "border-red-800/30 bg-red-50 text-red-950 dark:bg-red-950/20 dark:text-red-100"
             }`}
           >
