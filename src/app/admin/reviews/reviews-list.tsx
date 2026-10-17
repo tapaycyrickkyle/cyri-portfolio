@@ -149,7 +149,7 @@ function ReviewCard({
             </h2>
             <StatusBadge status={review.status} />
             {review.verified_client ? (
-              <span className="border border-outline px-2 py-1 font-mono text-[10px] uppercase tracking-[0.12em] text-muted">
+              <span className="border border-outline-strong bg-surface-soft px-2 py-1 font-mono text-[10px] uppercase tracking-[0.12em] text-foreground">
                 Verified
               </span>
             ) : null}
@@ -183,7 +183,7 @@ function ReviewCard({
         </p>
       ) : null}
 
-      <div className="mt-6 flex flex-wrap gap-2 border-t border-outline/70 pt-4">
+      <div className="mt-6 flex flex-wrap gap-2 border-t border-outline pt-4">
         {review.status !== "published" ? (
           <ActionButton disabled={disabled} icon={Check} onClick={() => onModerate("published")}>
             Publish
@@ -239,9 +239,9 @@ function ActionButton({
 
 function StatusBadge({ status }: { status: ReviewStatus }) {
   const styles = {
-    pending: "border-amber-800/30 bg-amber-50 text-amber-950 dark:bg-amber-950/20 dark:text-amber-100",
-    published: "border-[#7aa891] bg-[#e8f4ed] text-[#153b2d] dark:border-[#86c9ad] dark:bg-[#17372d] dark:text-[#ecfff5]",
-    rejected: "border-red-800/30 bg-red-50 text-red-950 dark:bg-red-950/20 dark:text-red-100",
+    pending: "border-amber-700 bg-amber-100 text-amber-950 dark:border-amber-300/70 dark:bg-amber-950/70 dark:text-amber-50",
+    published: "border-emerald-700 bg-emerald-100 text-emerald-950 dark:border-emerald-300/70 dark:bg-emerald-950/70 dark:text-emerald-50",
+    rejected: "border-red-700 bg-red-100 text-red-950 dark:border-red-300/70 dark:bg-red-950/70 dark:text-red-50",
   } as const;
 
   return (

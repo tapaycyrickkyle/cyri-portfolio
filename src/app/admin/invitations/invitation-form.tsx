@@ -58,7 +58,6 @@ export default function InvitationForm() {
 
       <form action={formAction} className="mt-6 grid gap-5 md:grid-cols-2">
         <Field label="Client name" name="clientName" required />
-        <Field label="Client email (optional)" name="clientEmail" type="email" autoComplete="off" />
         <Field label="Project or service" name="projectName" required />
 
         <div className="space-y-2">
@@ -145,17 +144,13 @@ export default function InvitationForm() {
 }
 
 function Field({
-  autoComplete,
   label,
   name,
   required = false,
-  type = "text",
 }: {
-  autoComplete?: string;
   label: string;
   name: string;
   required?: boolean;
-  type?: string;
 }) {
   return (
     <div className="space-y-2">
@@ -165,10 +160,9 @@ function Field({
       <input
         id={`invitation-${name}`}
         name={name}
-        type={type}
-        autoComplete={autoComplete}
+        type="text"
         required={required}
-        maxLength={name === "clientEmail" ? 320 : 160}
+        maxLength={160}
         className="min-h-11 w-full border border-outline bg-background px-3 py-2 text-base text-foreground placeholder:text-muted-soft focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground sm:text-sm"
       />
     </div>

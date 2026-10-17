@@ -33,7 +33,6 @@ export type AdminReview = {
 export type AdminInvitation = {
   id: string;
   client_name: string;
-  client_email: string | null;
   project_name: string;
   internal_notes: string | null;
   expires_at: string;

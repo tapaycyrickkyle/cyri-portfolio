@@ -164,11 +164,15 @@ function InvitationCard({
           <div className="flex flex-wrap items-center gap-3">
             <h3 className="text-lg font-semibold tracking-[-0.03em] text-foreground">{invitation.client_name}</h3>
             <span className={`inline-flex items-center gap-1.5 border px-2 py-1 font-mono text-[10px] uppercase tracking-[0.12em] ${statusClass(invitation.status)}`}>
-              {invitation.status === "active" ? <Check className="size-3" aria-hidden="true" /> : <ShieldAlert className="size-3" aria-hidden="true" />}
+              {invitation.status === "active" || invitation.status === "used" ? (
+                <Check className="size-3" aria-hidden="true" />
+              ) : (
+                <ShieldAlert className="size-3" aria-hidden="true" />
+              )}
               {statusLabels[invitation.status]}
             </span>
           </div>
-          <p className="mt-1 text-sm text-muted">{invitation.project_name}{invitation.client_email ? ` · ${invitation.client_email}` : ""}</p>
+          <p className="mt-1 text-sm text-muted">{invitation.project_name}</p>
         </div>
         <div className="text-left font-mono text-[11px] leading-5 text-muted sm:text-right">
           <p>Created {formatDate(invitation.created_at)}</p>
@@ -182,7 +186,7 @@ function InvitationCard({
       ) : null}
 
       {canRevoke || canRegenerate ? (
-        <div className="mt-5 flex flex-wrap gap-2 border-t border-outline/70 pt-4">
+        <div className="mt-5 flex flex-wrap gap-2 border-t border-outline pt-4">
           {canRevoke ? (
             <button
               type="button"
@@ -220,12 +224,12 @@ function formatDate(value: string) {
 
 function statusClass(status: InvitationStatus) {
   if (status === "active") {
-    return "border-[#7aa891] bg-[#e8f4ed] text-[#153b2d] dark:border-[#86c9ad] dark:bg-[#17372d] dark:text-[#ecfff5]";
+    return "border-emerald-700 bg-emerald-100 text-emerald-950 dark:border-emerald-300/70 dark:bg-emerald-950/70 dark:text-emerald-50";
   }
 
   if (status === "used") {
-    return "border-blue-800/30 bg-blue-50 text-blue-950 dark:bg-blue-950/20 dark:text-blue-100";
+    return "border-outline-strong bg-surface-strong text-foreground";
   }
 
-  return "border-outline bg-surface-soft text-muted";
+  return "border-outline-strong bg-surface-soft text-foreground";
 }

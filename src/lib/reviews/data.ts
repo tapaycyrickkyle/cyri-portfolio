@@ -99,7 +99,7 @@ export async function getAdminInvitations(): Promise<InvitationWithStatus[] | nu
   const { data, error } = await supabase
     .from("review_invitations")
     .select(
-      "id, client_name, client_email, project_name, internal_notes, expires_at, used_at, revoked_at, created_by, created_at",
+      "id, client_name, project_name, internal_notes, expires_at, used_at, revoked_at, created_by, created_at",
     )
     .order("created_at", { ascending: false });
 

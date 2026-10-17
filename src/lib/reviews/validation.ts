@@ -3,10 +3,7 @@ import "server-only";
 import { createHash, createHmac, randomBytes } from "node:crypto";
 
 const TOKEN_PATTERN = /^[A-Za-z0-9_-]{43}$/;
-const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
 type InvitationData = {
-  client_email: string | null;
   client_name: string;
   expires_at: string;
   internal_notes: string | null;
@@ -53,7 +50,6 @@ export function hashReviewToken(token: string) {
 
 export function parseInvitationForm(formData: FormData): InvitationParseResult {
   const clientName = readString(formData.get("clientName"));
-  const clientEmail = readString(formData.get("clientEmail"));
   const projectName = readString(formData.get("projectName"));
   const internalNotes = readString(formData.get("internalNotes"));
   const expiration = readString(formData.get("expiration"));
@@ -61,10 +57,6 @@ export function parseInvitationForm(formData: FormData): InvitationParseResult {
 
   if (!clientName || clientName.length > 160) {
     return { error: "Enter a client name no longer than 160 characters." };
-  }
-
-  if (clientEmail && (clientEmail.length > 320 || !EMAIL_PATTERN.test(clientEmail))) {
-    return { error: "Enter a valid client email address or leave it blank." };
   }
 
   if (!projectName || projectName.length > 160) {
@@ -95,7 +87,6 @@ export function parseInvitationForm(formData: FormData): InvitationParseResult {
 
   return {
     data: {
-      client_email: clientEmail || null,
       client_name: clientName,
       expires_at: expiresAt.toISOString(),
       internal_notes: internalNotes || null,

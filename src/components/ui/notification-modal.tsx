@@ -25,19 +25,19 @@ const toneConfig = {
     eyebrow: "Success",
     icon: CheckCircle2,
     iconClassName:
-      "border-[#7aa891] bg-[#e8f4ed] text-[#153b2d] dark:border-[#86c9ad] dark:bg-[#17372d] dark:text-[#ecfff5]",
+      "border-emerald-700 bg-emerald-100 text-emerald-950 dark:border-emerald-300/70 dark:bg-emerald-950/70 dark:text-emerald-50",
   },
   error: {
     eyebrow: "Error",
     icon: AlertCircle,
     iconClassName:
-      "border-red-800/40 bg-red-50 text-red-900 dark:border-red-300/40 dark:bg-red-950/30 dark:text-red-100",
+      "border-red-700 bg-red-100 text-red-950 dark:border-red-300/70 dark:bg-red-950/70 dark:text-red-50",
   },
   warning: {
     eyebrow: "Confirmation",
     icon: TriangleAlert,
     iconClassName:
-      "border-amber-800/40 bg-amber-50 text-amber-950 dark:border-amber-300/40 dark:bg-amber-950/30 dark:text-amber-100",
+      "border-amber-700 bg-amber-100 text-amber-950 dark:border-amber-300/70 dark:bg-amber-950/70 dark:text-amber-50",
   },
   info: {
     eyebrow: "Notice",

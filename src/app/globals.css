@@ -4232,10 +4232,10 @@ html:not(.dark) .primary-button {
 
 /* Keep the private admin and review surfaces readable without changing the portfolio palette. */
 .private-workspace {
-  --muted: #4b4741;
-  --muted-soft: #655f58;
-  --outline: #c8c0b7;
-  --outline-strong: #8e857b;
+  --muted: #3b3833;
+  --muted-soft: #5a544d;
+  --outline: #bdb4aa;
+  --outline-strong: #756b61;
   --surface-soft: #f0ede8;
   --surface-strong: #cfc7be;
   --private-primary-hover: #252a31;
