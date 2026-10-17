@@ -3,7 +3,7 @@ const skeletonClass = "animate-pulse motion-reduce:animate-none bg-surface-stron
 export default function AdminLoading() {
   return (
     <div
-      className="min-h-screen bg-background text-foreground"
+      className="private-workspace min-h-screen bg-background text-foreground"
       role="status"
       aria-busy="true"
       aria-live="polite"

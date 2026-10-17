@@ -22,7 +22,7 @@ export default function AdminShell({
   email: string;
 }>) {
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <div className="private-workspace min-h-screen bg-background text-foreground">
       <header className="border-b border-outline bg-surface">
         <div className="mx-auto flex w-full max-w-7xl flex-col gap-4 px-4 py-4 sm:px-6 lg:px-8">
           <div className="flex flex-wrap items-center justify-between gap-4">

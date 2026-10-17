@@ -33,7 +33,7 @@ export default async function AdminLoginPage() {
   }
 
   return (
-    <main className="flex min-h-screen items-center justify-center bg-background px-4 py-12 text-foreground">
+    <main className="private-workspace flex min-h-screen items-center justify-center bg-background px-4 py-12 text-foreground">
       <section className="w-full max-w-md border border-outline bg-surface p-6 sm:p-8">
         <div className="space-y-3">
           <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-muted-soft">

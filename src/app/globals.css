@@ -4230,6 +4230,25 @@ html:not(.dark) .primary-button {
   --section-space-desktop: 7rem;
 }
 
+/* Keep the private admin and review surfaces readable without changing the portfolio palette. */
+.private-workspace {
+  --muted: #4b4741;
+  --muted-soft: #655f58;
+  --outline: #c8c0b7;
+  --outline-strong: #8e857b;
+  --surface-soft: #f0ede8;
+  --surface-strong: #ddd7cf;
+}
+
+.dark .private-workspace {
+  --muted: #d0c9c4;
+  --muted-soft: #aaa19b;
+  --outline: #5b5854;
+  --outline-strong: #96908a;
+  --surface-soft: #2b2a28;
+  --surface-strong: #3a3733;
+}
+
 body {
   background: var(--background) !important;
   background-image: none !important;
